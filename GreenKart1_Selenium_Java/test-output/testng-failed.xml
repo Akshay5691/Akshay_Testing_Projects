@@ -6,8 +6,8 @@
       <class name="TestPages.HomePageTestCases">
         <methods>
           <include name="setUpExtentReport"/>
+          <include name="verifyUserIsAbleToIncreaseCartPrice" invocation-numbers="0"/>
           <include name="createTestForExtentReport"/>
-          <include name="verifyUserIsAbleToIncreaseItemNumber"/>
           <include name="CloseTheBrowser"/>
           <include name="logResult"/>
         </methods>

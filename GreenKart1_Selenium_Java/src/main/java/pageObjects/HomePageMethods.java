@@ -86,12 +86,12 @@ public class HomePageMethods {
     // =================== 🔹 Action Methods ===================
 
     public void searchItem(String itemName) {
-        searchBox.sendKeys(itemName);
+       searchBox.sendKeys(itemName);
         searchButton.click();
     }
 
     public void searchItemAndAddToCart(String itemName) {
-        searchBox.sendKeys(itemName);
+      //  searchBox.sendKeys(itemName);
         searchButton.click();
         waitUntilElementVisible("//button[text()='ADD TO CART']");
         addToCartButton.click();
