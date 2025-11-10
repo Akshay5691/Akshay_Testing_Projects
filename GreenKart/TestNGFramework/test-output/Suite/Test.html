@@ -1,0 +1,251 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>26/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jun 29 19:19:19 IST 2020</td>
+</tr>
+<tr><td>Total time:</td><td>126 seconds (126071 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_tooltip_for_student()'><b>verify_tooltip_for_student</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td><div><pre>java.lang.AssertionError: expected [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions applys.] but found [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions apply.]
+	at greenKartPages.FlightBookingPage.tooltip_for_student(FlightBookingPage.java:110)
+	at greenKartTestCases.FlightBookingTest.verify_tooltip_for_student(FlightBookingTest.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace611725313", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace611725313'><pre>java.lang.AssertionError: expected [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions applys.] but found [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions apply.]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at org.testng.Assert.assertEquals(Assert.java:200)
+	at greenKartPages.FlightBookingPage.tooltip_for_student(FlightBookingPage.java:110)
+	at greenKartTestCases.FlightBookingTest.verify_tooltip_for_student(FlightBookingTest.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:645)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:822)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1130)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifyDetailsOnSearchvegetable()'><b>verifyDetailsOnSearchvegetable</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>5</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifyGreenKartLogo()'><b>verifyGreenKartLogo</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifySearchVegetableIsNotPresent()'><b>verifySearchVegetableIsNotPresent</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>4</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifySearhFunctionality()'><b>verifySearhFunctionality</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>2</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifyTopDealsLink()'><b>verifyTopDealsLink</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verify_added_vegetables_in_cart()'><b>verify_added_vegetables_in_cart</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>15</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_ascending_sorting_on_discount_price_column()'><b>verify_ascending_sorting_on_discount_price_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_ascending_sorting_on_price_column()'><b>verify_ascending_sorting_on_price_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_ascending_sorting_on_veg_fruit_column()'><b>verify_ascending_sorting_on_veg_fruit_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_descending_sorting_on_discount_price_column()'><b>verify_descending_sorting_on_discount_price_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_descending_sorting_on_price_column()'><b>verify_descending_sorting_on_price_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_descending_sorting_on_veg_fruit_column()'><b>verify_descending_sorting_on_veg_fruit_column</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>1</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_multicity_popup()'><b>verify_multicity_popup</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>5</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_popup_is_displayed_if_passanger_limit_exceed()'><b>verify_popup_is_displayed_if_passanger_limit_exceed</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>3</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_special_assistance_popup()'><b>verify_special_assistance_popup</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verify_user_add_n_Kg_vegetable()'><b>verify_user_add_n_Kg_vegetable</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>3</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verify_user_is_able_to_add_multilpe_vegetables()'><b>verify_user_is_able_to_add_multilpe_vegetables</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>38</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.TopDealsTest.verify_user_is_able_to_navigate_to_Top_Deals_page()'><b>verify_user_is_able_to_navigate_to_Top_Deals_page</b><br>Test class: greenKartTestCases.TopDealsTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.TopDealsTest@5e025e70</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_user_is_able_to_navigate_to_Top_Deals_page()'><b>verify_user_is_able_to_navigate_to_Top_Deals_page</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>2</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_user_is_able_to_select_checkbox()'><b>verify_user_is_able_to_select_checkbox</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>1</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_user_is_able_to_select_currency()'><b>verify_user_is_able_to_select_currency</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>1</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_user_is_able_to_select_from_to_details_for_one_wat_trip()'><b>verify_user_is_able_to_select_from_to_details_for_one_wat_trip</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>1</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.FlightBookingTest.verify_user_is_able_to_select_passanger_details()'><b>verify_user_is_able_to_select_passanger_details</b><br>Test class: greenKartTestCases.FlightBookingTest</td>
+<td></td>
+<td>2</td>
+<td>greenKartTestCases.FlightBookingTest@1fbc7afb</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifycartIcon()'><b>verifycartIcon</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifyflightBookingLink()'><b>verifyflightBookingLink</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+<tr>
+<td title='greenKartTestCases.HomePageTest.verifyitemsAndPriceSection()'><b>verifyitemsAndPriceSection</b><br>Test class: greenKartTestCases.HomePageTest</td>
+<td></td>
+<td>0</td>
+<td>greenKartTestCases.HomePageTest@11531931</td></tr>
+</table><p>
+</body>
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Suite">
+              <span class="suite-name border-failed">Suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Suite">
+                    <span>C:\Users\sdhawan\TestNGFramework\TestNGFramework\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Suite">
+                    <span class="test-stats">2 tests</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">27 methods, 1 failed,   26 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_tooltip_for_student">verify_tooltip_for_student</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods passed suite-Suite"> (hide)</a> <!-- hide-methods passed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods passed suite-Suite"> (show)</a> <!-- show-methods passed suite-Suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifyDetailsOnSearchvegetable">verifyDetailsOnSearchvegetable</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifyGreenKartLogo">verifyGreenKartLogo</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifySearchVegetableIsNotPresent">verifySearchVegetableIsNotPresent</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifySearhFunctionality">verifySearhFunctionality</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifyTopDealsLink">verifyTopDealsLink</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verify_added_vegetables_in_cart">verify_added_vegetables_in_cart</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_ascending_sorting_on_discount_price_column">verify_ascending_sorting_on_discount_price_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_ascending_sorting_on_price_column">verify_ascending_sorting_on_price_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_ascending_sorting_on_veg_fruit_column">verify_ascending_sorting_on_veg_fruit_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_descending_sorting_on_discount_price_column">verify_descending_sorting_on_discount_price_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_descending_sorting_on_price_column">verify_descending_sorting_on_price_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_descending_sorting_on_veg_fruit_column">verify_descending_sorting_on_veg_fruit_column</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_multicity_popup">verify_multicity_popup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_popup_is_displayed_if_passanger_limit_exceed">verify_popup_is_displayed_if_passanger_limit_exceed</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_special_assistance_popup">verify_special_assistance_popup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verify_user_add_n_Kg_vegetable">verify_user_add_n_Kg_vegetable</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verify_user_is_able_to_add_multilpe_vegetables">verify_user_is_able_to_add_multilpe_vegetables</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_user_is_able_to_navigate_to_Top_Deals_page">verify_user_is_able_to_navigate_to_Top_Deals_page</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.TopDealsTest" hash-for-method="verify_user_is_able_to_navigate_to_Top_Deals_page">verify_user_is_able_to_navigate_to_Top_Deals_page</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_user_is_able_to_select_checkbox">verify_user_is_able_to_select_checkbox</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_user_is_able_to_select_currency">verify_user_is_able_to_select_currency</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_user_is_able_to_select_from_to_details_for_one_wat_trip">verify_user_is_able_to_select_from_to_details_for_one_wat_trip</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.FlightBookingTest" hash-for-method="verify_user_is_able_to_select_passanger_details">verify_user_is_able_to_select_passanger_details</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifycartIcon">verifycartIcon</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifyflightBookingLink">verifyflightBookingLink</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="greenKartTestCases.HomePageTest" hash-for-method="verifyitemsAndPriceSection">verifyitemsAndPriceSection</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Suite" class="panel Suite">
+          <div class="suite-Suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">greenKartTestCases.FlightBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_tooltip_for_student">
+                  </a> <!-- verify_tooltip_for_student -->
+                  <span class="method-name">verify_tooltip_for_student</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions applys.] but found [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions apply.]
+	at greenKartPages.FlightBookingPage.tooltip_for_student(FlightBookingPage.java:110)
+	at greenKartTestCases.FlightBookingTest.verify_tooltip_for_student(FlightBookingTest.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-failed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">greenKartTestCases.FlightBookingTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_multicity_popup">
+                  </a> <!-- verify_multicity_popup -->
+                  <span class="method-name">verify_multicity_popup</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_popup_is_displayed_if_passanger_limit_exceed">
+                  </a> <!-- verify_popup_is_displayed_if_passanger_limit_exceed -->
+                  <span class="method-name">verify_popup_is_displayed_if_passanger_limit_exceed</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_special_assistance_popup">
+                  </a> <!-- verify_special_assistance_popup -->
+                  <span class="method-name">verify_special_assistance_popup</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_navigate_to_Top_Deals_page">
+                  </a> <!-- verify_user_is_able_to_navigate_to_Top_Deals_page -->
+                  <span class="method-name">verify_user_is_able_to_navigate_to_Top_Deals_page</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_select_checkbox">
+                  </a> <!-- verify_user_is_able_to_select_checkbox -->
+                  <span class="method-name">verify_user_is_able_to_select_checkbox</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_select_currency">
+                  </a> <!-- verify_user_is_able_to_select_currency -->
+                  <span class="method-name">verify_user_is_able_to_select_currency</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_select_from_to_details_for_one_wat_trip">
+                  </a> <!-- verify_user_is_able_to_select_from_to_details_for_one_wat_trip -->
+                  <span class="method-name">verify_user_is_able_to_select_from_to_details_for_one_wat_trip</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_select_passanger_details">
+                  </a> <!-- verify_user_is_able_to_select_passanger_details -->
+                  <span class="method-name">verify_user_is_able_to_select_passanger_details</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-passed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">greenKartTestCases.TopDealsTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_ascending_sorting_on_discount_price_column">
+                  </a> <!-- verify_ascending_sorting_on_discount_price_column -->
+                  <span class="method-name">verify_ascending_sorting_on_discount_price_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_ascending_sorting_on_price_column">
+                  </a> <!-- verify_ascending_sorting_on_price_column -->
+                  <span class="method-name">verify_ascending_sorting_on_price_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_ascending_sorting_on_veg_fruit_column">
+                  </a> <!-- verify_ascending_sorting_on_veg_fruit_column -->
+                  <span class="method-name">verify_ascending_sorting_on_veg_fruit_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_descending_sorting_on_discount_price_column">
+                  </a> <!-- verify_descending_sorting_on_discount_price_column -->
+                  <span class="method-name">verify_descending_sorting_on_discount_price_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_descending_sorting_on_price_column">
+                  </a> <!-- verify_descending_sorting_on_price_column -->
+                  <span class="method-name">verify_descending_sorting_on_price_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_descending_sorting_on_veg_fruit_column">
+                  </a> <!-- verify_descending_sorting_on_veg_fruit_column -->
+                  <span class="method-name">verify_descending_sorting_on_veg_fruit_column</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_navigate_to_Top_Deals_page">
+                  </a> <!-- verify_user_is_able_to_navigate_to_Top_Deals_page -->
+                  <span class="method-name">verify_user_is_able_to_navigate_to_Top_Deals_page</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-passed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">greenKartTestCases.HomePageTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyDetailsOnSearchvegetable">
+                  </a> <!-- verifyDetailsOnSearchvegetable -->
+                  <span class="method-name">verifyDetailsOnSearchvegetable</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyGreenKartLogo">
+                  </a> <!-- verifyGreenKartLogo -->
+                  <span class="method-name">verifyGreenKartLogo</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifySearchVegetableIsNotPresent">
+                  </a> <!-- verifySearchVegetableIsNotPresent -->
+                  <span class="method-name">verifySearchVegetableIsNotPresent</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifySearhFunctionality">
+                  </a> <!-- verifySearhFunctionality -->
+                  <span class="method-name">verifySearhFunctionality</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyTopDealsLink">
+                  </a> <!-- verifyTopDealsLink -->
+                  <span class="method-name">verifyTopDealsLink</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_added_vegetables_in_cart">
+                  </a> <!-- verify_added_vegetables_in_cart -->
+                  <span class="method-name">verify_added_vegetables_in_cart</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_add_n_Kg_vegetable">
+                  </a> <!-- verify_user_add_n_Kg_vegetable -->
+                  <span class="method-name">verify_user_add_n_Kg_vegetable</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verify_user_is_able_to_add_multilpe_vegetables">
+                  </a> <!-- verify_user_is_able_to_add_multilpe_vegetables -->
+                  <span class="method-name">verify_user_is_able_to_add_multilpe_vegetables</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifycartIcon">
+                  </a> <!-- verifycartIcon -->
+                  <span class="method-name">verifycartIcon</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyflightBookingLink">
+                  </a> <!-- verifyflightBookingLink -->
+                  <span class="method-name">verifyflightBookingLink</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyitemsAndPriceSection">
+                  </a> <!-- verifyitemsAndPriceSection -->
+                  <span class="method-name">verifyitemsAndPriceSection</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-passed -->
+        </div> <!-- panel Suite -->
+        <div panel-name="test-xml-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\sdhawan\TestNGFramework\TestNGFramework\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;classes&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;utilities.Listeners&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test name=&quot;Test&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;greenKartTestCases.HomePageTest&quot;/&gt;
+      &lt;class name=&quot;greenKartTestCases.TopDealsTest&quot;/&gt;
+      &lt;class name=&quot;greenKartTestCases.FlightBookingTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Test --&gt;
+  &lt;test name=&quot;Test(failed)&quot; parallel=&quot;classes&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;greenKartTestCases.FlightBookingTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;landOnHomePage&quot;/&gt;
+          &lt;include name=&quot;verify_tooltip_for_student&quot;/&gt;
+          &lt;include name=&quot;CloseBrowser&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- greenKartTestCases.FlightBookingTest --&gt;
+      &lt;class name=&quot;greenKartTestCases.TopDealsTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;CloseBrowser&quot;/&gt;
+          &lt;include name=&quot;landOnHomePage&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- greenKartTestCases.TopDealsTest --&gt;
+      &lt;class name=&quot;greenKartTestCases.HomePageTest&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;CloseBrowser&quot;/&gt;
+          &lt;include name=&quot;landOnHomePage&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- greenKartTestCases.HomePageTest --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Test(failed) --&gt;
+&lt;/suite&gt; &lt;!-- Suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Test (3 classes)</span>
+              </li>
+              <li>
+                <span class="test-name">Test(failed) (3 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Suite');
+function tableData_Suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(27);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'verify_user_is_able_to_add_multilpe_vegetables')
+data.setCell(0, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(0, 3, 38289);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verify_added_vegetables_in_cart')
+data.setCell(1, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(1, 3, 15906);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyDetailsOnSearchvegetable')
+data.setCell(2, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(2, 3, 5537);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'verify_multicity_popup')
+data.setCell(3, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(3, 3, 5404);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'verifySearchVegetableIsNotPresent')
+data.setCell(4, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(4, 3, 4283);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'verify_user_add_n_Kg_vegetable')
+data.setCell(5, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(5, 3, 3739);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'verify_popup_is_displayed_if_passanger_limit_exceed')
+data.setCell(6, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(6, 3, 3298);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'verify_user_is_able_to_navigate_to_Top_Deals_page')
+data.setCell(7, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(7, 3, 2773);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'verifySearhFunctionality')
+data.setCell(8, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(8, 3, 2728);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'verify_user_is_able_to_select_passanger_details')
+data.setCell(9, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(9, 3, 2693);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'verify_descending_sorting_on_veg_fruit_column')
+data.setCell(10, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(10, 3, 1498);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'verify_user_is_able_to_select_currency')
+data.setCell(11, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(11, 3, 1485);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'verify_user_is_able_to_select_from_to_details_for_one_wat_trip')
+data.setCell(12, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(12, 3, 1391);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'verify_user_is_able_to_select_checkbox')
+data.setCell(13, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(13, 3, 1105);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'verify_user_is_able_to_navigate_to_Top_Deals_page')
+data.setCell(14, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(14, 3, 481);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'verify_special_assistance_popup')
+data.setCell(15, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(15, 3, 446);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'verify_ascending_sorting_on_veg_fruit_column')
+data.setCell(16, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(16, 3, 379);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'verify_descending_sorting_on_price_column')
+data.setCell(17, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(17, 3, 299);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'verify_descending_sorting_on_discount_price_column')
+data.setCell(18, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(18, 3, 263);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'verify_ascending_sorting_on_price_column')
+data.setCell(19, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(19, 3, 189);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'verify_ascending_sorting_on_discount_price_column')
+data.setCell(20, 2, 'greenKartTestCases.TopDealsTest')
+data.setCell(20, 3, 189);
+data.setCell(21, 0, 21)
+data.setCell(21, 1, 'verifyTopDealsLink')
+data.setCell(21, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(21, 3, 177);
+data.setCell(22, 0, 22)
+data.setCell(22, 1, 'verifyGreenKartLogo')
+data.setCell(22, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(22, 3, 145);
+data.setCell(23, 0, 23)
+data.setCell(23, 1, 'verifyflightBookingLink')
+data.setCell(23, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(23, 3, 125);
+data.setCell(24, 0, 24)
+data.setCell(24, 1, 'verifyitemsAndPriceSection')
+data.setCell(24, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(24, 3, 104);
+data.setCell(25, 0, 25)
+data.setCell(25, 1, 'verify_tooltip_for_student')
+data.setCell(25, 2, 'greenKartTestCases.FlightBookingTest')
+data.setCell(25, 3, 82);
+data.setCell(26, 0, 26)
+data.setCell(26, 1, 'verifycartIcon')
+data.setCell(26, 2, 'greenKartTestCases.HomePageTest')
+data.setCell(26, 3, 81);
+window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <div id="times-div-Suite">
+              </div> <!-- times-div-Suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">landOnHomePage</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">verifyGreenKartLogo</span>
+                <span class="method-start">11698 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">landOnHomePage</span>
+                <span class="method-start">11845 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_navigate_to_Top_Deals_page</span>
+                <span class="method-start">19215 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">landOnHomePage</span>
+                <span class="method-start">19698 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_navigate_to_Top_Deals_page</span>
+                <span class="method-start">28318 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifyTopDealsLink</span>
+                <span class="method-start">31093 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_descending_sorting_on_veg_fruit_column</span>
+                <span class="method-start">31272 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_select_from_to_details_for_one_wat_trip</span>
+                <span class="method-start">32772 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifyflightBookingLink</span>
+                <span class="method-start">34165 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_ascending_sorting_on_veg_fruit_column</span>
+                <span class="method-start">34292 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_select_passanger_details</span>
+                <span class="method-start">34672 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifyitemsAndPriceSection</span>
+                <span class="method-start">37367 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_descending_sorting_on_price_column</span>
+                <span class="method-start">37472 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_popup_is_displayed_if_passanger_limit_exceed</span>
+                <span class="method-start">37773 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifycartIcon</span>
+                <span class="method-start">41073 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_ascending_sorting_on_price_column</span>
+                <span class="method-start">41156 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_select_currency</span>
+                <span class="method-start">41346 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifySearhFunctionality</span>
+                <span class="method-start">42832 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_descending_sorting_on_discount_price_column</span>
+                <span class="method-start">45562 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_select_checkbox</span>
+                <span class="method-start">45827 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifySearchVegetableIsNotPresent</span>
+                <span class="method-start">46934 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.TopDealsTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_ascending_sorting_on_discount_price_column</span>
+                <span class="method-start">51219 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">CloseBrowser</span>
+                <span class="method-start">51409 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verify_tooltip_for_student</span>
+                <span class="method-start">52764 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verifyDetailsOnSearchvegetable</span>
+                <span class="method-start">54475 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_special_assistance_popup</span>
+                <span class="method-start">60013 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_add_n_Kg_vegetable</span>
+                <span class="method-start">60461 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.FlightBookingTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_multicity_popup</span>
+                <span class="method-start">64202 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">CloseBrowser</span>
+                <span class="method-start">69608 ms</span>
+              </div> <!-- configuration-class after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">greenKartTestCases.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">verify_user_is_able_to_add_multilpe_vegetables</span>
+                <span class="method-start">70625 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verify_added_vegetables_in_cart</span>
+                <span class="method-start">108920 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">CloseBrowser</span>
+                <span class="method-start">124827 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

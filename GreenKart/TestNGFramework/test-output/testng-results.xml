@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="27" passed="26">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="126071" started-at="2020-06-29T13:49:19Z" finished-at="2020-06-29T13:51:25Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="126071" started-at="2020-06-29T13:49:19Z" finished-at="2020-06-29T13:51:25Z">
+      <class name="greenKartTestCases.HomePageTest">
+        <test-method status="PASS" signature="landOnHomePage()[pri:0, instance:greenKartTestCases.HomePageTest@11531931]" name="landOnHomePage" is-config="true" duration-ms="11694" started-at="2020-06-29T19:19:19Z" finished-at="2020-06-29T19:19:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- landOnHomePage -->
+        <test-method status="PASS" signature="verifyGreenKartLogo()[pri:1, instance:greenKartTestCases.HomePageTest@11531931]" name="verifyGreenKartLogo" duration-ms="145" started-at="2020-06-29T19:19:30Z" finished-at="2020-06-29T19:19:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyGreenKartLogo -->
+        <test-method status="PASS" signature="verifyTopDealsLink()[pri:2, instance:greenKartTestCases.HomePageTest@11531931]" name="verifyTopDealsLink" duration-ms="177" started-at="2020-06-29T19:19:50Z" finished-at="2020-06-29T19:19:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyTopDealsLink -->
+        <test-method status="PASS" signature="verifyflightBookingLink()[pri:3, instance:greenKartTestCases.HomePageTest@11531931]" name="verifyflightBookingLink" duration-ms="125" started-at="2020-06-29T19:19:53Z" finished-at="2020-06-29T19:19:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyflightBookingLink -->
+        <test-method status="PASS" signature="verifyitemsAndPriceSection()[pri:4, instance:greenKartTestCases.HomePageTest@11531931]" name="verifyitemsAndPriceSection" duration-ms="104" started-at="2020-06-29T19:19:56Z" finished-at="2020-06-29T19:19:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyitemsAndPriceSection -->
+        <test-method status="PASS" signature="verifycartIcon()[pri:5, instance:greenKartTestCases.HomePageTest@11531931]" name="verifycartIcon" duration-ms="81" started-at="2020-06-29T19:20:00Z" finished-at="2020-06-29T19:20:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifycartIcon -->
+        <test-method status="PASS" signature="verifySearhFunctionality()[pri:6, instance:greenKartTestCases.HomePageTest@11531931]" name="verifySearhFunctionality" duration-ms="2728" started-at="2020-06-29T19:20:02Z" finished-at="2020-06-29T19:20:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySearhFunctionality -->
+        <test-method status="PASS" signature="verifySearchVegetableIsNotPresent()[pri:7, instance:greenKartTestCases.HomePageTest@11531931]" name="verifySearchVegetableIsNotPresent" duration-ms="4283" started-at="2020-06-29T19:20:06Z" finished-at="2020-06-29T19:20:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySearchVegetableIsNotPresent -->
+        <test-method status="PASS" signature="verifyDetailsOnSearchvegetable()[pri:8, instance:greenKartTestCases.HomePageTest@11531931]" name="verifyDetailsOnSearchvegetable" duration-ms="5537" started-at="2020-06-29T19:20:13Z" finished-at="2020-06-29T19:20:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDetailsOnSearchvegetable -->
+        <test-method status="PASS" signature="verify_user_add_n_Kg_vegetable()[pri:9, instance:greenKartTestCases.HomePageTest@11531931]" name="verify_user_add_n_Kg_vegetable" duration-ms="3739" started-at="2020-06-29T19:20:19Z" finished-at="2020-06-29T19:20:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_add_n_Kg_vegetable -->
+        <test-method status="PASS" signature="verify_user_is_able_to_add_multilpe_vegetables()[pri:10, instance:greenKartTestCases.HomePageTest@11531931]" name="verify_user_is_able_to_add_multilpe_vegetables" duration-ms="38289" started-at="2020-06-29T19:20:29Z" finished-at="2020-06-29T19:21:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_add_multilpe_vegetables -->
+        <test-method status="PASS" signature="verify_added_vegetables_in_cart()[pri:11, instance:greenKartTestCases.HomePageTest@11531931]" name="verify_added_vegetables_in_cart" duration-ms="15906" started-at="2020-06-29T19:21:08Z" finished-at="2020-06-29T19:21:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_added_vegetables_in_cart -->
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:greenKartTestCases.HomePageTest@11531931]" name="CloseBrowser" is-config="true" duration-ms="1217" started-at="2020-06-29T19:21:24Z" finished-at="2020-06-29T19:21:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+      </class> <!-- greenKartTestCases.HomePageTest -->
+      <class name="greenKartTestCases.FlightBookingTest">
+        <test-method status="PASS" signature="landOnHomePage()[pri:0, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="landOnHomePage" is-config="true" duration-ms="8620" started-at="2020-06-29T19:19:38Z" finished-at="2020-06-29T19:19:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- landOnHomePage -->
+        <test-method status="PASS" signature="verify_user_is_able_to_navigate_to_Top_Deals_page()[pri:1, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_user_is_able_to_navigate_to_Top_Deals_page" duration-ms="2773" started-at="2020-06-29T19:19:47Z" finished-at="2020-06-29T19:19:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_navigate_to_Top_Deals_page -->
+        <test-method status="PASS" signature="verify_user_is_able_to_select_from_to_details_for_one_wat_trip()[pri:2, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_user_is_able_to_select_from_to_details_for_one_wat_trip" duration-ms="1391" started-at="2020-06-29T19:19:51Z" finished-at="2020-06-29T19:19:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_select_from_to_details_for_one_wat_trip -->
+        <test-method status="PASS" signature="verify_user_is_able_to_select_passanger_details()[pri:3, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_user_is_able_to_select_passanger_details" duration-ms="2693" started-at="2020-06-29T19:19:53Z" finished-at="2020-06-29T19:19:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_select_passanger_details -->
+        <test-method status="PASS" signature="verify_popup_is_displayed_if_passanger_limit_exceed()[pri:4, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_popup_is_displayed_if_passanger_limit_exceed" duration-ms="3298" started-at="2020-06-29T19:19:56Z" finished-at="2020-06-29T19:20:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_popup_is_displayed_if_passanger_limit_exceed -->
+        <test-method status="PASS" signature="verify_user_is_able_to_select_currency()[pri:5, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_user_is_able_to_select_currency" duration-ms="1485" started-at="2020-06-29T19:20:00Z" finished-at="2020-06-29T19:20:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_select_currency -->
+        <test-method status="PASS" signature="verify_user_is_able_to_select_checkbox()[pri:6, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_user_is_able_to_select_checkbox" duration-ms="1105" started-at="2020-06-29T19:20:05Z" finished-at="2020-06-29T19:20:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_select_checkbox -->
+        <test-method status="FAIL" signature="verify_tooltip_for_student()[pri:7, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_tooltip_for_student" duration-ms="82" started-at="2020-06-29T19:20:11Z" finished-at="2020-06-29T19:20:12Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions applys.] but found [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions apply.]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions applys.] but found [Applicable for all students above the age of 12 years studying with a bonafide school/university. Limited inventory available. Valid photo ID and educational institute I-card need to be presented for verification at check-in. Bookings under this offer are refundable. Conditions apply.]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at org.testng.Assert.assertEquals(Assert.java:200)
+	at greenKartPages.FlightBookingPage.tooltip_for_student(FlightBookingPage.java:110)
+	at greenKartTestCases.FlightBookingTest.verify_tooltip_for_student(FlightBookingTest.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:645)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:822)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1130)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_tooltip_for_student -->
+        <test-method status="PASS" signature="verify_special_assistance_popup()[pri:8, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_special_assistance_popup" duration-ms="446" started-at="2020-06-29T19:20:19Z" finished-at="2020-06-29T19:20:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_special_assistance_popup -->
+        <test-method status="PASS" signature="verify_multicity_popup()[pri:9, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="verify_multicity_popup" duration-ms="5404" started-at="2020-06-29T19:20:23Z" finished-at="2020-06-29T19:20:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_multicity_popup -->
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:greenKartTestCases.FlightBookingTest@1fbc7afb]" name="CloseBrowser" is-config="true" duration-ms="1016" started-at="2020-06-29T19:20:28Z" finished-at="2020-06-29T19:20:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+      </class> <!-- greenKartTestCases.FlightBookingTest -->
+      <class name="greenKartTestCases.TopDealsTest">
+        <test-method status="PASS" signature="landOnHomePage()[pri:0, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="landOnHomePage" is-config="true" duration-ms="7370" started-at="2020-06-29T19:19:31Z" finished-at="2020-06-29T19:19:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- landOnHomePage -->
+        <test-method status="PASS" signature="verify_user_is_able_to_navigate_to_Top_Deals_page()[pri:1, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_user_is_able_to_navigate_to_Top_Deals_page" duration-ms="481" started-at="2020-06-29T19:19:38Z" finished-at="2020-06-29T19:19:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_is_able_to_navigate_to_Top_Deals_page -->
+        <test-method status="PASS" signature="verify_descending_sorting_on_veg_fruit_column()[pri:2, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_descending_sorting_on_veg_fruit_column" duration-ms="1498" started-at="2020-06-29T19:19:50Z" finished-at="2020-06-29T19:19:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_descending_sorting_on_veg_fruit_column -->
+        <test-method status="PASS" signature="verify_ascending_sorting_on_veg_fruit_column()[pri:3, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_ascending_sorting_on_veg_fruit_column" duration-ms="379" started-at="2020-06-29T19:19:53Z" finished-at="2020-06-29T19:19:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_ascending_sorting_on_veg_fruit_column -->
+        <test-method status="PASS" signature="verify_descending_sorting_on_price_column()[pri:4, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_descending_sorting_on_price_column" duration-ms="299" started-at="2020-06-29T19:19:56Z" finished-at="2020-06-29T19:19:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_descending_sorting_on_price_column -->
+        <test-method status="PASS" signature="verify_ascending_sorting_on_price_column()[pri:5, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_ascending_sorting_on_price_column" duration-ms="189" started-at="2020-06-29T19:20:00Z" finished-at="2020-06-29T19:20:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_ascending_sorting_on_price_column -->
+        <test-method status="PASS" signature="verify_descending_sorting_on_discount_price_column()[pri:6, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_descending_sorting_on_discount_price_column" duration-ms="263" started-at="2020-06-29T19:20:04Z" finished-at="2020-06-29T19:20:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_descending_sorting_on_discount_price_column -->
+        <test-method status="PASS" signature="verify_ascending_sorting_on_discount_price_column()[pri:7, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="verify_ascending_sorting_on_discount_price_column" duration-ms="189" started-at="2020-06-29T19:20:10Z" finished-at="2020-06-29T19:20:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_ascending_sorting_on_discount_price_column -->
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:greenKartTestCases.TopDealsTest@5e025e70]" name="CloseBrowser" is-config="true" duration-ms="1355" started-at="2020-06-29T19:20:10Z" finished-at="2020-06-29T19:20:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+      </class> <!-- greenKartTestCases.TopDealsTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

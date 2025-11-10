@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="classes">
+  <listeners>
+    <listener class-name="utilities.Listeners"/>
+  </listeners>
+  <test name="Test">
+    <classes>
+      <class name="greenKartTestCases.HomePageTest"/>
+      <class name="greenKartTestCases.TopDealsTest"/>
+      <class name="greenKartTestCases.FlightBookingTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Test(failed)" parallel="classes">
+    <classes>
+      <class name="greenKartTestCases.FlightBookingTest">
+        <methods>
+          <include name="landOnHomePage"/>
+          <include name="verify_tooltip_for_student"/>
+          <include name="CloseBrowser"/>
+        </methods>
+      </class> <!-- greenKartTestCases.FlightBookingTest -->
+      <class name="greenKartTestCases.TopDealsTest">
+        <methods>
+          <include name="CloseBrowser"/>
+          <include name="landOnHomePage"/>
+        </methods>
+      </class> <!-- greenKartTestCases.TopDealsTest -->
+      <class name="greenKartTestCases.HomePageTest">
+        <methods>
+          <include name="CloseBrowser"/>
+          <include name="landOnHomePage"/>
+        </methods>
+      </class> <!-- greenKartTestCases.HomePageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
