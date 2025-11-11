@@ -11,12 +11,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PlaceOrderPageMethods {
+import utilities.ActionsUtilitiy;
+
+public class PlaceOrderPageMethods extends ActionsUtilitiy {
 
 	   WebDriver driver;
 
 	    // ✅ Constructor
 	    public PlaceOrderPageMethods(WebDriver driver) {
+	    	super(driver);
 	        this.driver = driver;
 	        PageFactory.initElements(driver, this);
 	    }
@@ -45,30 +48,32 @@ public class PlaceOrderPageMethods {
 
 	    public void enterPromoCodeAndApply(String promoCode) {
 	        promoCodeBox.sendKeys(promoCode);
+	        waitUntilElementClickable(promoCodeApplyButton);
 	        promoCodeApplyButton.click();
 	    }
 
 	    public void clickOnPlaceOrderButton() {
+	       waitUntilElementClickable(placeOrderButton);
 	        placeOrderButton.click();
 	    }
 
 	    public String getPromoCodeAppliedMessage() {
+	    	waitUntilElementVisible(promoCodeAppliedMessage);
 	        return promoCodeAppliedMessage.getText();
 	    }
 
 	    public String getInvalidPromoCodeApplied() {
+	    	waitUntilElementVisible(invalidPromoCodeMessage);
 	        return invalidPromoCodeMessage.getText();
 	    }
 
 	    public int getDiscountPercentage() {
+	    	waitUntilElementVisible(discountPercentage);
 	        String discountText = discountPercentage.getText(); // "10%"
 	        return Integer.parseInt(discountText.split("%")[0]);
 	    }
 
-	    public void waitUntilElementVisible(String elementXpath) {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-	    }
+	   
 
 	    // =================== 🔹 Cart Grid Methods ===================
 

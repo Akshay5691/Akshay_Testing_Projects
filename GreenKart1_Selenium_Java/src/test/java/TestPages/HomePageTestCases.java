@@ -86,9 +86,8 @@ public class HomePageTestCases extends BasePage {
     public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
         try {
             homePage.searchItem("orange");
-            Thread.sleep(3000);
-            homePage.clickOnAddToCart();
-            Thread.sleep(6000);
+           
+            homePage.clickOnAddToCart();      
             homePage.clickOnAddToCart();
 
             int itemNumber = homePage.getItemNumber();

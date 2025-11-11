@@ -11,10 +11,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProceedPageMethods {
+import utilities.ActionsUtilitiy;
+
+public class ProceedPageMethods  extends ActionsUtilitiy {
 	   WebDriver driver;
 	   // ✅ Constructor
     public ProceedPageMethods(WebDriver driver) {
+    	super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -36,23 +39,23 @@ public class ProceedPageMethods {
     // =================== 🔹 Action Methods ===================
 
     public void clickOnTermsAndConditions() {
+    	waitUntilElementClickable(termsAndConditionsCheckBox);
         termsAndConditionsCheckBox.click();
     }
 
     public void clickOnProceedButton() {
+    	waitUntilElementClickable(proceedButton);
         proceedButton.click();
     }
 
-    public void waitUntilElementVisible(String elementXpath) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-    }
 
     public Select selectCountry() {
+    	waitUntilElementVisible(countryDropdown);
         return new Select(countryDropdown);
     }
 
     public String getAcceptTheTermsAndConditionsMessage() {
+    	waitUntilElementVisible(acceptTermsAndConditionsMessage);
         return acceptTermsAndConditionsMessage.getText();
     }
 

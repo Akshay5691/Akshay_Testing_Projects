@@ -12,13 +12,17 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePageMethods {
+import utilities.ActionsUtilitiy;
+
+public class HomePageMethods extends ActionsUtilitiy {
 
      WebDriver driver; 
      WebDriverWait wait;
   
     public HomePageMethods(WebDriver driver) {
+    	 super(driver);
         this.driver = driver;
+       
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5)); 
         PageFactory.initElements(driver, this); // Initialize elements
     }
@@ -87,60 +91,67 @@ public class HomePageMethods {
 
     public void searchItem(String itemName) {
        searchBox.sendKeys(itemName);
+       waitUntilElementClickable(searchButton);
         searchButton.click();
     }
 
     public void searchItemAndAddToCart(String itemName) {
-      //  searchBox.sendKeys(itemName);
+        searchBox.sendKeys(itemName);
         searchButton.click();
-        waitUntilElementVisible("//button[text()='ADD TO CART']");
+       waitUntilElementClickable(addToCartButton);
         addToCartButton.click();
         searchBox.clear();
     }
 
     public void clickOnCartBag() {
+    	waitUntilElementClickable(cartBagIcon);
         cartBagIcon.click();
     }
 
     public void clickOnAddToCart() {
+    	waitUntilElementClickable(addToCartButton);
         addToCartButton.click();
     }
 
     public void clickMinusButtonAddToCart() {
+    	waitUntilElementClickable(minusButtonAddToCart);
         minusButtonAddToCart.click();
     }
 
     public void clickOnPlusButtonAddToCart() {
+    	waitUntilElementClickable(plusButtonAddToCart);
         plusButtonAddToCart.click();
     }
 
     public void clickOnQuantityBox(String itemNumber) {
+    	waitUntilElementVisible(quantityBoxOnItem);
         quantityBoxOnItem.sendKeys(itemNumber);
+        waitUntilElementClickable(quantityBoxOnItem);
         quantityBoxOnItem.click();
     }
 
     public int getItemNumber() {
+    	waitUntilElementVisible(itemNumber);
         return Integer.parseInt(itemNumber.getText());
     }
 
     public int getItemPrice() {
+    	waitUntilElementVisible(itemPrice);
         return Integer.parseInt(itemPrice.getText());
     }
 
     public int getItemQuantityInQuantityBox() {
+    	waitUntilElementVisible(defaultQuantity);
         return Integer.parseInt(defaultQuantity.getAttribute("value"));
     }
 
     public String getItemOrange() {
+    	waitUntilElementVisible(itemOrange);
         String itemName = itemOrange.getText();
         return itemName.split(" ")[0];
     }
 
-    public void waitUntilElementVisible(String elementXpath) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(org.openqa.selenium.By.xpath(elementXpath)));
-    }
-
+ 
     public void searchMultipleItems(String[] items) {
         for (String item : items) {
             searchItemAndAddToCart(item);

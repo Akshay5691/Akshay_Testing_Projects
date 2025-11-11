@@ -10,12 +10,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CartPageMethods {
+import utilities.ActionsUtilitiy;
+
+public class CartPageMethods extends ActionsUtilitiy {
 	
 	  WebDriver driver;
 
 	    // ✅ Constructor — initializes all elements
 	    public CartPageMethods(WebDriver driver) {
+	    	super(driver);
 	        this.driver = driver;
 	        PageFactory.initElements(driver, this);
 	    }
@@ -40,36 +43,39 @@ public class CartPageMethods {
 	    // =================== 🔹 Action Methods ===================
 
 	    public void clickOnRemoveButton() {
+	    	waitUntilElementClickable(removeButton);
 	        removeButton.click();
 	    }
 
 	    public void clickOnProceedToCheckOutButton() {
+	    	waitUntilElementClickable(proceedToCheckOutButton);
 	        proceedToCheckOutButton.click();
 	    }
 
 	    public String getItemQuantityString() {
+	    	waitUntilElementVisible(itemQuantity);
 	        return itemQuantity.getText();
 	    }
 
 	    public int getItemQuantity() {
+	    	waitUntilElementVisible(itemQuantity);
 	        String quantityText = itemQuantity.getText(); // e.g. "1 No(s)"
 	        int itemCount = Integer.parseInt(quantityText.split(" ")[0]);
 	        return itemCount;
 	    }
 
 	    public String getItemName() {
+	    	waitUntilElementVisible(itemName);
 	        String nameText = itemName.getText(); // e.g. "Apple - 1 Kg1"
 	        return nameText.split(" ")[0]; // "Apple"
 	    }
 
 	    public String getEmptyPageMessageInCart() {
+	    	waitUntilElementVisible(emptyPageMessageInCart);
 	        return emptyPageMessageInCart.getText();
 	    }
 
-	    public void waitUntilElementVisible(String elementXpath) {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementXpath)));
-	    }
+	  
 	}
 	
 
