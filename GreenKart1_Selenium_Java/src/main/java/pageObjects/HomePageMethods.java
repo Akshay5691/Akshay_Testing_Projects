@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -46,107 +47,131 @@ public class HomePageMethods extends ActionsUtilitiy {
     
     // driver.findelement(By.Tagname("label")).above(element);
     
-    
-    // WebElements..............................................................................................................
-
  // =================== 🔹 Locators ===================
 
-    private By searchBox = By.xpath("//input[@class='search-keyword']");
-    private By searchButton = By.xpath("//button[@class='search-button']");
-    private By addToCartButton = By.xpath("//button[text()='ADD TO CART']");
-    private By cartBagIcon = By.xpath("//a[@class='cart-icon']");
-    private By plusButtonAddToCart = By.xpath("(//div//a[@class='increment'])[1]");
-    private By minusButtonAddToCart = By.xpath("(//div//a[@class='decrement'])[1]");
-    private By quantityBoxOnItem = By.xpath("(//input[@class='quantity'])[1]");
-    private By itemNumber = By.xpath("(//tbody//tr//td[3])[1]");
-    private By itemPrice = By.xpath("(//tbody//tr[2]//td[3])[1]");
-    private By defaultQuantity = By.xpath("//input[@class='quantity']");
-    private By itemOrange = By.xpath("//div//h4[text()='Orange - 1 Kg']");
+    private By searchBoxLocator() { return By.xpath("//input[@class='search-keyword']"); }
+    private By searchButtonLocator() { return By.xpath("//button[@class='search-button']"); }
+    private By addToCartButtonLocator(String product) { return By.xpath("//h4[text()='"+product+" - 1 Kg']/following-sibling::div//button[text()='ADD TO CART']"); }
+    private By cartBagIconLocator() { return By.xpath("//a[@class='cart-icon']"); }
+    private By plusButtonAddToCartLocator() { return By.xpath("(//div//a[@class='increment'])[1]"); }
+    private By minusButtonAddToCartLocator() { return By.xpath("(//div//a[@class='decrement'])[1]"); }
+    private By quantityBoxOnItemLocator() { return By.xpath("(//input[@class='quantity'])[1]"); }
+    private By itemNumberLocator() { return By.xpath("(//tbody//tr//td[3])[1]"); }
+    private By itemPriceLocator() { return By.xpath("(//tbody//tr[2]//td[3])[1]"); }
+    private By defaultQuantityLocator() { return By.xpath("//input[@class='quantity']"); }
 
-   
-   
+    // ✅ Dynamic locator using parameter
+    private By productNameLocator(String itemName) { 
+        return By.xpath("//h4[contains(text(),'" + itemName + "')]"); 
+    }
+
+    // =================== 🔹 WebElements ===================
+
+    private WebElement searchBox() { return driver.findElement(searchBoxLocator()); }
+    private WebElement searchButton() { return driver.findElement(searchButtonLocator()); }
+    private WebElement addToCartButton(String product) { return driver.findElement(addToCartButtonLocator(product)); }
+    private WebElement cartBagIcon() { return driver.findElement(cartBagIconLocator()); }
+    private WebElement plusButtonAddToCart() { return driver.findElement(plusButtonAddToCartLocator()); }
+    private WebElement minusButtonAddToCart() { return driver.findElement(minusButtonAddToCartLocator()); }
+    private WebElement quantityBoxOnItem() { return driver.findElement(quantityBoxOnItemLocator()); }
+    private WebElement itemNumber() { return driver.findElement(itemNumberLocator()); }
+    private WebElement itemPrice() { return driver.findElement(itemPriceLocator()); }
+    private WebElement defaultQuantity() { return driver.findElement(defaultQuantityLocator()); }
+    private WebElement productName(String itemName) { return driver.findElement(productNameLocator(itemName)); }
+
     // =================== 🔹 Action Methods ===================
 
     public void searchItem(String itemName) {
-    	waitUntilElementVisible(searchBox);
-         type(searchBox, itemName);
-       waitUntilElementClickable(searchButton);
-        click(searchButton);
+    	
+        waitUntilElementVisible(searchBoxLocator());
+        type(searchBox(), itemName);
+        waitUntilElementClickable(searchButtonLocator());
+        click(searchButton());
     }
-
-    public void searchItemAndAddToCart(String itemName) {
-    	  type(searchBox, itemName);
-    	  click(searchButton);
-       waitUntilElementClickable(addToCartButton);
-        click(addToCartButton);
-    }
+ public void searchItemAndAddToCart(String itemName) {
+	   waitUntilElementVisible(searchBoxLocator());
+	 	 searchItem(itemName);
+	 	 waitUntilElementClickable(addToCartButtonLocator(itemName));
+	    clickOnAddToCart(itemName);
+ }
 
     public void clickOnCartBag() {
-    	waitUntilElementClickable(cartBagIcon);
-        click(cartBagIcon);
+        waitUntilElementClickable(cartBagIconLocator());
+        click(cartBagIcon());
     }
 
-    public void clickOnAddToCart() {
-    	waitUntilElementClickable(addToCartButton);
-       click( addToCartButton);
+    public void clickOnAddToCart(String product) {
+        waitUntilElementClickable(addToCartButtonLocator(product));
+        click(addToCartButton(product));
+      
     }
 
     public void clickMinusButtonAddToCart() {
-    	waitUntilElementClickable(minusButtonAddToCart);
-       click( minusButtonAddToCart);
+        waitUntilElementClickable(minusButtonAddToCartLocator());
+        click(minusButtonAddToCart());
     }
 
     public void clickOnPlusButtonAddToCart() {
-    	waitUntilElementClickable(plusButtonAddToCart);
-        click(plusButtonAddToCart);
+        waitUntilElementClickable(plusButtonAddToCartLocator());
+        click(plusButtonAddToCart());
     }
 
-    public void clickOnQuantityBox(String itemNumber) {
-    	waitUntilElementVisible(quantityBoxOnItem);
-         type(quantityBoxOnItem, itemNumber);
-        waitUntilElementClickable(quantityBoxOnItem);
-        click(quantityBoxOnItem);
+    public void clickOnQuantityBox(String value) {
+        waitUntilElementVisible(quantityBoxOnItemLocator());
+        clear(quantityBoxOnItem());
+        type(quantityBoxOnItem(), value);
+        waitUntilElementClickable(quantityBoxOnItemLocator());
+        click(quantityBoxOnItem());
     }
 
-    public int getItemNumber() {
-    	waitUntilElementVisible(itemNumber);
-        return getIntValue(itemNumber);
+    public int getItemNumberValue() {
+        waitUntilElementVisible(itemNumberLocator());
+        return getIntValue(itemNumber());
     }
 
-    public int getItemPrice() {
-    	waitUntilElementVisible(itemPrice);
-        return getIntValue(itemPrice);
+    public int getItemPriceValue() {
+        waitUntilElementVisible(itemPriceLocator());
+        return getIntValue(itemPrice());
     }
 
-    public int getItemQuantityInQuantityBox() {
-    	waitUntilElementVisible(defaultQuantity);
-        return getIntValueByAttribute(defaultQuantity,"value");
+    public int getItemQuantityInBox() {
+        waitUntilElementVisible(defaultQuantityLocator());
+        return getIntValueByAttribute(defaultQuantity(), "value");
     }
 
-    public String getItemOrange() {
-    	waitUntilElementVisible(itemOrange);
-        String itemName = getText(itemOrange);
-        return itemName.split(" ")[0];
+    public String getProductName(String itemName) {
+        waitUntilElementVisible(productNameLocator(itemName));
+         String productText =getText(productName(itemName));
+         return productText.split(" ")[0];
     }
 
- 
     public void searchMultipleItems(String[] items) {
         for (String item : items) {
-            searchItemAndAddToCart(item);
+            searchItem(item);
+            clickOnAddToCart(item);
         }
     }
 
-	public void clearQuantityBox() {
-		// TODO Auto-generated method stub
-		
-	}
+    public void clearQuantityBox() {
+        waitUntilElementVisible(quantityBoxOnItemLocator());
+        clear(quantityBoxOnItem());
+    }
 
-	public void enterQuantityInBox(String string) {
+    public void enterQuantityInBox(String value) {
+        waitUntilElementVisible(quantityBoxOnItemLocator());
+        type(quantityBoxOnItem(), value);
+    }
+
+    // Example utility
+    private void clear(WebElement element) {
+        element.clear();
+    }
+
+
+	public String getItemOrangeName() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-    
-  
    }
    
 

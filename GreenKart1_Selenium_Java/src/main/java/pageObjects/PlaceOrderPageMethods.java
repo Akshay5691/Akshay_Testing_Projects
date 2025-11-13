@@ -20,60 +20,79 @@ public class PlaceOrderPageMethods extends ActionsUtilitiy {
 	    // ✅ Constructor
 	    public PlaceOrderPageMethods(WebDriver driver) {
 	    	super(driver);
+	    		        this.driver = driver;
 	      
 	    }
 
-          	    // =================== 🔹 Locators ===================
-	    
-	    private By promoCodeBox = By.xpath("//input[@class='promoCode']");
-	    private By promoCodeApplyButton = By.xpath("//button[@class='promoBtn']");
-	    public By placeOrderButton = By.xpath("//button[text()='Place Order']");
-	    private By promoCodeAppliedMessage = By.xpath("//span[text()='Code applied ..!']");
-	    private By invalidPromoCodeMessage = By.xpath("//span[text()='Invalid code ..!']");
-	    private By discountPercentage = By.xpath("//span[contains(text(),'%')]");
+	 // =================== 🔹 Locators ===================
+
+	    private By promoCodeBoxLocator() { return By.xpath("//input[@class='promoCode']"); }
+	    private By promoCodeApplyButtonLocator() { return By.xpath("//button[@class='promoBtn']"); }
+	    private By placeOrderButtonLocator() { return By.xpath("//button[text()='Place Order']"); }
+	    private By promoCodeAppliedMessageLocator() { return By.xpath("//span[text()='Code applied ..!']"); }
+	    private By invalidPromoCodeMessageLocator() { return By.xpath("//span[text()='Invalid code ..!']"); }
+	    private By discountPercentageLocator() { return By.xpath("//span[contains(text(),'%')]"); }
+
+	    // ✅ Dynamic locator example (if you want to locate promo or discount by text)
+	    private By dynamicMessageLocator(String messageText) { return By.xpath("//span[contains(text(),'" + messageText + "')]"); }
+
+	    // =================== 🔹 WebElements ===================
+
+	    private WebElement promoCodeBox() { return driver.findElement(promoCodeBoxLocator()); }
+	    private WebElement promoCodeApplyButton() { return driver.findElement(promoCodeApplyButtonLocator()); }
+	    private WebElement placeOrderButton() { return driver.findElement(placeOrderButtonLocator()); }
+	    private WebElement promoCodeAppliedMessage() { return driver.findElement(promoCodeAppliedMessageLocator()); }
+	    private WebElement invalidPromoCodeMessage() { return driver.findElement(invalidPromoCodeMessageLocator()); }
+	    private WebElement discountPercentage() { return driver.findElement(discountPercentageLocator()); }
+	    private WebElement dynamicMessage(String messageText) { return driver.findElement(dynamicMessageLocator(messageText)); }
 
 	    // =================== 🔹 Action Methods ===================
 
-	    /** Enter Promo Code and Click Apply */
-	    public void enterPromoCodeAndApply(String promoCode) {
-	        waitUntilElementVisible(promoCodeBox);
-	        type(promoCodeBox, promoCode);
-	        waitUntilElementClickable(promoCodeApplyButton);
-	        click(promoCodeApplyButton);
+	    public void enterPromoCodeAndApply(String promoCode) {       
+	        try {
+	        	 waitUntilElementVisible(promoCodeBoxLocator());
+	 	        type(promoCodeBox(), promoCode);
+	 	        waitUntilElementClickable(promoCodeApplyButtonLocator());
+	 	        click(promoCodeApplyButton());
+				Thread.sleep(5000);   // Wait for message to appear
+			} catch (InterruptedException e) {			
+				e.printStackTrace();
+			} 
 	    }
 
-	    /** Click on Place Order Button */
 	    public void clickOnPlaceOrderButton() {
-	        waitUntilElementClickable(placeOrderButton);
-	        click(placeOrderButton);
+	        waitUntilElementClickable(placeOrderButtonLocator());
+	        click(placeOrderButton());
 	    }
 
-	    /** Get Message: Promo Code Applied */
-	    public String getPromoCodeAppliedMessage() {
-	        waitUntilElementVisible(promoCodeAppliedMessage);
-	        return getText(promoCodeAppliedMessage);
+	    public String promoCodeAppliedMessageText() {
+	        waitUntilElementVisible(promoCodeAppliedMessageLocator());
+	        return getText(promoCodeAppliedMessage());
 	    }
 
-	    /** Get Message: Invalid Promo Code */
-	    public String getInvalidPromoCodeMessage() {
-	        waitUntilElementVisible(invalidPromoCodeMessage);
-	        return getText(invalidPromoCodeMessage);
+	    public String invalidPromoCodeMessageText() {
+	        waitUntilElementVisible(invalidPromoCodeMessageLocator());
+	        return getText(invalidPromoCodeMessage());
 	    }
 
-	    /** Get Discount Percentage (e.g., "10%") */
-	    public int getDiscountPercentage() {
-	        waitUntilElementVisible(discountPercentage);
-	        String discountText = getText(discountPercentage); // e.g. "10%"
+	    public int discountPercentageValue() {
+	        waitUntilElementVisible(discountPercentageLocator());
+	        String discountText = getText(discountPercentage()); // e.g., "10%"
 	        return Integer.parseInt(discountText.replace("%", "").trim());
 	    }
-	    public WebElement getElement(By locator) {
-		    return driver.findElement(locator);
+
+	    // ✅ Example: Get dynamic promo or status message
+	    public String getDynamicMessageText(String messageText) {
+	        waitUntilElementVisible(dynamicMessageLocator(messageText));
+	        return getText(dynamicMessage(messageText));
+	    }
+         public String getPlaceOrderButton() {
+			
+			return getText(placeOrderButton());
 		}
-	  
 
 	    // =================== 🔹 Cart Grid Methods ===================
 
-	    /** Get Quantity of a Specific Item from the Cart Grid */
 	    public int getQuantityOfItemFromGrid(String item) {
 	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
 	        for (WebElement row : cartRows) {
@@ -86,32 +105,30 @@ public class PlaceOrderPageMethods extends ActionsUtilitiy {
 	        return 0;
 	    }
 
-	    /** Get Cost of a Specific Item from the Cart Grid */
 	    public int getCostOfItemFromGrid(String item) {
 	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
-	        int costOfItem = 0;
 	        for (WebElement row : cartRows) {
 	            List<WebElement> columns = row.findElements(By.tagName("td"));
 	            String itemName = columns.get(1).getText();
 	            if (itemName.contains(item)) {
-	                costOfItem += Integer.parseInt(columns.get(3).getText());
+	                return Integer.parseInt(columns.get(3).getText());
 	            }
 	        }
-	        return costOfItem;
+	        return 0;
 	    }
 
-	    /** Get Total Cost of a Specific Item from the Cart Grid */
 	    public int getTotalCostOfItemFromGrid(String item) {
 	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
-	        int totalCost = 0;
 	        for (WebElement row : cartRows) {
 	            List<WebElement> columns = row.findElements(By.tagName("td"));
 	            String itemName = columns.get(1).getText();
 	            if (itemName.contains(item)) {
-	                totalCost += Integer.parseInt(columns.get(4).getText());
+	                return Integer.parseInt(columns.get(4).getText());
 	            }
 	        }
-	        return totalCost;
+	        return 0;
 	    }
+
+		
 	
 }

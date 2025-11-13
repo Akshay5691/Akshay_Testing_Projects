@@ -17,20 +17,17 @@ public class PlaceOrderPageTestCases extends BasePage {
     CartPageMethods cartPage = new CartPageMethods(driver);
     PlaceOrderPageMethods placeOrderPage = new PlaceOrderPageMethods(driver);
     ProceedPageMethods proceedPage = new ProceedPageMethods(driver);
-
+    String orange = "Orange";
     @Test
     public void verifyUserIsAbleToApplyPromoCode() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(2000);
-
             placeOrderPage.enterPromoCodeAndApply("rahulshettyacademy");
           
-            String actualMessage = placeOrderPage.getPromoCodeAppliedMessage();
+            String actualMessage = placeOrderPage.promoCodeAppliedMessageText();
             String expectedMessage = "Code applied ..!";
-
             Assert.assertEquals(actualMessage, expectedMessage, "Promo code not applied");
             System.out.println("verifyUserIsAbleToApplyPromoCode : Passed");
         } catch (Exception e) {
@@ -42,18 +39,16 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyUserIsUnableToApplyPromoCodeWithInvalidPromoCode() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(2000);
-
             placeOrderPage.enterPromoCodeAndApply("rahulshetty");
           
-            String actualMessage = placeOrderPage.getInvalidPromoCodeMessage();
-
+            String actualMessage = placeOrderPage.invalidPromoCodeMessageText();
             String expectedMessage = "Invalid code ..!";
             Assert.assertEquals(actualMessage, expectedMessage, "Invalid promo code accepted");
             System.out.println("verifyUserIsUnableToApplyPromoCodeWithInvalidPromoCode : Passed");
+            
         } catch (Exception e) {
             System.out.println("verifyUserIsUnableToApplyPromoCodeWithInvalidPromoCode : Failed");
             e.printStackTrace();
@@ -63,16 +58,13 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyUserIsAbleToGetDiscountWithValidPromoCode() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
-            placeOrderPage.enterPromoCodeAndApply("rahulshettyacademy");
-  
-
-            int actualDiscount = placeOrderPage.getDiscountPercentage();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(2000);
-            int expectedDiscount = 10;
-
+            placeOrderPage.enterPromoCodeAndApply("rahulshettyacademy");
+            
+            int actualDiscount = placeOrderPage.discountPercentageValue();          
+           int expectedDiscount = 10;
             Assert.assertEquals(actualDiscount, expectedDiscount, "Discount not applied correctly");
             System.out.println("verifyUserIsAbleToGetDiscountWithValidPromoCode : Passed");
         } catch (Exception e) {
@@ -84,16 +76,13 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyUserIsUnableToGetDiscountWithInvalidPromoCode() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(2000);
-
             placeOrderPage.enterPromoCodeAndApply("rahulshetty");
            
-            int actualDiscount = placeOrderPage.getDiscountPercentage();
+            int actualDiscount = placeOrderPage.discountPercentageValue();
             int expectedDiscount = 0;
-
             Assert.assertEquals(actualDiscount, expectedDiscount, "Discount applied for invalid code");
             System.out.println("verifyUserIsUnableToGetDiscountWithInvalidPromoCode : Passed");
         } catch (Exception e) {
@@ -105,17 +94,16 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyUserIsAbleToPlaceOrderAfterPromoCodeApply() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(2000);
-
             placeOrderPage.enterPromoCodeAndApply("rahulshettyacademy");
             placeOrderPage.clickOnPlaceOrderButton();
-            Thread.sleep(2000);
 
-            WebElement proceedButton = proceedPage.getElement(proceedPage.proceedButton);
-            Assert.assertNotNull(proceedButton, "Proceed button not visible after placing order");
+
+            String proceedButton =proceedPage.getproceedButton();
+            String proceedButtonText = "Proceed";
+            Assert.assertEquals(proceedButtonText, proceedButton, "Item quantity not increased using plus button.");
             System.out.println("verifyUserIsAbleToPlaceOrderAfterPromoCodeApply : Passed");
         } catch (Exception e) {
             System.out.println("verifyUserIsAbleToPlaceOrderAfterPromoCodeApply : Failed");
@@ -126,16 +114,16 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyUserIsAbleToPlaceOrderWithoutPromoCodeApply() {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
-            Thread.sleep(4000);
-
             placeOrderPage.clickOnPlaceOrderButton();
-            WebElement proceedButton = proceedPage.getElement(proceedPage.proceedButton);
-
-            Assert.assertNotNull(proceedButton, "Order not placed without promo code");
+            
+            String proceedButton =proceedPage.getproceedButton();
+            String proceedButtonText = "Proceed";
+            Assert.assertEquals(proceedButtonText, proceedButton, "Item quantity not increased using plus button.");
             System.out.println("verifyUserIsAbleToPlaceOrderWithoutPromoCodeApply : Passed");
+            
         } catch (Exception e) {
             System.out.println("verifyUserIsAbleToPlaceOrderWithoutPromoCodeApply : Failed");
             e.printStackTrace();
@@ -145,7 +133,7 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyItemsQuantityInGridTable() {
         try {
-            String[] items = {"apple", "orange", "carrot", "tomato", "orange"};
+            String[] items = {"Apple", "Orange", "Carrot", "Tomato", "Orange"};
             homePage.searchMultipleItems(items);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
@@ -165,7 +153,7 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyItemsCostInGridTable() {
         try {
-            String[] items = {"apple", "orange", "carrot", "tomato", "orange"};
+            String[] items = {"Apple", "Orange", "Carrot", "Tomato", "Orange"};
             homePage.searchMultipleItems(items);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();
@@ -185,7 +173,7 @@ public class PlaceOrderPageTestCases extends BasePage {
     @Test
     public void verifyItemTotalCostInGridTable() {
         try {
-            String[] items = {"apple", "orange", "carrot", "tomato", "orange"};
+            String[] items = {"Apple", "Orange", "Carrot", "Tomato", "Orange"};
             homePage.searchMultipleItems(items);
             homePage.clickOnCartBag();
             cartPage.clickOnProceedToCheckoutButton();

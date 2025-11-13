@@ -18,56 +18,60 @@ public class ProceedPageMethods  extends ActionsUtilitiy {
 	  
     public ProceedPageMethods(WebDriver driver) {
     	super(driver);
+    			this.driver = driver;
        
     }
- // =========================================
- // 🔹 Locators (By Locators instead of @FindBy)
- // =========================================
+    
+       //=================== 🔹 Locators ===================
+    
+    	private By termsAndConditionsCheckBoxLocator() { return By.xpath("//input[@class='chkAgree']"); }
+    public By proceedButtonLocator() { return By.xpath("//button[text()='Proceed']"); }
+    private By countryDropdownLocator() { return By.xpath("//select[@style='width: 200px;']"); }
+    private By acceptTermsAndConditionsMessageLocator() { return By.xpath("//span//b[text()='Please accept Terms & Conditions - Required']"); }
 
- private By termsAndConditionsCheckBox = By.xpath("//input[@class='chkAgree']");
- public By proceedButton = By.xpath("//button[text()='Proceed']");
- private By countryDropdown = By.xpath("//select[@style='width: 200px;']");
- public By acceptTermsAndConditionsMessage = By.xpath("//span//b[text()='Please accept Terms & Conditions - Required']");
+    // =================== 🔹 WebElements ===================
 
+    private WebElement termsAndConditionsCheckBox() { return driver.findElement(termsAndConditionsCheckBoxLocator()); }
+    private WebElement proceedButton() { return driver.findElement(proceedButtonLocator()); }
+    private WebElement countryDropdown() { return driver.findElement(countryDropdownLocator()); }
+    private WebElement acceptTermsAndConditionsMessage() { return driver.findElement(acceptTermsAndConditionsMessageLocator()); }
 
- // =========================================
- // 🔹 Action Methods
- // =========================================
+    // =================== 🔹 Action Methods ===================
 
- public void clickOnTermsAndConditions() {
-     waitUntilElementClickable(termsAndConditionsCheckBox);
-     click(termsAndConditionsCheckBox);
- }
- 
- public void clickOnProceedButton() {
-     waitUntilElementClickable(proceedButton);
-     click(proceedButton);
- }
+    public void clickOnTermsAndConditions() {
+        waitUntilElementClickable(termsAndConditionsCheckBoxLocator());
+        click(termsAndConditionsCheckBox());
+    }
 
- public Select selectCountry() {
-     waitUntilElementVisible(countryDropdown);
-     WebElement dropdownElement = getElement(countryDropdown);
-     return new Select(dropdownElement);
- }
+    public void clickOnProceedButton() {
+        waitUntilElementClickable(proceedButtonLocator());
+        click(proceedButton());
+    }
 
- public String getAcceptTheTermsAndConditionsMessage() {
-     waitUntilElementVisible(acceptTermsAndConditionsMessage);
-     return getText(acceptTermsAndConditionsMessage);
- }
+    public void selectCountry(String countryName) {
+        waitUntilElementVisible(countryDropdownLocator());
+        Select select = new Select(countryDropdown());
+        select.selectByVisibleText(countryName);
+    }
 
- public WebElement getProceedButtonElement() {
-     waitUntilElementVisible(proceedButton);
-     return getElement(proceedButton);
- }
+    public String acceptTermsAndConditionsMessageText() {
+        waitUntilElementVisible(acceptTermsAndConditionsMessageLocator());
+        return getText(acceptTermsAndConditionsMessage());
+    }
 
- public WebElement getTermsAndConditionsCheckBoxElement() {
-     waitUntilElementVisible(termsAndConditionsCheckBox);
-     return getElement(termsAndConditionsCheckBox);
- }
- public WebElement getElement(By locator) {
-	    return driver.findElement(locator);
+    public WebElement proceedButtonElement() {
+        waitUntilElementVisible(proceedButtonLocator());
+        return proceedButton();
+    }
+
+    public WebElement termsAndConditionsCheckBoxElement() {
+        waitUntilElementVisible(termsAndConditionsCheckBoxLocator());
+        return termsAndConditionsCheckBox();
+    }
+
+    public String getproceedButton() {
+		
+		return getText(proceedButton());
 	}
-
-
 
 }

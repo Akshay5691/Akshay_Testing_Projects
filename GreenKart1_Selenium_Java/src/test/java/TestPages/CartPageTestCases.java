@@ -18,16 +18,14 @@ public class CartPageTestCases extends BasePage {
 	    CartPageMethods cartPage = new CartPageMethods(driver);
 	    PlaceOrderPageMethods placeOrderPage = new PlaceOrderPageMethods(driver);
 	    ProceedPageMethods proceedPage = new ProceedPageMethods(driver);
-
+        String orange = "Orange";
+        
 	    @Test
 	    public void verifyItemQuantityIncreasingWhileAddingSameItem() {
 	        try {
-	            homePage.searchItem("orange");
-	            Thread.sleep(3000);
-	            homePage.clickOnAddToCart();
-	            Thread.sleep(6000);
-	            homePage.clickOnAddToCart();
-	            Thread.sleep(2000);
+	            homePage.searchItem(orange);
+	            homePage.clickOnAddToCart(orange);
+	            homePage.clickOnAddToCart(orange);
 	            homePage.clickOnCartBag();
 	            
 	            int actualQuantity = cartPage.getItemQuantity();
@@ -44,10 +42,10 @@ public class CartPageTestCases extends BasePage {
 	    @Test
 	    public void verifyUserIsAbleToSeeItemInCart() {
 	        try {
-	            homePage.searchItemAndAddToCart("apple");
+	            homePage.searchItemAndAddToCart("Apple");
 	            homePage.clickOnCartBag();
 
-	            String actualItem = cartPage.getItemName();
+	            String actualItem = cartPage.getItemNameText("Apple");
 	            String expectedItem = "Apple";
 
 	            Assert.assertEquals(actualItem, expectedItem, "Item not present in cart.");
@@ -63,13 +61,13 @@ public class CartPageTestCases extends BasePage {
 	        try {
 	            homePage.searchItemAndAddToCart("Apple");
 	            homePage.clickOnCartBag();
-
 	            cartPage.clickOnRemoveButton();
-	            String emptyPageMessage = cartPage.getEmptyPageMessageInCart();
+	            
+	            String emptyPageMessage = cartPage.getEmptyCartMessageText();
 	            String expectedMessage = "You cart is empty!";
-
-	            Assert.assertEquals(emptyPageMessage, expectedMessage, "Item not removed from cart.");
+              Assert.assertEquals(emptyPageMessage, expectedMessage, "Item not removed from cart.");
 	            System.out.println("verifyUserIsAbleToRemoveItemFromCart : Passed");
+	            
 	        } catch (Exception e) {
 	            System.out.println("verifyUserIsAbleToRemoveItemFromCart : Failed");
 	            e.printStackTrace();
@@ -79,18 +77,16 @@ public class CartPageTestCases extends BasePage {
 	    @Test
 	    public void verifyUserIsAbleToAddMoreThanOneQuantityOfItemToCartUsingPlusButton() {
 	        try {
-	            homePage.searchItem("orange");
-	            Thread.sleep(3000);
-	            homePage.clickOnPlusButtonAddToCart();
-	            Thread.sleep(3000);
-	            homePage.clickOnAddToCart();
+	            homePage.searchItem(orange);
+	            homePage.clickOnPlusButtonAddToCart();	          
+	            homePage.clickOnAddToCart(orange);
 	            homePage.clickOnCartBag();
 
 	            int actualQuantity = cartPage.getItemQuantity();
 	            int expectedQuantity = 2;
-
 	            Assert.assertEquals(actualQuantity, expectedQuantity, "Item quantity not increased using plus button.");
 	            System.out.println("verifyUserIsAbleToAddMoreThanOneQuantityOfItemToCartUsingPlusButton : Passed");
+	            
 	        } catch (Exception e) {
 	            System.out.println("verifyUserIsAbleToAddMoreThanOneQuantityOfItemToCartUsingPlusButton : Failed");
 	            e.printStackTrace();
@@ -100,15 +96,16 @@ public class CartPageTestCases extends BasePage {
 	    @Test
 	    public void verifyUserIsAbleToCheckOut() {
 	        try {
-	            homePage.searchItemAndAddToCart("orange");
+	            homePage.searchItemAndAddToCart(orange);
 	            homePage.clickOnCartBag();
 	            cartPage.clickOnProceedToCheckoutButton();
-	            Thread.sleep(2000);
-
-	            WebElement placeOrderButton = placeOrderPage.getElement(placeOrderPage.placeOrderButton);
-	            Assert.assertNotNull(placeOrderButton, "User is not able to checkout.");
+	          
+	            String placeOrderButton =placeOrderPage.getPlaceOrderButton();
+	            String placeOrderButtonText = "Place Order";
+	            Assert.assertEquals(placeOrderButtonText, placeOrderButton, "Item quantity not increased using plus button.");
 	            System.out.println("verifyUserIsAbleToCheckOut : Passed");
 	        } catch (Exception e) {
+	        	Assert.fail("Exception occurred: " + e.getMessage());
 	            System.out.println("verifyUserIsAbleToCheckOut : Failed");
 	            e.printStackTrace();
 	        }
@@ -117,20 +114,20 @@ public class CartPageTestCases extends BasePage {
 	    @Test
 	    public void verifyAddingMoreQuantityOfItemToAddToCartUsingQuantityBox() {
 	        try {
-	            homePage.searchItem("orange");
-	            Thread.sleep(3000);
+	            homePage.searchItem(orange);
+	            Thread.sleep(2000);
 	            homePage.clearQuantityBox();
 	            homePage.enterQuantityInBox("10");
-	            homePage.clickOnAddToCart();
+	            homePage.clickOnAddToCart(orange);
 	            homePage.clickOnCartBag();
 
 	            int actualQuantity = cartPage.getItemQuantity();
 	            int expectedQuantity = 10;
-
 	            Assert.assertEquals(actualQuantity, expectedQuantity, "Item quantity not updated in quantity box.");
 	            System.out.println("verifyAddingMoreQuantityOfItemToAddToCartUsingQuantityBox : Passed");
+	            
 	        } catch (Exception e) {
-	            System.out.println("verifyAddingMoreQuantityOfItemToAddToCartUsingQuantityBox : Failed");
+	        	Assert.fail("Exception occurred: " + e.getMessage());           
 	            e.printStackTrace();
 	        }
 	    }

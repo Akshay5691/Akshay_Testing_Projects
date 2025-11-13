@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.HomePageTestCases">
+      <class name="TestPages.PlaceOrderPageTestCases">
         <methods>
           <include name="setUpExtentReport"/>
-          <include name="verifyUserIsAbleToIncreaseCartPrice" invocation-numbers="0"/>
           <include name="createTestForExtentReport"/>
+          <include name="verifyUserIsAbleToGetDiscountWithValidPromoCode"/>
           <include name="CloseTheBrowser"/>
           <include name="logResult"/>
         </methods>
-      </class> <!-- TestPages.HomePageTestCases -->
+      </class> <!-- TestPages.PlaceOrderPageTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

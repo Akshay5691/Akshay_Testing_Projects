@@ -20,13 +20,14 @@ public class HomePageTestCases extends BasePage {
 
     HomePageMethods homePage = new HomePageMethods(driver);
     CartPageMethods cartPage = new CartPageMethods(driver);
+    String orange = "Orange";
 
     @Test
     public void verifyUserIsAbleToIncreaseItemNumber(Method method) {
         try {
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart(orange);
             
-            int actualItemNumber = homePage.getItemNumber();
+            int actualItemNumber = homePage.getItemNumberValue();
             int expectedValue = 1;
             Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
             System.out.println(method.getName() + " : passed");
@@ -70,10 +71,10 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyItemNumberIsIncreasingWhileAddingMultipleItems(Method method) {
         try {
-            homePage.searchItemAndAddToCart("apple");
-            homePage.searchItemAndAddToCart("orange");
+            homePage.searchItemAndAddToCart("Apple");
+            homePage.searchItemAndAddToCart(orange);
 
-            int actualItemNumber = homePage.getItemNumber();
+            int actualItemNumber = homePage.getItemNumberValue();
             int expectedValue = 2;
             Assert.assertEquals(actualItemNumber, expectedValue, "Multiple items are not added to cart");
             System.out.println(method.getName() + " : passed");
@@ -87,11 +88,11 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
         try {
-            homePage.searchItem("orange");          
-            homePage.clickOnAddToCart();      
-            homePage.clickOnAddToCart();
+            homePage.searchItem(orange);          
+            homePage.clickOnAddToCart(orange);      
+            homePage.clickOnAddToCart(orange);
 
-            int itemNumber = homePage.getItemNumber();
+            int itemNumber = homePage.getItemNumberValue();
             int expectedValue = 1;
             Assert.assertEquals(itemNumber, expectedValue, "Item number increased after adding same item twice");
             System.out.println(method.getName() + " : passed");
@@ -105,10 +106,10 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyUserIsAbleToIncreaseCartPrice(Method method) {
         try {
-            homePage.searchItemAndAddToCart("apple");
+            homePage.searchItemAndAddToCart("Apple");
             homePage.clickOnCartBag();
 
-            int itemPrice = homePage.getItemPrice();
+            int itemPrice = homePage.getItemPriceValue();
             int expectedValue = 72;
             Assert.assertEquals(itemPrice, expectedValue, "Item price is not increased correctly");
             System.out.println(method.getName() + " : passed");
@@ -122,11 +123,11 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
         try {
-            homePage.searchItem("orange");
-            Thread.sleep(3000);
+            homePage.searchItem(orange);
+            Thread.sleep(1000);
             homePage.clickMinusButtonAddToCart();
 
-            int defaultQuantity = homePage.getItemQuantityInQuantityBox();
+            int defaultQuantity = homePage.getItemQuantityInBox();
             int expectedValue = 1;
             Assert.assertEquals(defaultQuantity, expectedValue, "Default quantity decreased incorrectly");
             System.out.println(method.getName() + " : passed");
@@ -139,10 +140,10 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyUserIsAbleToSearchItem(Method method) {
         try {
-            homePage.searchItem("orange");
+            homePage.searchItem(orange);
           
-            String itemName = homePage.getItemOrange();
-            String expectedName = "Orange";
+            String itemName = homePage.getProductName(orange);
+            String expectedName = orange;
             Assert.assertEquals(itemName, expectedName, "Item is not searched correctly");
             System.out.println(method.getName() + " : passed");
            } 
