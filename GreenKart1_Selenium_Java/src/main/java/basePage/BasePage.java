@@ -98,7 +98,7 @@ public class BasePage {
         } else {
             test.skip(result.getThrowable());
         }
-       // driver.close();
+        driver.close();
     }
 	
 	

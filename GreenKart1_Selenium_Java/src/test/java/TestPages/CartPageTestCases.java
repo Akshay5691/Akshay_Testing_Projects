@@ -102,10 +102,10 @@ public class CartPageTestCases extends BasePage {
 	        try {
 	            homePage.searchItemAndAddToCart("orange");
 	            homePage.clickOnCartBag();
-	            cartPage.clickOnProceedToCheckOutButton();
+	            cartPage.clickOnProceedToCheckoutButton();
 	            Thread.sleep(2000);
 
-	            WebElement placeOrderButton = placeOrderPage.placeOrderButton;
+	            WebElement placeOrderButton = placeOrderPage.getElement(placeOrderPage.placeOrderButton);
 	            Assert.assertNotNull(placeOrderButton, "User is not able to checkout.");
 	            System.out.println("verifyUserIsAbleToCheckOut : Passed");
 	        } catch (Exception e) {

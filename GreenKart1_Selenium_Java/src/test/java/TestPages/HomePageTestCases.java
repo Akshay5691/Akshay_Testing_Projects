@@ -25,10 +25,12 @@ public class HomePageTestCases extends BasePage {
     public void verifyUserIsAbleToIncreaseItemNumber(Method method) {
         try {
             homePage.searchItemAndAddToCart("orange");
+            
             int actualItemNumber = homePage.getItemNumber();
             int expectedValue = 1;
             Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
             System.out.println(method.getName() + " : passed");
+            
         } catch (Exception e) {
             System.out.println(method.getName() + " : failed");
             e.printStackTrace();
@@ -85,8 +87,7 @@ public class HomePageTestCases extends BasePage {
     @Test
     public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
         try {
-            homePage.searchItem("orange");
-           
+            homePage.searchItem("orange");          
             homePage.clickOnAddToCart();      
             homePage.clickOnAddToCart();
 
@@ -111,6 +112,7 @@ public class HomePageTestCases extends BasePage {
             int expectedValue = 72;
             Assert.assertEquals(itemPrice, expectedValue, "Item price is not increased correctly");
             System.out.println(method.getName() + " : passed");
+            
         } catch (Exception e) {
             System.out.println(method.getName() + " : failed");
             e.printStackTrace();

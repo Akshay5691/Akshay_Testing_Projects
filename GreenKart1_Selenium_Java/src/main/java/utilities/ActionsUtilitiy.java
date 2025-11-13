@@ -3,6 +3,7 @@ package utilities;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,46 +22,79 @@ public class ActionsUtilitiy {
 		this.driver = driver;
 		 actions = new Actions(driver);
 		
-		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	}
-	
-    public void waitUntilElementVisible(WebElement element) {
-	
-	wait.until(ExpectedConditions.visibilityOf(element));	
-	}
-    
-    public void waitUntilElementClickable(WebElement element) {
-    wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-    
-     public void waitUntilElementInvisible(WebElement element) {
-    wait.until(ExpectedConditions.invisibilityOf(element));
-     }
-     public void waitUntilElementPresent(org.openqa.selenium.By locator) {
-         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-     }
-     public void waitUntilTextPresent(WebElement element, String text) {
-         wait.until(ExpectedConditions.textToBePresentInElement(element, text));
-     }
-     public void hoverOverElement(WebElement element) {
-    	 waitUntilElementVisible(element);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));		
+		}
+
+	   public void click(By locator) {
+	        waitUntilElementClickable(locator);
+	        driver.findElement(locator).click();
+	    }
+
+	    public void type(By locator, String text) {
+	        waitUntilElementVisible(locator);
+	        WebElement element = driver.findElement(locator);
+	        element.clear();
+	        element.sendKeys(text);
+	    }
+
+	    public String getText(By locator) {
+	        waitUntilElementVisible(locator);
+	        return driver.findElement(locator).getText();
+	    }
+	    
+	    @SuppressWarnings("deprecation")
+		public String getAttribute(By locator, String attributeName) {
+	        waitUntilElementVisible(locator);
+	        return driver.findElement(locator).getAttribute(attributeName);
+	    }
+	    
+	    public int getIntValue(By locator) {
+	        waitUntilElementVisible(locator);
+	        return Integer.parseInt(driver.findElement(locator).getText());
+	    }
+	    @SuppressWarnings("deprecation")
+		public int getIntValueByAttribute(By locator,String attributeName) {
+	        waitUntilElementVisible(locator);
+	        return Integer.parseInt(driver.findElement(locator).getAttribute(attributeName));
+	    }
+		
+	 public void waitUntilElementVisible(By locator) {
+		    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		}
+
+		public void waitUntilElementClickable(By locator) {
+		    wait.until(ExpectedConditions.elementToBeClickable(locator));
+		}
+
+		public void waitUntilElementInvisible(By locator) {
+		    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+		}
+
+		public void waitUntilElementPresent(By locator) {
+		    wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		}
+
+		public void waitUntilTextPresent(By locator, String text) {
+		    wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
+		}
+     public void hoverOverElement(WebElement element, By loactor) {
+    	 waitUntilElementVisible(loactor);
          actions.moveToElement(element).perform();
      }
-     public void doubleClick(WebElement element) {
-    	 waitUntilElementClickable(element);
+     public void doubleClick(WebElement element, By loactor) {
+    	 waitUntilElementClickable(loactor);
          actions.doubleClick(element).perform();
      }
-     public void rightClick(WebElement element) {
-    	 waitUntilElementVisible(element);
+     public void rightClick(WebElement element, By loactor) {
+    	 waitUntilElementVisible(loactor);
          actions.contextClick(element).perform();
      }
-     public void dragAndDrop(WebElement source, WebElement target) {
-         waitUntilElementVisible(source);
-         waitUntilElementVisible(target);
+     public void dragAndDrop(WebElement source, WebElement target, By sourceLocator, By targetLocator) {
+         waitUntilElementVisible(sourceLocator);
+         waitUntilElementVisible(targetLocator);
          actions.dragAndDrop(source, target).perform();
      }
-
-   
+  
      public void selectByVisibleText(WebElement dropdown, String text) {
           select = new Select(dropdown);
          select.selectByVisibleText(text);
@@ -80,22 +114,18 @@ public class ActionsUtilitiy {
          ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
      }
 
-     // 12️⃣ Scroll by pixels
      public void scrollBy(int x, int y) {
          ((JavascriptExecutor) driver).executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
      }
 
-     // 13️⃣ Click using JavaScript
      public void clickUsingJS(WebElement element) {
          ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
      }
 
-     // 14️⃣ Enter text using JavaScript
      public void typeUsingJS(WebElement element, String text) {
          ((JavascriptExecutor) driver).executeScript("arguments[0].value='" + text + "';", element);
      }
 
-     // 15️⃣ Is element displayed
      public boolean isElementDisplayed(WebElement element) {
          try {
              return element.isDisplayed();
@@ -104,7 +134,6 @@ public class ActionsUtilitiy {
          }
      }
 
-     // 16️⃣ Is element enabled
      public boolean isElementEnabled(WebElement element) {
          try {
              return element.isEnabled();
@@ -113,7 +142,6 @@ public class ActionsUtilitiy {
          }
      }
 
-     // 17️⃣ Is element selected
      public boolean isElementSelected(WebElement element) {
          try {
              return element.isSelected();
@@ -122,12 +150,6 @@ public class ActionsUtilitiy {
          }
      }
 
-     // 18️⃣ Wait and click
-     public void waitAndClick(WebElement element) {
-         waitUntilElementClickable(element);
-         element.click();
-     }
-	
 	
 }
 	

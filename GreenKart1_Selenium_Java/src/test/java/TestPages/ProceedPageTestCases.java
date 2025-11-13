@@ -24,7 +24,7 @@ public class ProceedPageTestCases extends BasePage {
 	        try {
 	            objHomePage.searchItemAndAddToCart("orange");
 	            objHomePage.clickOnCartBag();
-	            objCartPage.clickOnProceedToCheckOutButton();
+	            objCartPage.clickOnProceedToCheckoutButton();
 	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
 
@@ -45,14 +45,14 @@ public class ProceedPageTestCases extends BasePage {
 	        try {
 	            objHomePage.searchItemAndAddToCart("orange");
 	            objHomePage.clickOnCartBag();
-	            objCartPage.clickOnProceedToCheckOutButton();
+	            objCartPage.clickOnProceedToCheckoutButton();
 	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
 
 	            objProceedPage.selectCountry().selectByVisibleText("India");
 	            objProceedPage.clickOnTermsAndConditions();
 
-	            WebElement checkBox = objProceedPage.getTermsAndConditionsCheckBox();
+	            WebElement checkBox = objProceedPage.getTermsAndConditionsCheckBoxElement();
 	            Assert.assertTrue(checkBox.isSelected(), "User is not able to accept Terms and Conditions");
 	        } catch (Exception e) {
 	            System.out.println(method.getName() + " : failed");
@@ -66,7 +66,7 @@ public class ProceedPageTestCases extends BasePage {
 	            driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 	            objHomePage.searchItemAndAddToCart("orange");
 	            objHomePage.clickOnCartBag();
-	            objCartPage.clickOnProceedToCheckOutButton();
+	            objCartPage.clickOnProceedToCheckoutButton();
 	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
 
@@ -87,7 +87,7 @@ public class ProceedPageTestCases extends BasePage {
 	        try {
 	            objHomePage.searchItemAndAddToCart("orange");
 	            objHomePage.clickOnCartBag();
-	            objCartPage.clickOnProceedToCheckOutButton();
+	            objCartPage.clickOnProceedToCheckoutButton();
 	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
 

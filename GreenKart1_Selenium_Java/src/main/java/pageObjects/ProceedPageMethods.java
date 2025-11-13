@@ -15,58 +15,59 @@ import utilities.ActionsUtilitiy;
 
 public class ProceedPageMethods  extends ActionsUtilitiy {
 	   WebDriver driver;
-	   // ✅ Constructor
+	  
     public ProceedPageMethods(WebDriver driver) {
     	super(driver);
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+       
     }
+ // =========================================
+ // 🔹 Locators (By Locators instead of @FindBy)
+ // =========================================
 
-    // =================== 🔹 Web Elements ===================
-
-    @FindBy(xpath = "//input[@class='chkAgree']")
-    private WebElement termsAndConditionsCheckBox;
-
-    @FindBy(xpath = "//button[text()='Proceed']")
-    public WebElement proceedButton;
-
-    @FindBy(xpath = "//select[@style='width: 200px;']")
-    private WebElement countryDropdown;
-
-    @FindBy(xpath = "//span//b[text()='Please accept Terms & Conditions - Required']")
-    public WebElement acceptTermsAndConditionsMessage;
-
-    // =================== 🔹 Action Methods ===================
-
-    public void clickOnTermsAndConditions() {
-    	waitUntilElementClickable(termsAndConditionsCheckBox);
-        termsAndConditionsCheckBox.click();
-    }
-
-    public void clickOnProceedButton() {
-    	waitUntilElementClickable(proceedButton);
-        proceedButton.click();
-    }
+ private By termsAndConditionsCheckBox = By.xpath("//input[@class='chkAgree']");
+ public By proceedButton = By.xpath("//button[text()='Proceed']");
+ private By countryDropdown = By.xpath("//select[@style='width: 200px;']");
+ public By acceptTermsAndConditionsMessage = By.xpath("//span//b[text()='Please accept Terms & Conditions - Required']");
 
 
-    public Select selectCountry() {
-    	waitUntilElementVisible(countryDropdown);
-        return new Select(countryDropdown);
-    }
+ // =========================================
+ // 🔹 Action Methods
+ // =========================================
 
-    public String getAcceptTheTermsAndConditionsMessage() {
-    	waitUntilElementVisible(acceptTermsAndConditionsMessage);
-        return acceptTermsAndConditionsMessage.getText();
-    }
+ public void clickOnTermsAndConditions() {
+     waitUntilElementClickable(termsAndConditionsCheckBox);
+     click(termsAndConditionsCheckBox);
+ }
+ 
+ public void clickOnProceedButton() {
+     waitUntilElementClickable(proceedButton);
+     click(proceedButton);
+ }
 
-	public WebElement proceedButton() {
-		// TODO Auto-generated method stub
-		return null;
+ public Select selectCountry() {
+     waitUntilElementVisible(countryDropdown);
+     WebElement dropdownElement = getElement(countryDropdown);
+     return new Select(dropdownElement);
+ }
+
+ public String getAcceptTheTermsAndConditionsMessage() {
+     waitUntilElementVisible(acceptTermsAndConditionsMessage);
+     return getText(acceptTermsAndConditionsMessage);
+ }
+
+ public WebElement getProceedButtonElement() {
+     waitUntilElementVisible(proceedButton);
+     return getElement(proceedButton);
+ }
+
+ public WebElement getTermsAndConditionsCheckBoxElement() {
+     waitUntilElementVisible(termsAndConditionsCheckBox);
+     return getElement(termsAndConditionsCheckBox);
+ }
+ public WebElement getElement(By locator) {
+	    return driver.findElement(locator);
 	}
 
-	public WebElement getTermsAndConditionsCheckBox() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

@@ -19,64 +19,67 @@ public class CartPageMethods extends ActionsUtilitiy {
 	    // ✅ Constructor — initializes all elements
 	    public CartPageMethods(WebDriver driver) {
 	    	super(driver);
-	        this.driver = driver;
-	        PageFactory.initElements(driver, this);
 	    }
 
-	    // =================== 🔹 Web Elements ===================
+	    // =================== 🔹 Locators ===================
 
-	    @FindBy(xpath = "(//div//a[@class='product-remove'])[1]")
-	    private WebElement removeButton;
-
-	    @FindBy(xpath = "//button[text()='PROCEED TO CHECKOUT']")
-	    private WebElement proceedToCheckOutButton;
-
-	    @FindBy(xpath = "(//p[@class='quantity'])[1]")
-	    private WebElement itemQuantity;
-
-	    @FindBy(xpath = "//p[text()='Apple - 1 Kg']")
-	    private WebElement itemName;
-
-	    @FindBy(xpath = "(//div//h2[text()='You cart is empty!'])[1]")
-	    private WebElement emptyPageMessageInCart;
+	    private By removeButton = By.xpath("(//div//a[@class='product-remove'])[1]");
+	    private By proceedToCheckoutButton = By.xpath("//button[text()='PROCEED TO CHECKOUT']");
+	    private By itemQuantity = By.xpath("(//p[@class='quantity'])[1]");
+	    private By itemName = By.xpath("//p[contains(text(),'Apple - 1 Kg')]");
+	    private By emptyCartMessage = By.xpath("(//div//h2[contains(text(),'Your cart is empty!')])[1]");
 
 	    // =================== 🔹 Action Methods ===================
 
+	    /** Click on Remove Button */
 	    public void clickOnRemoveButton() {
-	    	waitUntilElementClickable(removeButton);
-	        removeButton.click();
+	        waitUntilElementClickable(removeButton);
+	        click(removeButton);
 	    }
 
-	    public void clickOnProceedToCheckOutButton() {
-	    	waitUntilElementClickable(proceedToCheckOutButton);
-	        proceedToCheckOutButton.click();
+	    /** Click on Proceed To Checkout Button */
+	    public void clickOnProceedToCheckoutButton() {
+	        waitUntilElementClickable(proceedToCheckoutButton);
+	        click(proceedToCheckoutButton);
 	    }
 
+	   
 	    public String getItemQuantityString() {
-	    	waitUntilElementVisible(itemQuantity);
-	        return itemQuantity.getText();
-	    }
-
-	    public int getItemQuantity() {
-	    	waitUntilElementVisible(itemQuantity);
-	        String quantityText = itemQuantity.getText(); // e.g. "1 No(s)"
-	        int itemCount = Integer.parseInt(quantityText.split(" ")[0]);
-	        return itemCount;
-	    }
-
-	    public String getItemName() {
-	    	waitUntilElementVisible(itemName);
-	        String nameText = itemName.getText(); // e.g. "Apple - 1 Kg1"
-	        return nameText.split(" ")[0]; // "Apple"
-	    }
-
-	    public String getEmptyPageMessageInCart() {
-	    	waitUntilElementVisible(emptyPageMessageInCart);
-	        return emptyPageMessageInCart.getText();
+	        waitUntilElementVisible(itemQuantity);
+	        return getText(itemQuantity);
 	    }
 
 	  
-	}
+	    public int getItemQuantity() {
+	        waitUntilElementVisible(itemQuantity);
+	        String quantityText = getText(itemQuantity); // e.g., "1 No(s)"
+	        return Integer.parseInt(quantityText.split(" ")[0]);
+	    }
+
+	  
+	    public String getItemName() {
+	        waitUntilElementVisible(itemName);
+	        String nameText = getText(itemName); // e.g., "Apple - 1 Kg"
+	        return nameText.split(" ")[0];
+	    }
+
+	
+	    public String getEmptyCartMessage() {
+	        waitUntilElementVisible(emptyCartMessage);
+	        return getText(emptyCartMessage);
+	    }
+
+		public String getEmptyPageMessageInCart() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		public WebElement getElement(By locator) {
+		    return driver.findElement(locator);
+		}
+	  
+	   
+	    }
+
 	
 
 

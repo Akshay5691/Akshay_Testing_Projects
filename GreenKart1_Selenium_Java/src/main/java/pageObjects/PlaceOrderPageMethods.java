@@ -20,110 +20,98 @@ public class PlaceOrderPageMethods extends ActionsUtilitiy {
 	    // ✅ Constructor
 	    public PlaceOrderPageMethods(WebDriver driver) {
 	    	super(driver);
-	        this.driver = driver;
-	        PageFactory.initElements(driver, this);
+	      
 	    }
 
-	    // =================== 🔹 Web Elements ===================
-
-	    @FindBy(xpath = "//input[@class='promoCode']")
-	    private WebElement promoCodeBox;
-
-	    @FindBy(xpath = "//button[@class='promoBtn']")
-	    private WebElement promoCodeApplyButton;
-
-	    @FindBy(xpath = "//button[text()='Place Order']")
-	    public WebElement placeOrderButton;
-
-	    @FindBy(xpath = "//span[text()='Code applied ..!']")
-	    private WebElement promoCodeAppliedMessage;
-
-	    @FindBy(xpath = "//span[text()='Invalid code ..!']")
-	    private WebElement invalidPromoCodeMessage;
-
-	    @FindBy(xpath = "//span[text()='10%']")
-	    private WebElement discountPercentage;
+          	    // =================== 🔹 Locators ===================
+	    
+	    private By promoCodeBox = By.xpath("//input[@class='promoCode']");
+	    private By promoCodeApplyButton = By.xpath("//button[@class='promoBtn']");
+	    public By placeOrderButton = By.xpath("//button[text()='Place Order']");
+	    private By promoCodeAppliedMessage = By.xpath("//span[text()='Code applied ..!']");
+	    private By invalidPromoCodeMessage = By.xpath("//span[text()='Invalid code ..!']");
+	    private By discountPercentage = By.xpath("//span[contains(text(),'%')]");
 
 	    // =================== 🔹 Action Methods ===================
 
+	    /** Enter Promo Code and Click Apply */
 	    public void enterPromoCodeAndApply(String promoCode) {
-	        promoCodeBox.sendKeys(promoCode);
+	        waitUntilElementVisible(promoCodeBox);
+	        type(promoCodeBox, promoCode);
 	        waitUntilElementClickable(promoCodeApplyButton);
-	        promoCodeApplyButton.click();
+	        click(promoCodeApplyButton);
 	    }
 
+	    /** Click on Place Order Button */
 	    public void clickOnPlaceOrderButton() {
-	       waitUntilElementClickable(placeOrderButton);
-	        placeOrderButton.click();
+	        waitUntilElementClickable(placeOrderButton);
+	        click(placeOrderButton);
 	    }
 
+	    /** Get Message: Promo Code Applied */
 	    public String getPromoCodeAppliedMessage() {
-	    	waitUntilElementVisible(promoCodeAppliedMessage);
-	        return promoCodeAppliedMessage.getText();
+	        waitUntilElementVisible(promoCodeAppliedMessage);
+	        return getText(promoCodeAppliedMessage);
 	    }
 
-	    public String getInvalidPromoCodeApplied() {
-	    	waitUntilElementVisible(invalidPromoCodeMessage);
-	        return invalidPromoCodeMessage.getText();
+	    /** Get Message: Invalid Promo Code */
+	    public String getInvalidPromoCodeMessage() {
+	        waitUntilElementVisible(invalidPromoCodeMessage);
+	        return getText(invalidPromoCodeMessage);
 	    }
 
+	    /** Get Discount Percentage (e.g., "10%") */
 	    public int getDiscountPercentage() {
-	    	waitUntilElementVisible(discountPercentage);
-	        String discountText = discountPercentage.getText(); // "10%"
-	        return Integer.parseInt(discountText.split("%")[0]);
+	        waitUntilElementVisible(discountPercentage);
+	        String discountText = getText(discountPercentage); // e.g. "10%"
+	        return Integer.parseInt(discountText.replace("%", "").trim());
 	    }
-
-	   
+	    public WebElement getElement(By locator) {
+		    return driver.findElement(locator);
+		}
+	  
 
 	    // =================== 🔹 Cart Grid Methods ===================
 
+	    /** Get Quantity of a Specific Item from the Cart Grid */
 	    public int getQuantityOfItemFromGrid(String item) {
-	        List<WebElement> cartTableRows = driver.findElements(By.xpath("//table//tbody//tr"));
-	        int itemQuantity = 0;
-
-	        for (WebElement row : cartTableRows) {
-	            List<WebElement> columns = row.findElements(By.xpath("td"));
+	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
+	        for (WebElement row : cartRows) {
+	            List<WebElement> columns = row.findElements(By.tagName("td"));
 	            String actualProductName = columns.get(1).getText();
-
 	            if (actualProductName.contains(item)) {
-	                String itemQuantityString = columns.get(2).getText();
-	                itemQuantity = Integer.parseInt(itemQuantityString);
-	                break;
+	                return Integer.parseInt(columns.get(2).getText());
 	            }
 	        }
-	        return itemQuantity;
+	        return 0;
 	    }
 
+	    /** Get Cost of a Specific Item from the Cart Grid */
 	    public int getCostOfItemFromGrid(String item) {
-	        List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table//tbody//tr"));
+	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
 	        int costOfItem = 0;
-
-	        for (WebElement row : rowsOfTable) {
-	            List<WebElement> columns = row.findElements(By.xpath("td"));
+	        for (WebElement row : cartRows) {
+	            List<WebElement> columns = row.findElements(By.tagName("td"));
 	            String itemName = columns.get(1).getText();
-
 	            if (itemName.contains(item)) {
-	                int itemCost = Integer.parseInt(columns.get(3).getText());
-	                costOfItem += itemCost;
+	                costOfItem += Integer.parseInt(columns.get(3).getText());
 	            }
 	        }
 	        return costOfItem;
 	    }
 
+	    /** Get Total Cost of a Specific Item from the Cart Grid */
 	    public int getTotalCostOfItemFromGrid(String item) {
-	        List<WebElement> rowsOfTable = driver.findElements(By.xpath("//table//tbody//tr"));
-	        int totalCostOfItem = 0;
-
-	        for (WebElement row : rowsOfTable) {
-	            List<WebElement> columns = row.findElements(By.xpath("td"));
+	        List<WebElement> cartRows = driver.findElements(By.xpath("//table//tbody//tr"));
+	        int totalCost = 0;
+	        for (WebElement row : cartRows) {
+	            List<WebElement> columns = row.findElements(By.tagName("td"));
 	            String itemName = columns.get(1).getText();
-
 	            if (itemName.contains(item)) {
-	                int itemTotalCost = Integer.parseInt(columns.get(4).getText());
-	                totalCostOfItem += itemTotalCost;
+	                totalCost += Integer.parseInt(columns.get(4).getText());
 	            }
 	        }
-	        return totalCostOfItem;
+	        return totalCost;
 	    }
 	
 }
