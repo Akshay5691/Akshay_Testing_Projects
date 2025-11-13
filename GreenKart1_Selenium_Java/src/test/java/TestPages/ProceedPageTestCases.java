@@ -25,15 +25,14 @@ public class ProceedPageTestCases extends BasePage {
 	            objHomePage.searchItemAndAddToCart("orange");
 	            objHomePage.clickOnCartBag();
 	            objCartPage.clickOnProceedToCheckoutButton();
-	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
-
-	          //  Select countryDropdown = objProceedPage.selectCountry("India");
-	         //   countryDropdown.selectByVisibleText("India");
-	          //  String selectedCountry = countryDropdown.getFirstSelectedOption().getText();
+	              objProceedPage.selectCountryByVisibleText("India");
+	        
+	         
 	            String expectedCountry = "India";
 
-	         //   Assert.assertEquals(selectedCountry, expectedCountry, "Country is not selected");
+	           //Assert.assertEquals(selectedCountry, expectedCountry, "Country is not selected");
+	            System.out.println(method.getName() + "Passed");
 	        } catch (Exception e) {
 	            System.out.println(method.getName() + " : failed");
 	            e.printStackTrace();
@@ -43,17 +42,16 @@ public class ProceedPageTestCases extends BasePage {
 	    @Test
 	    public void VerifyUserIsAbleToAcceptTermsAndConditions(Method method) {
 	        try {
-	            objHomePage.searchItemAndAddToCart("orange");
+	            objHomePage.searchItemAndAddToCart("Orange");
 	            objHomePage.clickOnCartBag();
 	            objCartPage.clickOnProceedToCheckoutButton();
-	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
-
-	            objProceedPage.selectCountry("India");
+	            objProceedPage.selectCountryByVisibleText("India");
 	            objProceedPage.clickOnTermsAndConditions();
 
 	            WebElement checkBox = objProceedPage.termsAndConditionsCheckBoxElement();
 	            Assert.assertTrue(checkBox.isSelected(), "User is not able to accept Terms and Conditions");
+	            System.out.println(method.getName() + " : Passed");
 	        } catch (Exception e) {
 	            System.out.println(method.getName() + " : failed");
 	            e.printStackTrace();
@@ -70,11 +68,14 @@ public class ProceedPageTestCases extends BasePage {
 	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
 
-	            objProceedPage.selectCountry("India");
+	            objProceedPage.selectCountryByVisibleText("India");
 	            objProceedPage.clickOnTermsAndConditions();
 	            objProceedPage.clickOnProceedButton();
 
-	            // You can add validation for confirmation page (if visible)
+	            String actualConformation = objProceedPage.acceptTermsAndConditionsMessageText();
+	            String expectedConformation = "Thank you, your order has been placed successfully.";
+	            Assert.assertEquals(actualConformation, expectedConformation, "User is not getting expected error message");
+	            System.out.println(method.getName() + " :Passed");
 	            System.out.println("Order placed successfully!");
 	        } catch (Exception e) {
 	            System.out.println(method.getName() + " : failed");
@@ -85,19 +86,17 @@ public class ProceedPageTestCases extends BasePage {
 	    @Test
 	    public void VerifyUserIsUnableToProceedWithOutAcceptingTermsAndCoditions(Method method) {
 	        try {
-	            objHomePage.searchItemAndAddToCart("orange");
+	            objHomePage.searchItemAndAddToCart("Orange");
 	            objHomePage.clickOnCartBag();
 	            objCartPage.clickOnProceedToCheckoutButton();
-	            Thread.sleep(2000);
 	            objPlaceOrderPage.clickOnPlaceOrderButton();
-
-	            objProceedPage.selectCountry("India");
+	            objProceedPage.selectCountryByVisibleText("India");
 	            objProceedPage.clickOnProceedButton();
 
 	            String actualError = objProceedPage.acceptTermsAndConditionsMessageText();
 	            String expectedError = "Please accept Terms & Conditions - Required";
-
 	            Assert.assertEquals(actualError, expectedError, "User is not getting expected error message");
+	            System.out.println(method.getName() + " :Passed");
 	        } catch (Exception e) {
 	            System.out.println(method.getName() + " : failed");
 	            e.printStackTrace();

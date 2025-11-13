@@ -48,10 +48,10 @@ public class ProceedPageMethods  extends ActionsUtilitiy {
         click(proceedButton());
     }
 
-    public void selectCountry(String countryName) {
+    public void selectCountryByVisibleText(String countryName) {
         waitUntilElementVisible(countryDropdownLocator());
-        Select select = new Select(countryDropdown());
-        select.selectByVisibleText(countryName);
+        selectByVisibleText(countryDropdown(), countryName);
+      
     }
 
     public String acceptTermsAndConditionsMessageText() {
