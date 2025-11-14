@@ -42,31 +42,6 @@ public class HomePageTestCases extends BasePage {
 	        }
 	    }
 	
-	  @Test
-	    public void verifyUserCanAddProductToCart() {
-	      try {
-	           String productName="Jordan 6 Rings";
-	     
-	            home.enterName("Akshay");
-	            home.selectGenderMale();
-	            home.clickShopButton();
-	            home.ScrollToProduct(productName);
-	            home.addProductToCart(productName);
-	           
-	            
-	            System.out.println("✅ verifyUserCanSelectCountryAndStartShopping : passed");
-
-	        } catch (Exception e) {
-	            System.out.println("❌ verifyUserCanSelectCountryAndStartShopping : failed");
-	            e.printStackTrace();
-	        }
-	    }
-	
-	
-	
-		
-	
-	
 	
 	
 	

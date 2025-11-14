@@ -1,24 +1,12 @@
 package PageObjects;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-
+import utilityClasses.ActionsUtilitiy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 
-public class HomePageObjects {
+public class HomePageObjects extends ActionsUtilitiy {
 
    
 
@@ -54,61 +42,58 @@ public class HomePageObjects {
 	   WebDriverWait wait;
 
 	    public HomePageObjects(AndroidDriver driver) {
+	    	super(driver);
 	    	   this.driver = driver;
-	    	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-	    	 wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	     
+	         
 	    }
 
 
-	    // ✅ Web elements (Appium elements) with @AndroidFindBy
-	    @AndroidFindBy(id = "com.androidsample.generalstore:id/spinnerCountry")
-	    private WebElement countryDropdown;
-
-	    @AndroidFindBy(id = "com.androidsample.generalstore:id/nameField")
-	    private WebElement nameField;
-
-	    @AndroidFindBy(id = "com.androidsample.generalstore:id/radioMale")
-	    private WebElement genderRadioMale;
-
-	    @AndroidFindBy(id = "com.androidsample.generalstore:id/btnLetsShop")
-	    private WebElement shopButton;
+	  
+	    // =================== 🔹 Locators ===================
 	    
-	    private WebElement addToCartButton(String productName) {
-	        String xpath = "//android.widget.TextView[@text='" + productName + "']" +
-                    "/parent::android.widget.LinearLayout" +
-                    "//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productAddCart']";
-	        		return driver.findElement(AppiumBy.xpath(xpath));
+	    private By countryDropdownLocator() { return AppiumBy.id("com.androidsample.generalstore:id/spinnerCountry"); }
+	    private By nameFieldLocator() { return AppiumBy.id("com.androidsample.generalstore:id/nameField"); }
+	    private By genderRadioMaleLocator() { return AppiumBy.id("com.androidsample.generalstore:id/radioMale"); }
+	    private By shopButtonLocator() { return AppiumBy.id("com.androidsample.generalstore:id/btnLetsShop"); }
+	    private By addToCartButtonLocator(String productName) { 
+	        return AppiumBy.xpath("//android.widget.TextView[@text='" + productName + "']/parent::android.widget.LinearLayout//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productAddCart']"); 
 	    }
 
-	    // ✅ Action methods
+	    // =================== 🔹 WebElements ===================
+	    
+	    private WebElement countryDropdown() { return driver.findElement(countryDropdownLocator()); }
+	    private WebElement nameField() { return driver.findElement(nameFieldLocator()); }
+	    private WebElement genderRadioMale() { return driver.findElement(genderRadioMaleLocator()); }
+	    private WebElement shopButton() { return driver.findElement(shopButtonLocator()); }
+	    private WebElement addToCartButton(String productName) { return driver.findElement(addToCartButtonLocator(productName)); }
+
+	                           // ✅ Action methods
+	    
 	    public void selectCountry(String countryName) {
-	        countryDropdown.click();
-	        driver.findElement(AppiumBy.androidUIAutomator(
-	                "new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + countryName + "\"));"))
-	                .click();
+	        click(countryDropdown());
+	        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + countryName + "\"));"))
+	           .click();
 	    }
-
-	    public void enterName(String name) {
-	        nameField.sendKeys(name);
+	    public void enterName(String name) {   
+	    	waitUntilElementVisible(nameFieldLocator());
+	        type(nameField(), name);
 	    }
-
 	    public void selectGenderMale() {
-	        genderRadioMale.click();
+	    	waitUntilElementClickable(genderRadioMaleLocator());
+	        click(genderRadioMale());
 	    }
-
 	    public void clickShopButton() {
-	        shopButton.click();
+	    	waitUntilElementClickable(shopButtonLocator());
+	        click(shopButton());
 	    }
 	    public void ScrollToProduct(String Product) {
 	        driver.findElement(AppiumBy.androidUIAutomator(
-	                "new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + Product + "\"));"));
+	          "new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + Product + "\"));"));
 	    }
 	    
 	    public void addProductToCart(String productName) {
-	 
-	    	wait.until(ExpectedConditions.elementToBeClickable(addToCartButton(productName)));
-	    	addToCartButton(productName).click();
+	    	waitUntilElementClickable(addToCartButtonLocator(productName));
+	       click(addToCartButton(productName));
 	    }
     
     
