@@ -1,14 +1,18 @@
 package TestPackage;
 
+import org.testng.annotations.Test;
+
 import BasePage.BasePage;
 import PageObjects.HomePageObjects;
+import PageObjects.ProductPageObjects;
 
 public class CartPageTestCases extends BasePage {
 
 	 HomePageObjects home = new HomePageObjects(driver);
+	 ProductPageObjects productPage = new ProductPageObjects(driver);
      
 	
-	
+	@Test
 	public void verifyUserAbleToValidateCartTotalAmount() {
 	      try {
 	           String productName1="Jordan 6 Rings";
@@ -18,9 +22,9 @@ public class CartPageTestCases extends BasePage {
 	            home.selectGenderMale();
 	            home.clickShopButton();
 	            home.ScrollToProduct(productName1);
-	            home.addProductToCart(productName1);
+	            productPage.addProductToCart(productName1);
 	            home.ScrollToProduct(productName2);
-	            home.addProductToCart(productName2);
+	            productPage.addProductToCart(productName2);
 	            
 	         //   double sumOfProducts=home.getSumOfProductsInCart();
 	          //  double totalAmountInCart=home.getTotalAmountInCart();

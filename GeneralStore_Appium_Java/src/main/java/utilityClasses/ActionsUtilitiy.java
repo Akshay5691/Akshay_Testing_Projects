@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 public class ActionsUtilitiy {
 	AndroidDriver driver;
@@ -25,7 +26,7 @@ public class ActionsUtilitiy {
 			
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));		
 		}
-	                        // 🔹 Basic Actions
+	                        //  Basic Actions
 	
     public void click(WebElement element) {
         element.click();
@@ -56,9 +57,7 @@ public class ActionsUtilitiy {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(command, params);
     }
-    
-    public void tapElement(WebElement element) {
-    	
+    public void tapElement(WebElement element) {	
        int x= element.getLocation().getX() ;
        int y=  element.getLocation().getY();     
        Map<String, Object> params = new HashMap<>();
@@ -66,8 +65,6 @@ public class ActionsUtilitiy {
        params.put("y", y);
        executeGesture("mobile: tap", params);
     }
-    
-    
     public void longPressElement(WebElement element, int durationMs) {
         int x = element.getLocation().getX(); 
         int y =  element.getLocation().getY();
@@ -77,7 +74,6 @@ public class ActionsUtilitiy {
       params.put("duration", durationMs);
       executeGesture("mobile: longClickGesture", params);
     }  
-    
     public void swipe(int startX, int startY, int endX, int endY, int speed) {
         Map<String, Object> params = new HashMap<>();
         params.put("startX", startX);
@@ -94,12 +90,15 @@ public class ActionsUtilitiy {
         params.put("percent", percent);
         executeGesture("mobile: scrollGesture", params);
     }
-    
     public void scrollDown(double percent) {
         Map<String, Object> params = new HashMap<>();
         params.put("direction", "down");
         params.put("percent", percent);
         executeGesture("mobile: scrollGesture", params);
+    }
+    public void ScrollToProduct(String Product) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+          "new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + Product + "\"));"));
     }
     public void scrollUp(double percent) {
         Map<String, Object> params = new HashMap<>();
@@ -114,15 +113,12 @@ public class ActionsUtilitiy {
         executeGesture("mobile: dragGesture", params);
     }
     public void dragAndDropByCoordinates(WebElement source, int endX, int endY) {
-
         Rectangle rect = source.getRect();
-
         Map<String, Object> params = new HashMap<>();
         params.put("startX", rect.getX() + rect.getWidth() / 2);
         params.put("startY", rect.getY() + rect.getHeight() / 2);
         params.put("endX", endX);
         params.put("endY", endY);
-
         executeGesture("mobile: dragGesture", params);
     }
     
@@ -133,7 +129,8 @@ public class ActionsUtilitiy {
             tapElement(element);
         }
     }
-                   // 🔹 Wait Methods 
+                      //  Wait Methods 
+    
     public void waitUntilElementVisible(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
@@ -153,19 +150,31 @@ public class ActionsUtilitiy {
     public void waitUntilTextPresent(By locator, String text) {
         wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
     }
-
-   
-  
- 
-    // Check if element is displayed
+                     //   Verification Methods
+    
     public boolean isElementDisplayed(WebElement element) {
         try {
-            wait.until(ExpectedConditions.visibilityOf(element));
             return element.isDisplayed();
         } catch (Exception e) {
             return false;
         }
     }
+    
+    public boolean isElementSelected(WebElement element) {
+        try {
+            return element.isSelected();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean isElementEnabled(WebElement element) {
+        try {
+            return element.isEnabled();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
 
     // Hide keyboard for Android/iOS
     public void hideKeyboard() {

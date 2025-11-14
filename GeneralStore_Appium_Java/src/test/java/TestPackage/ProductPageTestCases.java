@@ -3,12 +3,15 @@ package TestPackage;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
+import PageObjects.CartPageObjects;
 import PageObjects.HomePageObjects;
+import PageObjects.ProductPageObjects;
 
 public class ProductPageTestCases extends BasePage {
 	
 	
 	HomePageObjects home = new HomePageObjects(driver);
+	ProductPageObjects productPage = new ProductPageObjects(driver);
 	
 	  @Test
 	    public void verifyUserAbleToAddProductToCart() {
@@ -19,7 +22,7 @@ public class ProductPageTestCases extends BasePage {
 	            home.selectGenderMale();
 	            home.clickShopButton();
 	            home.ScrollToProduct(productName);
-	            home.addProductToCart(productName);
+	            productPage.addProductToCart(productName);
 	           
 	            
 	            System.out.println("✅ verifyUserCanSelectCountryAndStartShopping : passed");

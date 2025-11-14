@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-14T11:08:16 IST" name="Default suite" finished-at="2025-11-14T11:08:28 IST" duration-ms="11445">
+  <suite started-at="2025-11-14T15:48:25 IST" name="Default suite" finished-at="2025-11-14T15:48:32 IST" duration-ms="6391">
     <groups>
     </groups>
-    <test started-at="2025-11-14T11:08:16 IST" name="Default test" finished-at="2025-11-14T11:08:28 IST" duration-ms="11445">
-      <class name="TestPackage.ProductPageTestCases">
-        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPackage.ProductPageTestCases@45f24169]" started-at="2025-11-14T11:08:16 IST" name="setUpExtentReport" finished-at="2025-11-14T11:08:16 IST" duration-ms="430" status="PASS">
+    <test started-at="2025-11-14T15:48:25 IST" name="Default test" finished-at="2025-11-14T15:48:32 IST" duration-ms="6391">
+      <class name="TestPackage.HomePageTestCases">
+        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPackage.HomePageTestCases@63429932]" started-at="2025-11-14T15:48:25 IST" name="setUpExtentReport" finished-at="2025-11-14T15:48:25 IST" duration-ms="372" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpExtentReport -->
-        <test-method is-config="true" signature="createTestForExtentReport(java.lang.reflect.Method)[pri:0, instance:TestPackage.ProductPageTestCases@45f24169]" started-at="2025-11-14T11:08:16 IST" name="createTestForExtentReport" finished-at="2025-11-14T11:08:16 IST" duration-ms="8" status="PASS">
+        <test-method is-config="true" signature="createTestForExtentReport(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@63429932]" started-at="2025-11-14T15:48:26 IST" name="createTestForExtentReport" finished-at="2025-11-14T15:48:26 IST" duration-ms="8" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void TestPackage.ProductPageTestCases.verifyUserAbleToAddProductToCart()]]>
+                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSelectOnlyOneGenderOption(java.lang.reflect.Method)]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createTestForExtentReport -->
-        <test-method signature="verifyUserAbleToAddProductToCart()[pri:0, instance:TestPackage.ProductPageTestCases@45f24169]" started-at="2025-11-14T11:08:16 IST" name="verifyUserAbleToAddProductToCart" finished-at="2025-11-14T11:08:28 IST" duration-ms="11385" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUserAbleToAddProductToCart -->
-        <test-method is-config="true" signature="logResult(org.testng.ITestResult)[pri:0, instance:TestPackage.ProductPageTestCases@45f24169]" started-at="2025-11-14T11:08:28 IST" name="logResult" finished-at="2025-11-14T11:08:28 IST" duration-ms="6" status="PASS">
+        <test-method signature="verifyUserIsAbleToSelectOnlyOneGenderOption(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@63429932]" started-at="2025-11-14T15:48:26 IST" name="verifyUserIsAbleToSelectOnlyOneGenderOption" finished-at="2025-11-14T15:48:32 IST" duration-ms="6331" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyUserAbleToAddProductToCart status=SUCCESS method=ProductPageTestCases.verifyUserAbleToAddProductToCart()[pri:0, instance:TestPackage.ProductPageTestCases@45f24169] output={null}]]]>
+                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSelectOnlyOneGenderOption(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserIsAbleToSelectOnlyOneGenderOption -->
+        <test-method is-config="true" signature="logResult(org.testng.ITestResult)[pri:0, instance:TestPackage.HomePageTestCases@63429932]" started-at="2025-11-14T15:48:32 IST" name="logResult" finished-at="2025-11-14T15:48:32 IST" duration-ms="7" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserIsAbleToSelectOnlyOneGenderOption status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToSelectOnlyOneGenderOption(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@63429932] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- logResult -->
-        <test-method is-config="true" signature="CloseTheBrowser()[pri:0, instance:TestPackage.ProductPageTestCases@45f24169]" started-at="2025-11-14T11:08:28 IST" name="CloseTheBrowser" finished-at="2025-11-14T11:08:28 IST" duration-ms="367" status="PASS">
+        <test-method is-config="true" signature="CloseTheBrowser()[pri:0, instance:TestPackage.HomePageTestCases@63429932]" started-at="2025-11-14T15:48:32 IST" name="CloseTheBrowser" finished-at="2025-11-14T15:48:32 IST" duration-ms="461" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CloseTheBrowser -->
-      </class> <!-- TestPackage.ProductPageTestCases -->
+      </class> <!-- TestPackage.HomePageTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -49,25 +49,34 @@ public class HomePageObjects extends ActionsUtilitiy {
 
 
 	  
-	    // =================== 🔹 Locators ===================
+	    // ===================  Locators ===================
 	    
 	    private By countryDropdownLocator() { return AppiumBy.id("com.androidsample.generalstore:id/spinnerCountry"); }
 	    private By nameFieldLocator() { return AppiumBy.id("com.androidsample.generalstore:id/nameField"); }
 	    private By genderRadioMaleLocator() { return AppiumBy.id("com.androidsample.generalstore:id/radioMale"); }
 	    private By shopButtonLocator() { return AppiumBy.id("com.androidsample.generalstore:id/btnLetsShop"); }
-	    private By addToCartButtonLocator(String productName) { 
-	        return AppiumBy.xpath("//android.widget.TextView[@text='" + productName + "']/parent::android.widget.LinearLayout//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productAddCart']"); 
-	    }
-
-	    // =================== 🔹 WebElements ===================
+	    private By alertTextLocator() { return AppiumBy.xpath("//android.widget.Toast[@text=\"Please enter your name\"]"); }
+        private By genderRadioFemaleLocator() { return AppiumBy.id("com.androidsample.generalstore:id/radioFemale"); }
+	    // ===================  WebElements ===================
 	    
 	    private WebElement countryDropdown() { return driver.findElement(countryDropdownLocator()); }
 	    private WebElement nameField() { return driver.findElement(nameFieldLocator()); }
 	    private WebElement genderRadioMale() { return driver.findElement(genderRadioMaleLocator()); }
 	    private WebElement shopButton() { return driver.findElement(shopButtonLocator()); }
-	    private WebElement addToCartButton(String productName) { return driver.findElement(addToCartButtonLocator(productName)); }
-
-	                           // ✅ Action methods
+	    private WebElement alertText() { return driver.findElement(alertTextLocator()); }
+	    private WebElement genderRadioFemale() { return driver.findElement(genderRadioFemaleLocator()); }
+	   
+	   
+	   
+                        // String Methods
+	    
+      public String getAlertText() {
+	    String alertText = alertText().getText();
+	    return alertText;
+     }       
+	    
+	    
+	                           //   Action methods
 	    
 	    public void selectCountry(String countryName) {
 	        click(countryDropdown());
@@ -82,19 +91,23 @@ public class HomePageObjects extends ActionsUtilitiy {
 	    	waitUntilElementClickable(genderRadioMaleLocator());
 	        click(genderRadioMale());
 	    }
+	    public void selectGenderFemale() {
+	    	waitUntilElementClickable(genderRadioFemaleLocator());
+	    	genderRadioFemale().click(); 
+	   }
+	    
 	    public void clickShopButton() {
 	    	waitUntilElementClickable(shopButtonLocator());
 	        click(shopButton());
 	    }
-	    public void ScrollToProduct(String Product) {
-	        driver.findElement(AppiumBy.androidUIAutomator(
-	          "new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + Product + "\"));"));
+	    public boolean isGenderMaleSelected() throws InterruptedException {
+	        return getAttribute(genderRadioMale(),"checked").equals("true");
 	    }
-	    
-	    public void addProductToCart(String productName) {
-	    	waitUntilElementClickable(addToCartButtonLocator(productName));
-	       click(addToCartButton(productName));
+	    public boolean isGenderFemaleSelected() throws InterruptedException { 
+	        return getAttribute(genderRadioFemale(),"checked").equals("true");
 	    }
+	  
+	   
     
     
    }
