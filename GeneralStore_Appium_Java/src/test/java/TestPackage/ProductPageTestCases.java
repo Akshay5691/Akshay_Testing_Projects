@@ -19,12 +19,10 @@ public class ProductPageTestCases extends BasePage {
 	           String productName="Jordan 6 Rings";
 	     
 	            home.enterName("Akshay");
-	            home.selectGenderMale();
 	            home.clickShopButton();
 	            home.ScrollToProduct(productName);
 	            productPage.addProductToCart(productName);
-	           
-	            
+	           	            
 	            System.out.println("✅ verifyUserCanSelectCountryAndStartShopping : passed");
 
 	        } catch (Exception e) {
