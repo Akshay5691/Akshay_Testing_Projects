@@ -43,17 +43,17 @@ public class ProceedPageMethods extends ActionsUtilitiy {
 	// =================== 🔹 Action Methods ===================
 
 	public void clickOnTermsAndConditions() {
-		waitUntilElementClickable(termsAndConditionsCheckBox());
+
 		click(termsAndConditionsCheckBox());
 	}
 
 	public void clickOnProceedButton() {
-		waitUntilElementClickable(proceedButton());
+
 		click(proceedButton());
 	}
 
 	public void selectCountryByVisibleText(String countryName) {
-		waitUntilElementVisible(countryDropdown());
+
 		selectByVisibleText(countryDropdown(), countryName);
 
 	}
@@ -64,14 +64,11 @@ public class ProceedPageMethods extends ActionsUtilitiy {
 	}
 
 	public WebElement proceedButtonElement() {
-		waitUntilElementVisible(proceedButton());
-		return driver.findElement(proceedButton());
+		return getElement(proceedButton());
 	}
 
 	public WebElement termsAndConditionsCheckBoxElement() {
-		waitUntilElementVisible(termsAndConditionsCheckBox());
-		return driver.findElement(termsAndConditionsCheckBox());
-
+		return getElement(termsAndConditionsCheckBox());
 	}
 
 	public String getproceedButton() {

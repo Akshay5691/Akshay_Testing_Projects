@@ -47,35 +47,29 @@ public class CartPageMethods extends ActionsUtilitiy {
 	// =================== 🔹 Action Methods ===================
 
 	public void clickOnRemoveButton() {
-		waitUntilElementClickable(removeButton());
 		click(removeButton());
 	}
 
 	public void clickOnProceedToCheckoutButton() {
-		waitUntilElementClickable(proceedToCheckoutButton());
 		click(proceedToCheckoutButton());
 	}
 
 	public String getItemQuantityText() {
-		waitUntilElementVisible(itemQuantity());
 		return getText(itemQuantity());
 	}
 
 	public int getItemQuantity() {
-		waitUntilElementVisible(itemQuantity());
 		String quantityText = getText(itemQuantity());
 		int itemQuantity = Integer.parseInt(quantityText.split(" ")[0]);
 		return itemQuantity;
 	}
 
 	public String getItemNameText(String itemNameText) {
-		waitUntilElementVisible(itemName(itemNameText));
 		String nameText = getText(itemName(itemNameText));
 		return nameText.split(" ")[0];
 	}
 
 	public String getEmptyCartMessageText() {
-		waitUntilElementVisible(emptyCartMessage());
 		return getText(emptyCartMessage());
 	}
 

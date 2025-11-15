@@ -8,14 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ActionsUtilitiy;
 
 public class HomePageMethods extends ActionsUtilitiy {
 
 	WebDriver driver;
-	WebDriverWait wait;
 
 	public HomePageMethods(WebDriver driver) {
 		super(driver);
@@ -75,66 +73,50 @@ public class HomePageMethods extends ActionsUtilitiy {
 	// =================== 🔹 Action Methods ===================
 
 	public void searchItem(String itemName) {
-
-		waitUntilElementVisible(searchBox());
 		type(searchBox(), itemName);
-		waitUntilElementClickable(searchButton());
 		click(searchButton());
 	}
 
 	public void searchItemAndAddToCart(String itemName) {
-		waitUntilElementVisible(searchBox());
 		searchItem(itemName);
-		waitUntilElementClickable(addToCartButton(itemName));
 		clickOnAddToCart(itemName);
 	}
 
 	public void clickOnCartBag() {
-		waitUntilElementClickable(cartBagIcon());
 		click(cartBagIcon());
 	}
 
 	public void clickOnAddToCart(String product) {
-		waitUntilElementClickable(addToCartButton(product));
 		click(addToCartButton(product));
-
 	}
 
 	public void clickMinusButtonAddToCart() {
-		waitUntilElementClickable(minusButtonAddToCart());
 		click(minusButtonAddToCart());
 	}
 
 	public void clickOnPlusButtonAddToCart() {
-		waitUntilElementClickable(plusButtonAddToCart());
 		click(plusButtonAddToCart());
 	}
 
 	public void clickOnQuantityBox(String value) {
-		waitUntilElementVisible(quantityBoxOnItem());
 		clear(quantityBoxOnItem());
 		type(quantityBoxOnItem(), value);
-		waitUntilElementClickable(quantityBoxOnItem());
 		click(quantityBoxOnItem());
 	}
 
 	public int getItemNumberValue() {
-		waitUntilElementVisible(itemNumber());
 		return getIntValue(itemNumber());
 	}
 
 	public int getItemPriceValue() {
-		waitUntilElementVisible(itemPrice());
 		return getIntValue(itemPrice());
 	}
 
 	public int getItemQuantityInBox() {
-		waitUntilElementVisible(defaultQuantity());
 		return getIntValueByAttribute(defaultQuantity(), "value");
 	}
 
 	public String getProductName(String itemName) {
-		waitUntilElementVisible(productName(itemName));
 		String productText = getText(productName(itemName));
 		return productText.split(" ")[0];
 	}
@@ -147,12 +129,10 @@ public class HomePageMethods extends ActionsUtilitiy {
 	}
 
 	public void clearQuantityBox() {
-		waitUntilElementVisible(quantityBoxOnItem());
 		clear(quantityBoxOnItem());
 	}
 
 	public void enterQuantityInBox(String value) {
-		waitUntilElementVisible(quantityBoxOnItem());
 		type(quantityBoxOnItem(), value);
 	}
 

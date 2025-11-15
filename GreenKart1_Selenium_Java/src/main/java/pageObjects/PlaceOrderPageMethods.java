@@ -59,9 +59,9 @@ public class PlaceOrderPageMethods extends ActionsUtilitiy {
 
 	public void enterPromoCodeAndApply(String promoCode) {
 		try {
-			waitUntilElementVisible(promoCodeBox());
+
 			type(promoCodeBox(), promoCode);
-			waitUntilElementClickable(promoCodeApplyButton());
+			
 			click(promoCodeApplyButton());
 			Thread.sleep(5000); // Wait for message to appear
 		} catch (InterruptedException e) {
@@ -85,13 +85,13 @@ public class PlaceOrderPageMethods extends ActionsUtilitiy {
 	}
 
 	public int discountPercentageValue() {
-		waitUntilElementVisible(discountPercentage());
+
 		String discountText = getText(discountPercentage()); // e.g., "10%"
 		return Integer.parseInt(discountText.replace("%", "").trim());
 	}
 
 	public String getDynamicMessageText(String messageText) {
-		waitUntilElementVisible(dynamicMessage(messageText));
+
 		return getText(dynamicMessage(messageText));
 	}
 
