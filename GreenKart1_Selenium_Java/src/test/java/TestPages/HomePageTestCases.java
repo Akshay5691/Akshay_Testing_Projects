@@ -1,13 +1,8 @@
 package TestPages;
 
-
-
-
-
 import java.lang.reflect.Method;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 import basePage.BasePage;
 import pageObjects.CartPageMethods;
@@ -15,29 +10,110 @@ import pageObjects.HomePageMethods;;
 
 public class HomePageTestCases extends BasePage {
 
-	
-            
+	HomePageMethods homePage = new HomePageMethods(driver);
+	CartPageMethods cartPage = new CartPageMethods(driver);
+	String orange = "Orange";
 
-    HomePageMethods homePage = new HomePageMethods(driver);
-    CartPageMethods cartPage = new CartPageMethods(driver);
-    String orange = "Orange";
+	@Test
+	public void verifyUserIsAbleToIncreaseItemNumber(Method method) {
+		try {
+			homePage.searchItemAndAddToCart(orange);
 
-    @Test
-    public void verifyUserIsAbleToIncreaseItemNumber(Method method) {
-        try {
-            homePage.searchItemAndAddToCart(orange);
-            
-            int actualItemNumber = homePage.getItemNumberValue();
-            int expectedValue = 1;
-            Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
-            System.out.println(method.getName() + " : passed");
-            
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-  /*
+			int actualItemNumber = homePage.getItemNumberValue();
+			int expectedValue = 1;
+			Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
+			System.out.println(method.getName() + " : passed");
+
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void verifyItemNumberIsIncreasingWhileAddingMultipleItems(Method method) {
+		try {
+			homePage.searchItemAndAddToCart("Apple");
+			homePage.searchItemAndAddToCart(orange);
+
+			int actualItemNumber = homePage.getItemNumberValue();
+			int expectedValue = 2;
+			Assert.assertEquals(actualItemNumber, expectedValue, "Multiple items are not added to cart");
+			System.out.println(method.getName() + " : passed");
+
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
+		try {
+			homePage.searchItem(orange);
+			homePage.clickOnAddToCart(orange);
+			homePage.clickOnAddToCart(orange);
+
+			int itemNumber = homePage.getItemNumberValue();
+			int expectedValue = 1;
+			Assert.assertEquals(itemNumber, expectedValue, "Item number increased after adding same item twice");
+			System.out.println(method.getName() + " : passed");
+
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void verifyUserIsAbleToIncreaseCartPrice(Method method) {
+		try {
+			homePage.searchItemAndAddToCart("Apple");
+			homePage.clickOnCartBag();
+
+			int itemPrice = homePage.getItemPriceValue();
+			int expectedValue = 72;
+			Assert.assertEquals(itemPrice, expectedValue, "Item price is not increased correctly");
+			System.out.println(method.getName() + " : passed");
+
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
+		try {
+			homePage.searchItem(orange);
+			Thread.sleep(1000);
+			homePage.clickMinusButtonAddToCart();
+
+			int defaultQuantity = homePage.getItemQuantityInBox();
+			int expectedValue = 1;
+			Assert.assertEquals(defaultQuantity, expectedValue, "Default quantity decreased incorrectly");
+			System.out.println(method.getName() + " : passed");
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void verifyUserIsAbleToSearchItem(Method method) {
+		try {
+			homePage.searchItem(orange);
+
+			String itemName = homePage.getProductName(orange);
+			String expectedName = orange;
+			Assert.assertEquals(itemName, expectedName, "Item is not searched correctly");
+			System.out.println(method.getName() + " : passed");
+		} catch (Exception e) {
+			System.out.println(method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+	 /*
     @Test
     public void cartGrid(ITestResult method) {
         try {
@@ -68,94 +144,4 @@ public class HomePageTestCases extends BasePage {
         }
     }*/
 
-    @Test
-    public void verifyItemNumberIsIncreasingWhileAddingMultipleItems(Method method) {
-        try {
-            homePage.searchItemAndAddToCart("Apple");
-            homePage.searchItemAndAddToCart(orange);
-
-            int actualItemNumber = homePage.getItemNumberValue();
-            int expectedValue = 2;
-            Assert.assertEquals(actualItemNumber, expectedValue, "Multiple items are not added to cart");
-            System.out.println(method.getName() + " : passed");
-            
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
-        try {
-            homePage.searchItem(orange);          
-            homePage.clickOnAddToCart(orange);      
-            homePage.clickOnAddToCart(orange);
-
-            int itemNumber = homePage.getItemNumberValue();
-            int expectedValue = 1;
-            Assert.assertEquals(itemNumber, expectedValue, "Item number increased after adding same item twice");
-            System.out.println(method.getName() + " : passed");
-            
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void verifyUserIsAbleToIncreaseCartPrice(Method method) {
-        try {
-            homePage.searchItemAndAddToCart("Apple");
-            homePage.clickOnCartBag();
-
-            int itemPrice = homePage.getItemPriceValue();
-            int expectedValue = 72;
-            Assert.assertEquals(itemPrice, expectedValue, "Item price is not increased correctly");
-            System.out.println(method.getName() + " : passed");
-            
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
-        try {
-            homePage.searchItem(orange);
-            Thread.sleep(1000);
-            homePage.clickMinusButtonAddToCart();
-
-            int defaultQuantity = homePage.getItemQuantityInBox();
-            int expectedValue = 1;
-            Assert.assertEquals(defaultQuantity, expectedValue, "Default quantity decreased incorrectly");
-            System.out.println(method.getName() + " : passed");
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void verifyUserIsAbleToSearchItem(Method method) {
-        try {
-            homePage.searchItem(orange);
-          
-            String itemName = homePage.getProductName(orange);
-            String expectedName = orange;
-            Assert.assertEquals(itemName, expectedName, "Item is not searched correctly");
-            System.out.println(method.getName() + " : passed");
-           } 
-        catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }
-	
-	
-	
-    	
-	}
-	
-
+}

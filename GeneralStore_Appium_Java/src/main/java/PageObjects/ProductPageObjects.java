@@ -14,31 +14,21 @@ public class ProductPageObjects extends ActionsUtilitiy {
 
 	public ProductPageObjects(AndroidDriver driver) {
 		super(driver);
-		this.driver = driver;	
+		this.driver = driver;
 	}
-	
-	 // =================== 🔹 Locators ===================
-	
-	 private By addToCartButtonLocator(String productName) { 
-	        return AppiumBy.xpath("//android.widget.TextView[@text='" + productName + "']/parent::android.widget.LinearLayout//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productAddCart']"); 
-	    }
 
-	 
-	 
-	 
-                // =================== 🔹 WebElements ===================
-	 
-	 private WebElement addToCartButton(String productName) { return driver.findElement(addToCartButtonLocator(productName)); }
+	// =================== 🔹 Locators ===================
 
-	
-	
-	
-	
-	    // =================== 🔹 Actions ===================
-	
-	 public void addProductToCart(String productName) {
-	    	waitUntilElementClickable(addToCartButtonLocator(productName));
-	       click(addToCartButton(productName));
-	    }
+	private By addToCartButton(String productName) {
+		return AppiumBy.xpath("//android.widget.TextView[@text='" + productName
+				+ "']/parent::android.widget.LinearLayout//android.widget.TextView[@resource-id='com.androidsample.generalstore:id/productAddCart']");
+	}
+
+	// =================== 🔹 Actions ===================
+
+	public void addProductToCart(String productName) {
+		waitUntilElementClickable(addToCartButton(productName));
+		click(addToCartButton(productName));
+	}
 
 }

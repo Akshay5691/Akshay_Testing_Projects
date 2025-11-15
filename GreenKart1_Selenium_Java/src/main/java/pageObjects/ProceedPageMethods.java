@@ -13,64 +13,69 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ActionsUtilitiy;
 
-public class ProceedPageMethods  extends ActionsUtilitiy {
-	   WebDriver driver;
-	  
-    public ProceedPageMethods(WebDriver driver) {
-    	super(driver);
-    			this.driver = driver;
-       
-    }
-    
-       //=================== 🔹 Locators ===================
-    
-    	private By termsAndConditionsCheckBoxLocator() { return By.xpath("//input[@class='chkAgree']"); }
-    public By proceedButtonLocator() { return By.xpath("//button[text()='Proceed']"); }
-    private By countryDropdownLocator() { return By.xpath("//select[@style='width: 200px;']"); }
-    private By acceptTermsAndConditionsMessageLocator() { return By.xpath("//span//b[text()='Please accept Terms & Conditions - Required']"); }
+public class ProceedPageMethods extends ActionsUtilitiy {
+	WebDriver driver;
 
-    // =================== 🔹 WebElements ===================
+	public ProceedPageMethods(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 
-    private WebElement termsAndConditionsCheckBox() { return driver.findElement(termsAndConditionsCheckBoxLocator()); }
-    private WebElement proceedButton() { return driver.findElement(proceedButtonLocator()); }
-    private WebElement countryDropdown() { return driver.findElement(countryDropdownLocator()); }
-    private WebElement acceptTermsAndConditionsMessage() { return driver.findElement(acceptTermsAndConditionsMessageLocator()); }
+	}
 
-    // =================== 🔹 Action Methods ===================
+	// =================== 🔹 Locators ===================
 
-    public void clickOnTermsAndConditions() {
-        waitUntilElementClickable(termsAndConditionsCheckBoxLocator());
-        click(termsAndConditionsCheckBox());
-    }
+	private By termsAndConditionsCheckBox() {
+		return By.xpath("//input[@class='chkAgree']");
+	}
 
-    public void clickOnProceedButton() {
-        waitUntilElementClickable(proceedButtonLocator());
-        click(proceedButton());
-    }
+	public By proceedButton() {
+		return By.xpath("//button[text()='Proceed']");
+	}
 
-    public void selectCountryByVisibleText(String countryName) {
-        waitUntilElementVisible(countryDropdownLocator());
-        selectByVisibleText(countryDropdown(), countryName);
-      
-    }
+	private By countryDropdown() {
+		return By.xpath("//select[@style='width: 200px;']");
+	}
 
-    public String acceptTermsAndConditionsMessageText() {
-        waitUntilElementVisible(acceptTermsAndConditionsMessageLocator());
-        return getText(acceptTermsAndConditionsMessage());
-    }
+	private By acceptTermsAndConditionsMessage() {
+		return By.xpath("//span//b[text()='Please accept Terms & Conditions - Required']");
+	}
 
-    public WebElement proceedButtonElement() {
-        waitUntilElementVisible(proceedButtonLocator());
-        return proceedButton();
-    }
+	// =================== 🔹 Action Methods ===================
 
-    public WebElement termsAndConditionsCheckBoxElement() {
-        waitUntilElementVisible(termsAndConditionsCheckBoxLocator());
-        return termsAndConditionsCheckBox();
-    }
+	public void clickOnTermsAndConditions() {
+		waitUntilElementClickable(termsAndConditionsCheckBox());
+		click(termsAndConditionsCheckBox());
+	}
 
-    public String getproceedButton() {
-		
+	public void clickOnProceedButton() {
+		waitUntilElementClickable(proceedButton());
+		click(proceedButton());
+	}
+
+	public void selectCountryByVisibleText(String countryName) {
+		waitUntilElementVisible(countryDropdown());
+		selectByVisibleText(countryDropdown(), countryName);
+
+	}
+
+	public String acceptTermsAndConditionsMessageText() {
+		waitUntilElementVisible(acceptTermsAndConditionsMessage());
+		return getText(acceptTermsAndConditionsMessage());
+	}
+
+	public WebElement proceedButtonElement() {
+		waitUntilElementVisible(proceedButton());
+		return driver.findElement(proceedButton());
+	}
+
+	public WebElement termsAndConditionsCheckBoxElement() {
+		waitUntilElementVisible(termsAndConditionsCheckBox());
+		return driver.findElement(termsAndConditionsCheckBox());
+
+	}
+
+	public String getproceedButton() {
+
 		return getText(proceedButton());
 	}
 
