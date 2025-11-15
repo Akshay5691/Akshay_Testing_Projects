@@ -15,12 +15,21 @@ import utilities.ActionsUtilitiy;
 public class CartPageMethods extends ActionsUtilitiy {
 
 	WebDriver driver;
+	public static CartPageMethods instance;
 
 	// ✅ Constructor — initializes all elements
 	public CartPageMethods(WebDriver driver) {
 
 		super(driver);
 		this.driver = driver;
+	}
+	
+	public static CartPageMethods getCartPageObject(WebDriver driver) {
+		
+		if (instance == null) {
+	        instance = new CartPageMethods(driver);
+	    }
+	    return instance;
 	}
 	// =================== 🔹 Locators ===================
 

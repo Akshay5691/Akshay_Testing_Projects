@@ -13,12 +13,20 @@ import utilities.ActionsUtilitiy;
 
 public class HomePageMethods extends ActionsUtilitiy {
 
-	WebDriver driver;
+	 WebDriver driver;
+	 public static HomePageMethods instance;
 
 	public HomePageMethods(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
+	}
+	public static HomePageMethods getHomePageObject(WebDriver driver) {
+		
+		if (instance == null) {
+	        instance = new HomePageMethods(driver);
+	    }
+	    return instance;
 	}
 	
     // driver.findelement(By.Tagname("label")).above(element);

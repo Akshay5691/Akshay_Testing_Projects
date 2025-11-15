@@ -12,10 +12,10 @@ import pageObjects.ProceedPageMethods;
 
 public class PlaceOrderPageTestCases extends BasePage {
 
-	HomePageMethods homePage = new HomePageMethods(driver);
-	CartPageMethods cartPage = new CartPageMethods(driver);
-	PlaceOrderPageMethods placeOrderPage = new PlaceOrderPageMethods(driver);
-	ProceedPageMethods proceedPage = new ProceedPageMethods(driver);
+	HomePageMethods homePage =HomePageMethods.getHomePageObject(driver);
+	CartPageMethods cartPage = CartPageMethods.getCartPageObject(driver);
+	PlaceOrderPageMethods placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
+	ProceedPageMethods proceedPage =ProceedPageMethods.getProceedPageObject(driver);
 	String orange = "Orange";
 
 	@Test

@@ -19,16 +19,16 @@ import io.appium.java_client.AppiumBy;;
 
 public class HomePageTestCases extends BasePage {
 
-	HomePageObjects home = new HomePageObjects(driver);
+	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
 
 	@Test
 	public void verifyUserCanSelectCountryAndStartShopping(Method Method) {
 		try {
-			home.selectCountry("India");
-			home.enterName("Akshay");
-			home.selectGenderMale();
-			home.clickShopButton();
-
+			objHome.selectCountry("India");
+			objHome.enterName("Akshay");
+			objHome.selectGenderMale();
+			objHome.clickShopButton();
+            
 			System.out.println(Method.getName() + ": passed");
 		} catch (Exception e) {
 			System.out.println("❌ verifyUserCanSelectCountryAndStartShopping : failed");
@@ -39,10 +39,10 @@ public class HomePageTestCases extends BasePage {
 	@Test
 	public void verifyUserCannotProceedWithoutEnteringName(Method Method) {
 		try {
-			home.selectGenderMale();
-			home.clickShopButton();
+			objHome.selectGenderMale();
+			objHome.clickShopButton();
 
-			String actualAlertText = home.getAlertText();
+			String actualAlertText = objHome.getAlertText();
 			String alertText = "Please enter your name";
 			Assert.assertEquals(actualAlertText, alertText, "Alert text does not match expected value");
 			System.out.println(Method.getName() + " : passed");
@@ -56,10 +56,10 @@ public class HomePageTestCases extends BasePage {
 	public void verifyUserIsAbleToSelectOnlyOneGenderOption(Method Method) {
 		try {
 
-			home.enterName("Akshay");
-			home.selectGenderFemale();
+			objHome.enterName("Akshay");
+			objHome.selectGenderFemale();
 
-			boolean isMaleSelected = home.isGenderMaleSelected();
+			boolean isMaleSelected = objHome.isGenderMaleSelected();
 			Assert.assertFalse(isMaleSelected, "male gender option is selected");
 			System.out.println(Method.getName() + ": passed");
 		} catch (Exception e) {
@@ -71,10 +71,10 @@ public class HomePageTestCases extends BasePage {
 	@Test
 	public void verifyUserIsAbleToSelectGenderFemaleOption() {
 		try {
-			home.enterName("Akshay");
-			home.selectGenderFemale();
+			objHome.enterName("Akshay");
+			objHome.selectGenderFemale();
 
-			boolean isFeMaleSelected = home.isGenderFemaleSelected();
+			boolean isFeMaleSelected = objHome.isGenderFemaleSelected();
 			Assert.assertTrue(isFeMaleSelected, "Gender female option is not selected");
 			System.out.println("✅ verifyUserIsAbleToSelectGenderFemaleOption : passed");
 		} catch (Exception e) {

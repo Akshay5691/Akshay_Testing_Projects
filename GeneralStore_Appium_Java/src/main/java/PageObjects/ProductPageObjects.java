@@ -11,12 +11,21 @@ import utilityClasses.ActionsUtilitiy;
 public class ProductPageObjects extends ActionsUtilitiy {
 
 	AndroidDriver driver;
-
+   public static ProductPageObjects instance;
+   
 	public ProductPageObjects(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
 	}
 
+	public static ProductPageObjects getProductPageObject(AndroidDriver driver) {
+
+		if (instance == null) {
+			instance = new ProductPageObjects(driver);
+		}
+		return instance;
+	}
+	
 	// =================== 🔹 Locators ===================
 
 	private By addToCartButton(String productName) {

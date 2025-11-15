@@ -10,8 +10,8 @@ import pageObjects.HomePageMethods;;
 
 public class HomePageTestCases extends BasePage {
 
-	HomePageMethods homePage = new HomePageMethods(driver);
-	CartPageMethods cartPage = new CartPageMethods(driver);
+	HomePageMethods homePage = HomePageMethods.getHomePageObject(driver);
+	CartPageMethods cartPage = CartPageMethods.getCartPageObject(driver);
 	String orange = "Orange";
 
 	@Test
@@ -93,6 +93,7 @@ public class HomePageTestCases extends BasePage {
 			int expectedValue = 1;
 			Assert.assertEquals(defaultQuantity, expectedValue, "Default quantity decreased incorrectly");
 			System.out.println(method.getName() + " : passed");
+
 		} catch (Exception e) {
 			System.out.println(method.getName() + " : failed");
 			e.printStackTrace();
@@ -113,35 +114,29 @@ public class HomePageTestCases extends BasePage {
 			e.printStackTrace();
 		}
 	}
-	 /*
-    @Test
-    public void cartGrid(ITestResult method) {
-        try {
-            WebElement cartGrid = driver.findElement(By.xpath("//table[@id='productCartTables']"));
-            List<WebElement> cartTableRows = driver.findElements(By.xpath("//table[@id='productCartTables']//tbody//tr"));
-            int countOfRows = cartTableRows.size();
-
-            for (int i = 1; i < countOfRows; i++) {
-                List<WebElement> cartTableRowColumns = cartTableRows.get(i).findElements(By.xpath("td"));
-                String actualProductName = cartTableRowColumns.get(1).getText();
-                if (actualProductName.contains("Onion")) {
-                    String itemQty = cartTableRowColumns.get(2).getText();
-                    Assert.assertEquals(Integer.parseInt(itemQty), 3,
-                            "Added item quantity in search page and cart page doesn't match");
-                    break;
-                }
-            }
-
-            homePage.searchItemAndAddToCart("orange");
-            int actualItemNumber = homePage.getItemNumber();
-            int expectedValue = 1;
-            Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
-            System.out.println(method.getName() + " : passed");
-
-        } catch (Exception e) {
-            System.out.println(method.getName() + " : failed");
-            e.printStackTrace();
-        }
-    }*/
+	/*
+	 * @Test public void cartGrid(ITestResult method) { try { WebElement cartGrid =
+	 * driver.findElement(By.xpath("//table[@id='productCartTables']"));
+	 * List<WebElement> cartTableRows =
+	 * driver.findElements(By.xpath("//table[@id='productCartTables']//tbody//tr"));
+	 * int countOfRows = cartTableRows.size();
+	 * 
+	 * for (int i = 1; i < countOfRows; i++) { List<WebElement> cartTableRowColumns
+	 * = cartTableRows.get(i).findElements(By.xpath("td")); String actualProductName
+	 * = cartTableRowColumns.get(1).getText(); if
+	 * (actualProductName.contains("Onion")) { String itemQty =
+	 * cartTableRowColumns.get(2).getText();
+	 * Assert.assertEquals(Integer.parseInt(itemQty), 3,
+	 * "Added item quantity in search page and cart page doesn't match"); break; } }
+	 * 
+	 * homePage.searchItemAndAddToCart("orange"); int actualItemNumber =
+	 * homePage.getItemNumber(); int expectedValue = 1;
+	 * Assert.assertEquals(actualItemNumber, expectedValue,
+	 * "Item not added to cart"); System.out.println(method.getName() +
+	 * " : passed");
+	 * 
+	 * } catch (Exception e) { System.out.println(method.getName() + " : failed");
+	 * e.printStackTrace(); } }
+	 */
 
 }

@@ -8,8 +8,8 @@ import PageObjects.ProductPageObjects;
 
 public class CartPageTestCases extends BasePage {
 
-	HomePageObjects home = new HomePageObjects(driver);
-	ProductPageObjects productPage = new ProductPageObjects(driver);
+	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
+	ProductPageObjects objProduct =ProductPageObjects.getProductPageObject(driver);
 
 	@Test
 	public void verifyUserAbleToValidateCartTotalAmount() {
@@ -17,13 +17,13 @@ public class CartPageTestCases extends BasePage {
 			String productName1 = "Jordan 6 Rings";
 			String productName2 = "Air Jordan 1 Mid SE";
 
-			home.enterName("Akshay");
-			home.selectGenderMale();
-			home.clickShopButton();
-			home.ScrollToProduct(productName1);
-			productPage.addProductToCart(productName1);
-			home.ScrollToProduct(productName2);
-			productPage.addProductToCart(productName2);
+			objHome.enterName("Akshay");
+			objHome.selectGenderMale();
+			objHome.clickShopButton();
+			objHome.ScrollToProduct(productName1);
+			objProduct.addProductToCart(productName1);
+			objHome.ScrollToProduct(productName2);
+			objProduct.addProductToCart(productName2);
 
 			// double sumOfProducts=home.getSumOfProductsInCart();
 			// double totalAmountInCart=home.getTotalAmountInCart();

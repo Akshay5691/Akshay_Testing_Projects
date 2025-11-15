@@ -15,11 +15,20 @@ import utilities.ActionsUtilitiy;
 
 public class ProceedPageMethods extends ActionsUtilitiy {
 	WebDriver driver;
-
+     private static ProceedPageMethods instance;
+     
 	public ProceedPageMethods(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
+	}
+	
+	public static ProceedPageMethods getProceedPageObject(WebDriver driver) {
+
+		if (instance == null) {
+	        instance = new ProceedPageMethods(driver);
+	    }
+	    return instance;
 	}
 
 	// =================== 🔹 Locators ===================
@@ -68,6 +77,7 @@ public class ProceedPageMethods extends ActionsUtilitiy {
 	}
 
 	public WebElement termsAndConditionsCheckBoxElement() {
+
 		return getElement(termsAndConditionsCheckBox());
 	}
 

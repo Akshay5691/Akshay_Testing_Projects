@@ -9,19 +9,19 @@ import PageObjects.ProductPageObjects;
 
 public class ProductPageTestCases extends BasePage {
 
-	HomePageObjects home = new HomePageObjects(driver);
-	ProductPageObjects productPage = new ProductPageObjects(driver);
+	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
+	ProductPageObjects objProduct = ProductPageObjects.getProductPageObject(driver);
 
 	@Test
 	public void verifyUserAbleToAddProductToCart() {
 		try {
 			String productName = "Jordan 6 Rings";
 
-			home.enterName("Akshay");
-			home.clickShopButton();
-			home.ScrollToProduct(productName);
-			productPage.addProductToCart(productName);
-
+			objHome.enterName("Akshay");
+			objHome.clickShopButton();
+			objHome.ScrollToProduct(productName);
+			objProduct.addProductToCart(productName);
+            
 			System.out.println("✅ verifyUserCanSelectCountryAndStartShopping : passed");
 
 		} catch (Exception e) {

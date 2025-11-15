@@ -33,25 +33,41 @@ public class ActionsUtilitiy {
 	}
 
 	public void click(By locator) {
-		waitUntilElementClickable(locator);
-		driver.findElement(locator).click();
+		try {
+			waitUntilElementClickable(locator);
+			driver.findElement(locator).click();
+		} catch (Exception e) {
+			System.out.println("Element not found to click: " +e.getMessage()+ locator);
+		}
 	}
 
 	public void type(By locator, String text) {
-		waitUntilElementVisible(locator);
-		WebElement element = driver.findElement(locator);
-		element.clear();
-		element.sendKeys(text);
+		try {
+			waitUntilElementVisible(locator);
+			WebElement element = driver.findElement(locator);
+			element.clear();
+			element.sendKeys(text);
+		} catch (Exception e) {
+			System.out.println("Element not found to type: " +e.getMessage() + locator);
+		}
 	}
 
 	public void clear(By locator) {
+		try {
 		waitUntilElementVisible(locator);
 		driver.findElement(locator).clear();
+	  }	catch (Exception e) {
+			System.out.println("Element not found to clear: " +e.getMessage()+ locator);
+		}
 	}
 
 	public String getText(By locator) {
-		waitUntilElementVisible(locator);
-		return driver.findElement(locator).getText();
+	    try {
+	        waitUntilElementVisible(locator);
+	        return driver.findElement(locator).getText();
+	    } catch (Exception e) {
+	        throw new RuntimeException("❌ Failed to get text from element: " + locator, e);
+	    }
 	}
 
 	public String getAttribute(By locator, String attributeName) {

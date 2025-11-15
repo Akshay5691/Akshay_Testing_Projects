@@ -14,10 +14,10 @@ import pageObjects.PlaceOrderPageMethods;
 import pageObjects.ProceedPageMethods;
 
 public class ProceedPageTestCases extends BasePage {
-	HomePageMethods objHomePage = new HomePageMethods(driver);
-	CartPageMethods objCartPage = new CartPageMethods(driver);
-	PlaceOrderPageMethods objPlaceOrderPage = new PlaceOrderPageMethods(driver);
-	ProceedPageMethods objProceedPage = new ProceedPageMethods(driver);
+	HomePageMethods objHomePage = HomePageMethods.getHomePageObject(driver);
+	CartPageMethods objCartPage = CartPageMethods.getCartPageObject(driver);
+	PlaceOrderPageMethods objPlaceOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
+	ProceedPageMethods objProceedPage = ProceedPageMethods.getProceedPageObject(driver);
 
 	@Test
 	public void VerifyUserIsAbleToSelectCountry(Method method) {
@@ -61,7 +61,7 @@ public class ProceedPageTestCases extends BasePage {
 	@Test
 	public void VerifyUserIsAbleToProceedAndGetConformationMessage(Method method) {
 		try {
-			driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+
 			objHomePage.searchItemAndAddToCart("orange");
 			objHomePage.clickOnCartBag();
 			objCartPage.clickOnProceedToCheckoutButton();

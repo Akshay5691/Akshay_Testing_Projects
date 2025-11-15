@@ -16,12 +16,18 @@ import utilities.ActionsUtilitiy;
 public class PlaceOrderPageMethods extends ActionsUtilitiy {
 
 	WebDriver driver;
-
+    public static PlaceOrderPageMethods instance;
 	// ✅ Constructor
 	public PlaceOrderPageMethods(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
+	}
+	public static PlaceOrderPageMethods getPlaceOrderPageObject(WebDriver driver) {
+		if (instance == null) {
+	        instance = new PlaceOrderPageMethods(driver);
+	    }
+	    return instance;
 	}
 
 	// =================== 🔹 Locators ===================

@@ -9,14 +9,21 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class HomePageObjects extends ActionsUtilitiy {
 
-	
 	AndroidDriver driver;
 	WebDriverWait wait;
+	private static HomePageObjects instance;
 
 	public HomePageObjects(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
 
+	}
+	public static HomePageObjects getHomePageObject(AndroidDriver driver) {
+
+		  if (instance == null) {
+		        instance = new HomePageObjects(driver);
+		    }
+		    return instance;
 	}
 
 	// =================== Locators ===================
