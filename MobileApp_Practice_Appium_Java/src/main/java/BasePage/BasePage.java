@@ -40,90 +40,98 @@ public class BasePage {
    public static AppiumDriverLocalService service;
    
    
-	public BasePage() {
-   try {        
-	   
-	    prop =new Properties();
-	   FileInputStream file =new  FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties" );
-	   prop.load(file);   
-	   String actualDriver = prop.getProperty("browser");		
+   @SuppressWarnings("deprecation")
+@BeforeSuite(alwaysRun = true)
+   public void setupSuite() {
 
-   
-       service = new AppiumServiceBuilder()
-               .withAppiumJS(new File("C:\\Users\\Akshay\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
-               .withIPAddress("127.0.0.1")
-               .usingPort(4723)
-               .withTimeout(Duration.ofSeconds(60))
-               .build();
+       try {
 
-       service.start();
+           // Load Global Properties
+           prop = new Properties();
+           FileInputStream file = new FileInputStream(
+                   System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties");
+           prop.load(file);
 
-   
-       UiAutomator2Options options = new UiAutomator2Options();
-       options.setDeviceName("AkshayEmulator2");  
-       options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
-       options.setAutomationName("UiAutomator2");
-       options.setPlatformName("Android");
-       options.setAppPackage("com.androidsample.generalstore");
-       options.setAppActivity("com.androidsample.generalstore.SplashActivity");
-       options.setNewCommandTimeout(Duration.ofSeconds(60));
-       
-       
-       driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-       System.out.println("✅ App launched successfully using UiAutomator2!");
+           // Start Appium Server
+           service = new AppiumServiceBuilder()
+                   .withAppiumJS(new File("C:\\Users\\Akshay\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+                   .withIPAddress("127.0.0.1")
+                   .usingPort(4723)
+                   .withTimeout(Duration.ofSeconds(60))
+                   .build();
+
+           service.start();
+           System.out.println(" Appium Server Started");
+
+           // Appium Capabilities
+           UiAutomator2Options options = new UiAutomator2Options();
+           options.setDeviceName("AkshayEmulator2");
+           options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
+           options.setAutomationName("UiAutomator2");
+           options.setPlatformName("Android");
+           options.setAppPackage("com.androidsample.generalstore");
+           options.setAppActivity("com.androidsample.generalstore.SplashActivity");
+           options.setNewCommandTimeout(Duration.ofSeconds(60));
+
+           driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+           driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+           System.out.println(" Android App Launched Successfully");
+
+           // Extent Report Setup
+           String path = System.getProperty("user.dir") + "\\reports\\index.html";
+           ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+
+           reporter.config().setReportName("Appium Automation Results");
+           reporter.config().setDocumentTitle("Test Result");
+
+           extent = new ExtentReports();
+           extent.attachReporter(reporter);
+           extent.setSystemInfo("Tester", "Akshay");
+
+       } catch (Exception e) {
+           e.printStackTrace();
+           System.out.println(" Error in @BeforeSuite: " + e.getMessage());
+       }
    }
-		 catch (Exception e) {
-	            System.out.println("Error launching the browser: " + e.getMessage());
-	            e.printStackTrace();      
-		}
-	}
-   
-    
-    @BeforeSuite
-    public void setUpExtentReport() {	 
-    	 driver.manage().window().maximize();
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-         
-       String path = System.getProperty("user.dir") + "\\reports\\index.html";	
-  	   ExtentSparkReporter reporter = new ExtentSparkReporter(path);
-        reporter.config().setReportName("Web Automation Results");
-        reporter.config().setDocumentTitle("Test Result");
-        extent = new ExtentReports();
-        extent.attachReporter(reporter);
-        extent.setSystemInfo("Akshay", "Tester");     
-     }
-    
-    @AfterSuite
-    public void CloseTheBrowser(){
-  		// driver.quit();	
-    	 extent.flush();
-     }
-    
-    @BeforeMethod(alwaysRun =true)
-    public void createTestForExtentReport(Method method) {  	
-      
-    			
-        test = extent.createTest(method.getName());
-    }
-    
-    @AfterMethod(alwaysRun =true)
-    public void logResult(ITestResult result) throws IOException {	
-        if (result.getStatus() == ITestResult.FAILURE) {
-        	String path= screenshortUtility.takeScreenshort(result.getName());
-        	test.addScreenCaptureFromPath(path, result.getName());
-            test.fail(result.getThrowable());        
-        } else if (result.getStatus() == ITestResult.SUCCESS) {     	
-            test.pass("Test passed");
-        } else {
-            test.skip(result.getThrowable());
-        }
-        //driver.close();
-    }
-	
-	
-  
 
-  
+   @BeforeMethod(alwaysRun = true)
+   public void startTest(Method method) {
+       test = extent.createTest(method.getName());
+   }
+
+   @AfterMethod(alwaysRun = true)
+   public void captureResult(ITestResult result) throws IOException {
+
+       if (result.getStatus() == ITestResult.FAILURE) {
+           String path = screenshortUtility.takeScreenshort(result.getName());
+           test.addScreenCaptureFromPath(path);
+           test.fail(result.getThrowable());
+
+       } else if (result.getStatus() == ITestResult.SUCCESS) {
+           test.pass("Test Passed");
+
+       } else {
+           test.skip(result.getThrowable());
+       }
+   }
+
+   @AfterSuite(alwaysRun = true)
+   public void tearDownSuite() {
+
+       try {
+           if (driver != null) {
+               driver.quit();
+               System.out.println(" Android Driver Closed");
+           }
+
+           extent.flush();
+           System.out.println(" Extent Report Generated");
+
+       } catch (Exception e) {
+           System.out.println(" Error in @AfterSuite: " + e.getMessage());
+       }
+   }
    
 
 

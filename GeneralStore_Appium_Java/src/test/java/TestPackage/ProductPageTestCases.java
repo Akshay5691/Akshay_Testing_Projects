@@ -1,5 +1,9 @@
 package TestPackage;
 
+import java.lang.reflect.Method;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
@@ -9,11 +13,16 @@ import PageObjects.ProductPageObjects;
 
 public class ProductPageTestCases extends BasePage {
 
-	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
-	ProductPageObjects objProduct = ProductPageObjects.getProductPageObject(driver);
+	HomePageObjects objHome;
+	ProductPageObjects objProduct;
 
+	  @BeforeClass(alwaysRun = true)
+	    public void setUpPageObjects() {
+	        objHome = HomePageObjects.getHomePageObject(driver);
+	        objProduct = ProductPageObjects.getProductPageObject(driver);
+	    }
 	@Test
-	public void verifyUserAbleToAddProductToCart() {
+	public void verifyUserAbleToAddProductToCart(Method Method) {
 		try {
 			String productName = "Jordan 6 Rings";
 
@@ -22,10 +31,10 @@ public class ProductPageTestCases extends BasePage {
 			objHome.ScrollToProduct(productName);
 			objProduct.addProductToCart(productName);
             
-			System.out.println("✅ verifyUserCanSelectCountryAndStartShopping : passed");
+			System.out.println(Method.getName() + ": passed");
 
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserCanSelectCountryAndStartShopping : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 	}

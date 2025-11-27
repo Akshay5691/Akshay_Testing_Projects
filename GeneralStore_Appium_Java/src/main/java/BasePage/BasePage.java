@@ -40,47 +40,46 @@ public class BasePage {
    public static AppiumDriverLocalService service;
    
    
-	public BasePage() {
-   try {        
-	   
-	    prop =new Properties();
-	   FileInputStream file =new  FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties" );
-	   prop.load(file);   
-	  // String actualDriver = prop.getProperty("browser");		
-
-   
-       service = new AppiumServiceBuilder()
-               .withAppiumJS(new File("C:\\Users\\Akshay\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
-               .withIPAddress("127.0.0.1")
-               .usingPort(4723)
-               .withTimeout(Duration.ofSeconds(60))
-               .build();
-
-       service.start();
-
-   
-       UiAutomator2Options options = new UiAutomator2Options();
-       options.setDeviceName("AkshayEmulator2");  
-       options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
-       options.setAutomationName("UiAutomator2");
-       options.setPlatformName("Android");
-       options.setAppPackage("com.androidsample.generalstore");
-       options.setAppActivity("com.androidsample.generalstore.SplashActivity");
-       options.setNewCommandTimeout(Duration.ofSeconds(60));
-       
-       
-       driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-       System.out.println("✅ App launched successfully using UiAutomator2!");
-   }
-		 catch (Exception e) {
-	            System.out.println("Error launching the browser: " + e.getMessage());
-	            e.printStackTrace();      
-		}
-	}
-   
+	
     
     @BeforeSuite
-    public void setUpExtentReport() {	 
+    public void setUpExtentReport() {
+    	
+    	 try {        
+    		   
+    		 //   prop =new Properties();
+    		 //  FileInputStream file =new  FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties" );
+    		//   prop.load(file);   
+    		  // String actualDriver = prop.getProperty("browser");		
+
+    	   
+    	       service = new AppiumServiceBuilder()
+    	               .withAppiumJS(new File("C:\\Users\\Akshay\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+    	               .withIPAddress("127.0.0.1")
+    	               .usingPort(4723)
+    	               .withTimeout(Duration.ofSeconds(60))
+    	               .build();
+
+    	       service.start();
+
+    	   
+    	       UiAutomator2Options options = new UiAutomator2Options();
+    	       options.setDeviceName("AkshayEmulator2");  
+    	       options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
+    	       options.setAutomationName("UiAutomator2");
+    	       options.setPlatformName("Android");
+    	       options.setAppPackage("com.androidsample.generalstore");
+    	       options.setAppActivity("com.androidsample.generalstore.SplashActivity");
+    	       options.setNewCommandTimeout(Duration.ofSeconds(60));
+    	       
+    	       
+    	       driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+    	       System.out.println("App launched successfully using UiAutomator2!");
+    	   }
+    			 catch (Exception e) {
+    		            System.out.println("Error launching the browser: " + e.getMessage());
+    		            e.printStackTrace();      
+    			}
     
          driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
          
@@ -93,17 +92,14 @@ public class BasePage {
         extent.setSystemInfo("Akshay", "Tester");     
      }
     
-    @AfterSuite
-    public void CloseTheBrowser(){
-  		// driver.quit();	
-    	 extent.flush();
-     }
-    
+  
     @BeforeMethod(alwaysRun =true)
     public void createTestForExtentReport(Method method) {  	
       
-    			
         test = extent.createTest(method.getName());
+        String appPackage = "com.androidsample.generalstore";
+        driver.terminateApp(appPackage);      
+        driver.activateApp(appPackage);
     }
     
     @AfterMethod(alwaysRun =true)
@@ -112,19 +108,24 @@ public class BasePage {
         	String path= screenshortUtility.takeScreenshort(result.getName());
         	test.addScreenCaptureFromPath(path, result.getName());
             test.fail(result.getThrowable());        
-        } else if (result.getStatus() == ITestResult.SUCCESS) {     	
-            test.pass("Test passed");
-        } else {
-            test.skip(result.getThrowable());
         }
-        //driver.close();
+        else if (result.getStatus() == ITestResult.SUCCESS) {
+			test.pass("Test Passed");
+		} else {
+			test.skip(result.getThrowable());
+		}
+       
     }
 	
 	
-  
+    @AfterSuite
+    public void CloseTheBrowser(){
+  		 driver.quit();	
+    	 extent.flush();
+     }
+    
 
-  
-   
+    
 
 
 

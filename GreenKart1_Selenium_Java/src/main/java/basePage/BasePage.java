@@ -23,90 +23,87 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import utilities.screenshortUtility;
 
 public class BasePage {
-   public static ExtentTest test ;  
-   public static WebDriver driver;
-   public static Properties prop;
-   public static ExtentReports extent;
-   
-   
-	public BasePage() {
-   try {        
-	   
-	    prop =new Properties();
-	   FileInputStream file =new  FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties" );
-	   prop.load(file);   
-	   String actualDriver = prop.getProperty("browser");		
-			switch (actualDriver.toLowerCase()) { 
-         case "chrome":      
-             driver = new ChromeDriver();
-             break;
-         case "edge":      
-             driver = new EdgeDriver();
-             break;
-         case "firefox":           
-             driver = new FirefoxDriver();
-             break;
-         case "safari":
-             driver = new SafariDriver();  
-             break;
-         default:
-             throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
-     }
+	public static ExtentTest test;
+	public static WebDriver driver;
+	public static Properties prop;
+	public static ExtentReports extent;
+
+	@BeforeSuite
+	public void setUpExtentReport() {
+		String path = System.getProperty("user.dir") + "\\reports\\index.html";
+		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+
+		reporter.config().setReportName("Web Automation Results");
+		reporter.config().setDocumentTitle("Test Result");
+
+		extent = new ExtentReports();
+		extent.attachReporter(reporter);
+		extent.setSystemInfo("Tester", "Akshay");
+		
+		
+
+		try {
+			prop = new Properties();
+			FileInputStream file = new FileInputStream(
+
+					System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties");
+
+			prop.load(file);
+			String actualDriver = prop.getProperty("browser");
+
+			switch (actualDriver.toLowerCase()) {
+			case "chrome":
+				driver = new ChromeDriver();
+				break;
+			case "edge":
+				driver = new EdgeDriver();
+				break;
+			case "firefox":
+				driver = new FirefoxDriver();
+				break;
+			default:
+				throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+			}
+
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		 catch (Exception e) {
-	            System.out.println("Error launching the browser: " + e.getMessage());
-	            e.printStackTrace();       // This will print the exact error details in the console
-        }		
+
 	}
-   
-    
-    @BeforeSuite
-    public void setUpExtentReport() {	 
-    	 driver.manage().window().maximize();
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-         
-       String path = System.getProperty("user.dir") + "\\reports\\index.html";	
-  	   ExtentSparkReporter reporter = new ExtentSparkReporter(path);
-        reporter.config().setReportName("Web Automation Results");
-        reporter.config().setDocumentTitle("Test Result");
-        extent = new ExtentReports();
-        extent.attachReporter(reporter);
-        extent.setSystemInfo("Akshay", "Tester");     
-     }
-    
-    @AfterSuite
-    public void CloseTheBrowser(){
-  		// driver.quit();	
-    	 extent.flush();
-     }
-    
-    @BeforeMethod(alwaysRun =true)
-    public void createTestForExtentReport(Method method) {  	
-         driver.manage().deleteAllCookies();
-    	 driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");		
-        test = extent.createTest(method.getName());
-    }
-    
-    @AfterMethod(alwaysRun =true)
-    public void logResult(ITestResult result) throws IOException {	
-        if (result.getStatus() == ITestResult.FAILURE) {
-        	String path= screenshortUtility.takeScreenshort(result.getName());
-        	test.addScreenCaptureFromPath(path, result.getName());
-            test.fail(result.getThrowable());        
-        } else if (result.getStatus() == ITestResult.SUCCESS) {     	
-            test.pass("Test passed");
-        } else {
-            test.skip(result.getThrowable());
-        }
-        driver.close();
-    }
-	
-	
-  
 
-  
-   
+	@BeforeMethod(alwaysRun = true)
+	public void launchBrowser(Method method) {
+		test = extent.createTest(method.getName());
+		
+		driver.manage().deleteAllCookies();
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		driver.navigate().refresh();
 
+	}
 
+	@AfterMethod(alwaysRun = true)
+	public void closeBrowser(ITestResult result) throws IOException {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			String path = screenshortUtility.takeScreenshort(result.getName());
+			test.addScreenCaptureFromPath(path);
+			test.fail(result.getThrowable());
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			test.pass("Test Passed");
+		} else {
+			test.skip(result.getThrowable());
+		}
+
+	}
+
+	@AfterSuite
+	public void flushReport() {
+		driver.quit();
+		extent.flush();
+	}
 
 }

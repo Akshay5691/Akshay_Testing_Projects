@@ -1,5 +1,7 @@
 package TestPages;
 
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import basePage.BasePage;
@@ -14,10 +16,17 @@ import pageObjects.ProceedPageMethods;
 
 public class CartPageTestCases extends BasePage {
 
-	HomePageMethods homePage = HomePageMethods.getHomePageObject(driver);
-	CartPageMethods cartPage = CartPageMethods.getCartPageObject(driver);
-	PlaceOrderPageMethods placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
-	ProceedPageMethods proceedPage = ProceedPageMethods.getProceedPageObject(driver);
+	
+	HomePageMethods homePage;
+	CartPageMethods cartPage;
+	PlaceOrderPageMethods placeOrderPage;
+	
+	@BeforeClass(alwaysRun = true)
+	public void pageObjectInit() {
+		homePage = HomePageMethods.getHomePageObject(driver);
+		cartPage = CartPageMethods.getCartPageObject(driver);
+		placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
+	}
 	String orange = "Orange";
 
 	@Test

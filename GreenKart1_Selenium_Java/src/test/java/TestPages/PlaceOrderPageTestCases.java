@@ -2,6 +2,7 @@ package TestPages;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import basePage.BasePage;
@@ -12,10 +13,23 @@ import pageObjects.ProceedPageMethods;
 
 public class PlaceOrderPageTestCases extends BasePage {
 
-	HomePageMethods homePage =HomePageMethods.getHomePageObject(driver);
-	CartPageMethods cartPage = CartPageMethods.getCartPageObject(driver);
-	PlaceOrderPageMethods placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
-	ProceedPageMethods proceedPage =ProceedPageMethods.getProceedPageObject(driver);
+	HomePageMethods homePage;
+	CartPageMethods cartPage;
+	PlaceOrderPageMethods placeOrderPage;
+	ProceedPageMethods proceedPage;
+	
+	
+    @BeforeMethod(alwaysRun = true)
+    	public void pageObjectInit() {
+    			homePage = HomePageMethods.getHomePageObject(driver);
+		cartPage = CartPageMethods.getCartPageObject(driver);
+		placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
+		proceedPage = ProceedPageMethods.getProceedPageObject(driver);
+    }
+	
+	
+	
+	
 	String orange = "Orange";
 
 	@Test

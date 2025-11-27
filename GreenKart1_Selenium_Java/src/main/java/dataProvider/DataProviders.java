@@ -9,12 +9,36 @@ import utilities.ExcelUtility;
 public class DataProviders {
 
 	
+	 @DataProvider(name = "ProductNamesFromDataProvider")
+	    public Object[][] productsName() {
+	        return new Object[][]{
+	                {"Apple"},
+	                {"Banana"},
+	                {"Grapes"},
+	                {"Orange"},
+	                {"Carrot"},
+	                {"Potato"},
+	                {"Tomato"},               
+	        };
+	    }	
 	
-	 @DataProvider(name = "excelData")
-	    public Object[][] getDataFromExcel() throws IOException {
+	 
+	 
+	 @DataProvider(name = "productsNamesFromExcel")
+	    public Object[][] getProductsNamesFromExcel() throws IOException {
 	        // Dynamic file path and sheet name
-	        String filePath = System.getProperty("user.dir") + "/TestDataFiles/MobileNames.xlsx";
-	        String sheetName = "iphones";
+	        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\ProductsData.xlsx";
+	        String sheetName = "ProductsNames";
 	        return ExcelUtility.getExcelData(filePath, sheetName);
 	    }
+	 
+	 @DataProvider(name = "productNameFromExcel")
+	    public Object[][] getProductNameFromExcel() throws IOException {
+	        // Dynamic file path and sheet name
+	        String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\ProductsData.xlsx";
+	        String sheetName = "ProductName";
+	        return ExcelUtility.getExcelData(filePath, sheetName);
+	    }
+	 
+	 
 }

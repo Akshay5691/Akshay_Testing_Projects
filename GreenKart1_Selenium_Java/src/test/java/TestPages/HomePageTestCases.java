@@ -1,7 +1,12 @@
 package TestPages;
 
 import java.lang.reflect.Method;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import basePage.BasePage;
@@ -10,22 +15,33 @@ import pageObjects.HomePageMethods;;
 
 public class HomePageTestCases extends BasePage {
 
-	HomePageMethods homePage = HomePageMethods.getHomePageObject(driver);
-	CartPageMethods cartPage = CartPageMethods.getCartPageObject(driver);
-	String orange = "Orange";
+	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
-	@Test
-	public void verifyUserIsAbleToIncreaseItemNumber(Method method) {
+	HomePageMethods homePage;
+	CartPageMethods cartPage;
+
+	@BeforeClass(alwaysRun = true)
+	public void pageObjectInit() {
+		homePage = HomePageMethods.getHomePageObject(driver);
+		cartPage = CartPageMethods.getCartPageObject(driver);
+
+	}
+
+	String orange = "Orange";
+	String apple = "Apple";
+
+	@Test(dataProvider = "productsNamesFromExcel", dataProviderClass = dataProvider.DataProviders.class)
+	public void verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(Method method, String productName) {
 		try {
-			homePage.searchItemAndAddToCart(orange);
+			homePage.searchItemAndAddToCart(productName);
 
 			int actualItemNumber = homePage.getItemNumberValue();
 			int expectedValue = 1;
 			Assert.assertEquals(actualItemNumber, expectedValue, "Item not added to cart");
-			System.out.println(method.getName() + " : passed");
+			log.info(method.getName() + " : passed");
 
 		} catch (Exception e) {
-			System.out.println(method.getName() + " : failed");
+			log.error(method.getName() + " : failed");
 			e.printStackTrace();
 		}
 	}
@@ -33,16 +49,16 @@ public class HomePageTestCases extends BasePage {
 	@Test
 	public void verifyItemNumberIsIncreasingWhileAddingMultipleItems(Method method) {
 		try {
-			homePage.searchItemAndAddToCart("Apple");
 			homePage.searchItemAndAddToCart(orange);
+			homePage.searchItemAndAddToCart(apple);
 
 			int actualItemNumber = homePage.getItemNumberValue();
 			int expectedValue = 2;
 			Assert.assertEquals(actualItemNumber, expectedValue, "Multiple items are not added to cart");
-			System.out.println(method.getName() + " : passed");
+			log.info(method.getName() + " : passed");
 
 		} catch (Exception e) {
-			System.out.println(method.getName() + " : failed");
+			log.error(method.getName() + " : failed");
 			e.printStackTrace();
 		}
 	}
@@ -68,7 +84,7 @@ public class HomePageTestCases extends BasePage {
 	@Test
 	public void verifyUserIsAbleToIncreaseCartPrice(Method method) {
 		try {
-			homePage.searchItemAndAddToCart("Apple");
+			homePage.searchItemAndAddToCart(apple);
 			homePage.clickOnCartBag();
 
 			int itemPrice = homePage.getItemPriceValue();

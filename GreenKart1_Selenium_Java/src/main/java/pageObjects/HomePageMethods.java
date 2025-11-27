@@ -85,10 +85,7 @@ public class HomePageMethods extends ActionsUtilitiy {
 		click(searchButton());
 	}
 
-	public void searchItemAndAddToCart(String itemName) {
-		searchItem(itemName);
-		clickOnAddToCart(itemName);
-	}
+	
 
 	public void clickOnCartBag() {
 		click(cartBagIcon());
@@ -96,6 +93,10 @@ public class HomePageMethods extends ActionsUtilitiy {
 
 	public void clickOnAddToCart(String product) {
 		click(addToCartButton(product));
+	}
+	public void searchItemAndAddToCart(String itemName) {
+		searchItem(itemName);
+		clickOnAddToCart(itemName);
 	}
 
 	public void clickMinusButtonAddToCart() {

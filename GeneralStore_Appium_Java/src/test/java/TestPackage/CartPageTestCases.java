@@ -1,5 +1,8 @@
 package TestPackage;
 
+import java.lang.reflect.Method;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
@@ -8,11 +11,19 @@ import PageObjects.ProductPageObjects;
 
 public class CartPageTestCases extends BasePage {
 
-	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
-	ProductPageObjects objProduct =ProductPageObjects.getProductPageObject(driver);
-
-	@Test
-	public void verifyUserAbleToValidateCartTotalAmount() {
+	
+	HomePageObjects objHome;
+	ProductPageObjects objProduct;
+	
+	
+	  @BeforeMethod(alwaysRun = true)
+	    public void setUpPageObjects() {
+	        objHome = HomePageObjects.getHomePageObject(driver);
+	        objProduct = ProductPageObjects.getProductPageObject(driver);
+	    }
+	
+	
+	public void verifyUserAbleToValidateCartTotalAmount(Method Method) {
 		try {
 			String productName1 = "Jordan 6 Rings";
 			String productName2 = "Air Jordan 1 Mid SE";
@@ -34,7 +45,7 @@ public class CartPageTestCases extends BasePage {
 			System.out.println("✅ verifyUserAbleToValidateCartTotalAmount : passed");
 
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserAbleToValidateCartTotalAmount : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 	}

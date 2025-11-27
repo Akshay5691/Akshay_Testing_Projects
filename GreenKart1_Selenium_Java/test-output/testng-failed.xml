@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPages.PlaceOrderPageTestCases">
+      <class name="TestPages.HomePageTestCases">
         <methods>
           <include name="setUpExtentReport"/>
-          <include name="createTestForExtentReport"/>
-          <include name="verifyUserIsAbleToGetDiscountWithValidPromoCode"/>
-          <include name="CloseTheBrowser"/>
-          <include name="logResult"/>
+          <include name="flushReport"/>
+          <include name="pageObjectInit"/>
+          <include name="closeBrowser"/>
+          <include name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" invocation-numbers="2"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- TestPages.PlaceOrderPageTestCases -->
+      </class> <!-- TestPages.HomePageTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

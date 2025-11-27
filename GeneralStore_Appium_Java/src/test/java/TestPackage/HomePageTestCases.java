@@ -11,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
@@ -19,7 +21,16 @@ import io.appium.java_client.AppiumBy;;
 
 public class HomePageTestCases extends BasePage {
 
-	HomePageObjects objHome = HomePageObjects.getHomePageObject(driver);
+	HomePageObjects objHome;
+	
+	
+	  @BeforeClass(alwaysRun = true)
+	    public void setUpHomePageObjects() {
+	        objHome = HomePageObjects.getHomePageObject(driver);
+	    }
+
+	
+		
 
 	@Test
 	public void verifyUserCanSelectCountryAndStartShopping(Method Method) {
@@ -31,7 +42,7 @@ public class HomePageTestCases extends BasePage {
             
 			System.out.println(Method.getName() + ": passed");
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserCanSelectCountryAndStartShopping : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 	}
@@ -47,7 +58,7 @@ public class HomePageTestCases extends BasePage {
 			Assert.assertEquals(actualAlertText, alertText, "Alert text does not match expected value");
 			System.out.println(Method.getName() + " : passed");
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserCannotProceedWithoutEnteringName : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 	}
@@ -63,22 +74,22 @@ public class HomePageTestCases extends BasePage {
 			Assert.assertFalse(isMaleSelected, "male gender option is selected");
 			System.out.println(Method.getName() + ": passed");
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserIsAbleToSelectOnlyOneGenderOption : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void verifyUserIsAbleToSelectGenderFemaleOption() {
+	public void verifyUserIsAbleToSelectGenderFemaleOption(Method Method) {
 		try {
 			objHome.enterName("Akshay");
 			objHome.selectGenderFemale();
 
 			boolean isFeMaleSelected = objHome.isGenderFemaleSelected();
 			Assert.assertTrue(isFeMaleSelected, "Gender female option is not selected");
-			System.out.println("✅ verifyUserIsAbleToSelectGenderFemaleOption : passed");
+			System.out.println(Method.getName() + ": passed");
 		} catch (Exception e) {
-			System.out.println("❌ verifyUserIsAbleToSelectOnlyOneGenderOption : failed");
+			System.out.println(Method.getName() + ": failed");
 			e.printStackTrace();
 		}
 

@@ -168,7 +168,6 @@ public class ActionsUtilitiy {
 
 	public void scrollBy(int x, int y) throws InterruptedException {
 		// Scroll does not require wait, but adding slight wait for stability
-		Thread.sleep(500); // optional
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
 	}
 
