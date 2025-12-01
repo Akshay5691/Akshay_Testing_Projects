@@ -3,15 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestPackage.HomePageTestCases">
+      <class name="TestPackage.CartPageTestCases">
         <methods>
           <include name="logResult"/>
           <include name="CloseTheBrowser"/>
+          <include name="setUpPageObjects"/>
           <include name="createTestForExtentReport"/>
-          <include name="verifyUserIsAbleToSelectGenderFemaleOption"/>
           <include name="setUpExtentReport"/>
+          <include name="verifyUserAbleToAcceptTermsAndConditions" invocation-numbers="0"/>
         </methods>
-      </class> <!-- TestPackage.HomePageTestCases -->
+      </class> <!-- TestPackage.CartPageTestCases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

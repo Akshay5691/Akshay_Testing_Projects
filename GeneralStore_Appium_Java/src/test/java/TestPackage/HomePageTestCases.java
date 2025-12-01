@@ -1,48 +1,57 @@
 package TestPackage;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
 import PageObjects.HomePageObjects;
-import io.appium.java_client.AppiumBy;;
+import PageObjects.ProductPageObjects;
+
 
 public class HomePageTestCases extends BasePage {
 
 	HomePageObjects objHome;
+	ProductPageObjects objProduct;
 	
+	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
+
 	
 	  @BeforeClass(alwaysRun = true)
 	    public void setUpHomePageObjects() {
 	        objHome = HomePageObjects.getHomePageObject(driver);
+	        objProduct = ProductPageObjects.getProductPageObject(driver);
 	    }
-
-	
-		
-
-	@Test
-	public void verifyUserCanSelectCountryAndStartShopping(Method Method) {
+     @Test
+	public void verifyUserIsAbleToEnterName(Method Method) {
 		try {
-			objHome.selectCountry("India");
-			objHome.enterName("Akshay");
-			objHome.selectGenderMale();
-			objHome.clickShopButton();
-            
-			System.out.println(Method.getName() + ": passed");
+			String name = "Akshay";
+			objHome.enterName(name);
+
+			String actualName = objHome.getEnteredName();
+			Assert.assertEquals(actualName, name, "Entered name does not match expected value");
+			log.info(Method.getName() + " : passed");
 		} catch (Exception e) {
-			System.out.println(Method.getName() + ": failed");
+			log.error(Method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+		
+    	@Test
+	public void verifyUserIsAbleToSelectCountryDropdown(Method Method) {
+		try {
+			String country = "India";
+			objHome.selectCountry(country);
+
+			String actualSelectedCountry = objHome.getSelectedCountry();
+			Assert.assertEquals(actualSelectedCountry, country, "Selected country does not match expected value");
+			log.info(Method.getName() + " : passed");
+		} catch (Exception e) {
+			log.error(Method.getName() + " : failed");
 			e.printStackTrace();
 		}
 	}
@@ -56,9 +65,9 @@ public class HomePageTestCases extends BasePage {
 			String actualAlertText = objHome.getAlertText();
 			String alertText = "Please enter your name";
 			Assert.assertEquals(actualAlertText, alertText, "Alert text does not match expected value");
-			System.out.println(Method.getName() + " : passed");
+			log.info(Method.getName() + " : passed");
 		} catch (Exception e) {
-			System.out.println(Method.getName() + ": failed");
+			log.error(Method.getName() + " : failed");
 			e.printStackTrace();
 		}
 	}
@@ -72,9 +81,9 @@ public class HomePageTestCases extends BasePage {
 
 			boolean isMaleSelected = objHome.isGenderMaleSelected();
 			Assert.assertFalse(isMaleSelected, "male gender option is selected");
-			System.out.println(Method.getName() + ": passed");
+			log.info(Method.getName() + " : passed");
 		} catch (Exception e) {
-			System.out.println(Method.getName() + ": failed");
+			log.error(Method.getName() + " : failed");
 			e.printStackTrace();
 		}
 	}
@@ -87,11 +96,29 @@ public class HomePageTestCases extends BasePage {
 
 			boolean isFeMaleSelected = objHome.isGenderFemaleSelected();
 			Assert.assertTrue(isFeMaleSelected, "Gender female option is not selected");
-			System.out.println(Method.getName() + ": passed");
+			log.info(Method.getName() + " : passed");
 		} catch (Exception e) {
-			System.out.println(Method.getName() + ": failed");
+			log.error(Method.getName() + " : failed");
 			e.printStackTrace();
 		}
 
 	}
+	@Test
+	public void verifyUserCanSelectCountryAndStartShopping(Method Method) {
+		try {		
+			objHome.enterName("Akshay");
+			objHome.selectGenderMale();
+			objHome.clickShopButton();
+           	String actualTitle = objProduct.getProductPageTitle();
+           	Assert.assertEquals(actualTitle, "Products", "User is not navigated to Products page");
+			log.info(Method.getName() + " : passed");
+		} catch (Exception e) {
+			log.error(Method.getName() + " : failed");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 }

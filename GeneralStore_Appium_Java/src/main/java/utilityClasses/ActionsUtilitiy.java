@@ -31,6 +31,11 @@ public class ActionsUtilitiy {
 
 //  Basic Actions	
 
+	public WebElement element(By locator) {
+		return driver.findElement(locator);
+	}
+	
+	
 	public void click(By locator) {
 		driver.findElement(locator).click();
 	}

@@ -70,7 +70,19 @@ public class HomePageObjects extends ActionsUtilitiy {
 		waitUntilElementVisible(nameField());
 		type(nameField(), name);
 	}
+	
+	public String getEnteredName() {
+		waitUntilElementVisible(nameField());
+		String enteredName = getText(nameField());
+		return enteredName;
+	}
 
+	public String getSelectedCountry() {
+		waitUntilElementVisible(countryDropdown());
+		String selectedCountry = getText(countryDropdown());
+		return selectedCountry;
+	}
+	
 	public void selectGenderMale() {
 		waitUntilElementClickable(genderRadioMale());
 		click(genderRadioMale());

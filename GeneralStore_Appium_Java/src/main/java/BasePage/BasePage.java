@@ -94,11 +94,11 @@ public class BasePage {
     
   
     @BeforeMethod(alwaysRun =true)
-    public void createTestForExtentReport(Method method) {  	
-      
-        test = extent.createTest(method.getName());
-        String appPackage = "com.androidsample.generalstore";
-        driver.terminateApp(appPackage);      
+    public void createTestForExtentReport(Method method) {  
+    	
+    	  String appPackage = "com.androidsample.generalstore"; 
+    	driver.terminateApp(appPackage); 
+        test = extent.createTest(method.getName());             
         driver.activateApp(appPackage);
     }
     
