@@ -7,17 +7,17 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import basePage.BasePage;
-import pageObjects.CartPageMethods;
-import pageObjects.HomePageMethods;
-import pageObjects.PlaceOrderPageMethods;
-import pageObjects.ProceedPageMethods;
+import base.BasePage;
+import pageObjects.CartPage;
+import pageObjects.HomePage;
+import pageObjects.PlaceOrderPage;
+import pageObjects.ProceedPage;
 
 public class ProceedPageTestCases extends BasePage {
-	HomePageMethods objHomePage = HomePageMethods.getHomePageObject(driver);
-	CartPageMethods objCartPage = CartPageMethods.getCartPageObject(driver);
-	PlaceOrderPageMethods objPlaceOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
-	ProceedPageMethods objProceedPage = ProceedPageMethods.getProceedPageObject(driver);
+	HomePage objHomePage = HomePage.getHomePageObject(driver);
+	CartPage objCartPage = CartPage.getCartPageObject(driver);
+	PlaceOrderPage objPlaceOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
+	ProceedPage objProceedPage = ProceedPage.getProceedPageObject(driver);
 
 	@Test
 	public void VerifyUserIsAbleToSelectCountry(Method method) {

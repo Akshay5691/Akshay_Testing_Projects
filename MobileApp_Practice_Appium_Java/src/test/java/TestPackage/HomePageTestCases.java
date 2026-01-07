@@ -23,13 +23,27 @@ public class HomePageTestCases extends BasePage {
 
 	HomePageObjects ObjHome =new HomePageObjects(driver);
 	
-	@Test(priority=1)
+	@Test
 	public void verifyUserIsAbleToSearchItemWithValidData(Method method) throws IOException 
 	{	
 		
 		
-		
-		
+		 
+  	  List <String> list =new ArrayList <String> ();
+  	  
+  	  list.add("Hyderabad");
+  	  list.add("Bangalore");
+  	  list.add("Chennai");
+  	  list.add("Pune");
+  	   System.out.println(list);
+  	  
+  	   
+  	   
+  	   
+  	   
+  	   
+  	   
+  	   
 		
 		
 	}

@@ -1,27 +1,24 @@
 package PageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import BasePage.BasePage;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import utilityClasses.ActionsUtilitiy;
 
-public class ProductPageObjects extends ActionsUtilitiy {
+public class ProductPage extends ActionsUtilitiy {
 
 	AndroidDriver driver;
-   public static ProductPageObjects instance;
+   public static ProductPage instance;
    
-	public ProductPageObjects(AndroidDriver driver) {
+	public ProductPage(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
 	}
 
-	public static ProductPageObjects getProductPageObject(AndroidDriver driver) {
+	public static ProductPage getProductPageObject(AndroidDriver driver) {
 
 		if (instance == null) {
-			instance = new ProductPageObjects(driver);
+			instance = new ProductPage(driver);
 		}
 		return instance;
 	}

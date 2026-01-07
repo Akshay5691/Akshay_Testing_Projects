@@ -1,137 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="5" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-27T16:37:11 IST" name="Default suite" finished-at="2025-10-27T16:37:28 IST" duration-ms="17653">
+  <suite started-at="2025-12-23T01:15:01 IST" name="Default suite" finished-at="2025-12-23T01:15:01 IST" duration-ms="55">
     <groups>
-      <group name="sanity">
-        <method signature="HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594]" name="verifyUserIsAbleToSearchItemsWithValidData" class="TestPackage.HomePageTestCases"/>
-      </group> <!-- sanity -->
     </groups>
-    <test started-at="2025-10-27T16:37:11 IST" name="Default test" finished-at="2025-10-27T16:37:28 IST" duration-ms="17653">
+    <test started-at="2025-12-23T01:15:01 IST" name="Default test" finished-at="2025-12-23T01:15:01 IST" duration-ms="55">
       <class name="TestPackage.HomePageTestCases">
-        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:10 IST" name="setUpExtentReport" finished-at="2025-10-27T16:37:11 IST" duration-ms="976" status="PASS">
+        <test-method is-config="true" signature="setupSuite()[pri:0, instance:TestPackage.HomePageTestCases@45ca843]" started-at="2025-12-23T01:14:54 IST" name="setupSuite" finished-at="2025-12-23T01:15:01 IST" duration-ms="6683" status="FAIL">
+          <exception class="java.lang.NoSuchMethodError">
+            <message>
+              <![CDATA['void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NoSuchMethodError: 'void org.openqa.selenium.remote.http.ClientConfig.<init>(java.net.URI, java.time.Duration, java.time.Duration, org.openqa.selenium.remote.http.Filter, java.net.Proxy, org.openqa.selenium.Credentials)'
+at io.appium.java_client.AppiumClientConfig.<init>(AppiumClientConfig.java:62)
+at io.appium.java_client.AppiumClientConfig.defaultConfig(AppiumClientConfig.java:79)
+at io.appium.java_client.remote.AppiumCommandExecutor.<init>(AppiumCommandExecutor.java:109)
+at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:101)
+at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:113)
+at BasePage.BasePage.setupSuite(BasePage.java:76)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:358)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NoSuchMethodError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUpExtentReport -->
-        <test-method is-config="true" signature="createTestForExtentReport(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:13 IST" name="createTestForExtentReport" finished-at="2025-10-27T16:37:15 IST" duration-ms="1303" status="PASS">
+        </test-method> <!-- setupSuite -->
+        <test-method is-config="true" signature="startTest(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@45ca843]" started-at="2025-12-23T01:15:01 IST" name="startTest" finished-at="2025-12-23T01:15:01 IST" duration-ms="3" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
+                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemWithValidData(java.lang.reflect.Method) throws java.io.IOException]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "com.aventstack.extentreports.ExtentReports.createTest(String)" because "BasePage.BasePage.extent" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.createTest(String)" because "BasePage.BasePage.extent" is null
+at BasePage.BasePage.startTest(BasePage.java:100)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:836)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:601)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createTestForExtentReport -->
-        <test-method signature="verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:15 IST" name="verifyUserIsAbleToSearchItemsWithValidData" data-provider="excelData" finished-at="2025-10-27T16:37:15 IST" duration-ms="927" status="PASS">
+        </test-method> <!-- startTest -->
+        <test-method signature="verifyUserIsAbleToSearchItemWithValidData(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@45ca843]" started-at="2025-12-23T01:15:01 IST" name="verifyUserIsAbleToSearchItemWithValidData" finished-at="2025-12-23T01:15:01 IST" duration-ms="0" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[iPhone]]>
+                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemWithValidData(java.lang.reflect.Method) throws java.io.IOException]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "com.aventstack.extentreports.ExtentReports.createTest(String)" because "BasePage.BasePage.extent" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.createTest(String)" because "BasePage.BasePage.extent" is null
+at BasePage.BasePage.startTest(BasePage.java:100)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:836)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:601)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserIsAbleToSearchItemsWithValidData -->
-        <test-method is-config="true" signature="logResult(org.testng.ITestResult)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:15 IST" name="logResult" finished-at="2025-10-27T16:37:15 IST" duration-ms="13" status="PASS">
+        </test-method> <!-- verifyUserIsAbleToSearchItemWithValidData -->
+        <test-method is-config="true" signature="captureResult(org.testng.ITestResult)[pri:0, instance:TestPackage.HomePageTestCases@45ca843]" started-at="2025-12-23T01:15:01 IST" name="captureResult" finished-at="2025-12-23T01:15:01 IST" duration-ms="3" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyUserIsAbleToSearchItemsWithValidData status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594] output={null}]]]>
+                <![CDATA[[TestResult name=verifyUserIsAbleToSearchItemWithValidData status=SKIP method=HomePageTestCases.verifyUserIsAbleToSearchItemWithValidData(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@45ca843] output={null}]]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "com.aventstack.extentreports.ExtentTest.skip(java.lang.Throwable)" because "BasePage.BasePage.test" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentTest.skip(java.lang.Throwable)" because "BasePage.BasePage.test" is null
+at BasePage.BasePage.captureResult(BasePage.java:115)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:836)
+at org.testng.internal.invokers.TestInvoker.runAfterConfigurations(TestInvoker.java:805)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:623)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- logResult -->
-        <test-method is-config="true" signature="createTestForExtentReport(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:15 IST" name="createTestForExtentReport" finished-at="2025-10-27T16:37:16 IST" duration-ms="303" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- captureResult -->
+        <test-method is-config="true" signature="tearDownSuite()[pri:0, instance:TestPackage.HomePageTestCases@45ca843]" started-at="2025-12-23T01:15:01 IST" name="tearDownSuite" finished-at="2025-12-23T01:15:01 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createTestForExtentReport -->
-        <test-method signature="verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:16 IST" name="verifyUserIsAbleToSearchItemsWithValidData" data-provider="excelData" finished-at="2025-10-27T16:37:22 IST" duration-ms="5945" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[iPod Nano]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUserIsAbleToSearchItemsWithValidData -->
-        <test-method is-config="true" signature="logResult(org.testng.ITestResult)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:22 IST" name="logResult" finished-at="2025-10-27T16:37:22 IST" duration-ms="2" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyUserIsAbleToSearchItemsWithValidData status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logResult -->
-        <test-method is-config="true" signature="createTestForExtentReport(java.lang.reflect.Method)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:22 IST" name="createTestForExtentReport" finished-at="2025-10-27T16:37:22 IST" duration-ms="486" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- createTestForExtentReport -->
-        <test-method signature="verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:22 IST" name="verifyUserIsAbleToSearchItemsWithValidData" data-provider="excelData" finished-at="2025-10-27T16:37:28 IST" duration-ms="5940" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void TestPackage.HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String) throws java.io.IOException]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[iPod Touch]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUserIsAbleToSearchItemsWithValidData -->
-        <test-method is-config="true" signature="logResult(org.testng.ITestResult)[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:28 IST" name="logResult" finished-at="2025-10-27T16:37:28 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyUserIsAbleToSearchItemsWithValidData status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToSearchItemsWithValidData(java.lang.reflect.Method,java.lang.String)[pri:1, instance:TestPackage.HomePageTestCases@320de594] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logResult -->
-        <test-method is-config="true" signature="CloseTheBrowser()[pri:0, instance:TestPackage.HomePageTestCases@320de594]" started-at="2025-10-27T16:37:28 IST" name="CloseTheBrowser" finished-at="2025-10-27T16:37:29 IST" duration-ms="327" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CloseTheBrowser -->
+        </test-method> <!-- tearDownSuite -->
       </class> <!-- TestPackage.HomePageTestCases -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

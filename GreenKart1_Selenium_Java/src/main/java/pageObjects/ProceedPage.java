@@ -1,32 +1,24 @@
 package pageObjects;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utilities.ActionsUtilitiy;
 
-public class ProceedPageMethods extends ActionsUtilitiy {
+public class ProceedPage extends ActionsUtilitiy {
 	WebDriver driver;
-     private static ProceedPageMethods instance;
+     private static ProceedPage instance;
      
-	public ProceedPageMethods(WebDriver driver) {
+	public ProceedPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
 	
-	public static ProceedPageMethods getProceedPageObject(WebDriver driver) {
+	public static ProceedPage getProceedPageObject(WebDriver driver) {
 
 		if (instance == null) {
-	        instance = new ProceedPageMethods(driver);
+	        instance = new ProceedPage(driver);
 	    }
 	    return instance;
 	}

@@ -7,21 +7,21 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import utilityClasses.ActionsUtilitiy;
 
-public class CartPageObjects extends ActionsUtilitiy {
+public class CartPage extends ActionsUtilitiy {
 
 	AndroidDriver driver;
-	private static CartPageObjects instance;
+	private static CartPage instance;
 
-	public CartPageObjects(AndroidDriver driver) {
+	public CartPage(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
 
-	public static CartPageObjects getCartPageObject(AndroidDriver driver) {
+	public static CartPage getCartPageObject(AndroidDriver driver) {
 
 		if (instance == null) {
-			instance = new CartPageObjects(driver);
+			instance = new CartPage(driver);
 		}
 		return instance;
 	}

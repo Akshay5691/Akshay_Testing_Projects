@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import basePage.BasePage;
+import base.BasePage;
 
 import java.lang.reflect.Method;
 
@@ -12,24 +12,24 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
-import pageObjects.CartPageMethods;
-import pageObjects.HomePageMethods;
-import pageObjects.PlaceOrderPageMethods;
-import pageObjects.ProceedPageMethods;
+import pageObjects.CartPage;
+import pageObjects.HomePage;
+import pageObjects.PlaceOrderPage;
+import pageObjects.ProceedPage;
 
 public class CartPageTestCases extends BasePage {
 
 	private static final Logger log = LogManager.getLogger(CartPageTestCases.class);
 
-	HomePageMethods homePage;
-	CartPageMethods cartPage;
-	PlaceOrderPageMethods placeOrderPage;
+	HomePage homePage;
+	CartPage cartPage;
+	PlaceOrderPage placeOrderPage;
 	
 	@BeforeClass(alwaysRun = true)
 	public void pageObjectInit() {
-		homePage = HomePageMethods.getHomePageObject(driver);
-		cartPage = CartPageMethods.getCartPageObject(driver);
-		placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
+		homePage = HomePage.getHomePageObject(driver);
+		cartPage = CartPage.getCartPageObject(driver);
+		placeOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
 	}
 	String orange = "Orange";
 

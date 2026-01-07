@@ -1,8 +1,9 @@
-package basePage;
+package base;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -10,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -49,21 +52,48 @@ public class BasePage {
 					System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties");
 
 			prop.load(file);
-			String actualDriver = prop.getProperty("browser");
+			
+			   String actualDriver = prop.getProperty("browser");
+			    String executionMode = prop.getProperty("execution"); 
 
-			switch (actualDriver.toLowerCase()) {
-			case "chrome":
-				driver = new ChromeDriver();
-				break;
-			case "edge":
-				driver = new EdgeDriver();
-				break;
-			case "firefox":
-				driver = new FirefoxDriver();
-				break;
-			default:
-				throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
-			}
+			    if (executionMode.equalsIgnoreCase("grid")) {
+
+			        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+			        switch (actualDriver.toLowerCase()) {
+			        case "chrome":
+			            capabilities.setBrowserName("chrome");
+			            break;
+			        case "edge":
+			            capabilities.setBrowserName("MicrosoftEdge");
+			            break;
+			        case "firefox":
+			            capabilities.setBrowserName("firefox");
+			            break;
+			        default:
+			            throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+			        }
+
+			        driver = new RemoteWebDriver(
+			                new URL("http://localhost:4444/wd/hub"), capabilities);
+
+			    } else {
+
+			        switch (actualDriver.toLowerCase()) {
+			        case "chrome":
+			            driver = new ChromeDriver();
+			            break;
+			        case "edge":
+			            driver = new EdgeDriver();
+			            break;
+			        case "firefox":
+			            driver = new FirefoxDriver();
+			            break;
+			        default:
+			            throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+			        }
+			    }
+
 
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -77,6 +107,7 @@ public class BasePage {
 
 	@BeforeMethod(alwaysRun = true)
 	public void launchBrowser(Method method) {
+		
 		test = extent.createTest(method.getName());
 		
 		driver.manage().deleteAllCookies();

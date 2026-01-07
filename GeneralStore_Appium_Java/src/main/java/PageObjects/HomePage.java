@@ -2,26 +2,25 @@ package PageObjects;
 
 import utilityClasses.ActionsUtilitiy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 
-public class HomePageObjects extends ActionsUtilitiy {
+public class HomePage extends ActionsUtilitiy {
 
 	AndroidDriver driver;
 	WebDriverWait wait;
-	private static HomePageObjects instance;
+	private static HomePage instance;
 
-	public HomePageObjects(AndroidDriver driver) {
+	public HomePage(AndroidDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
-	public static HomePageObjects getHomePageObject(AndroidDriver driver) {
+	public static HomePage getHomePageObject(AndroidDriver driver) {
 
 		  if (instance == null) {
-		        instance = new HomePageObjects(driver);
+		        instance = new HomePage(driver);
 		    }
 		    return instance;
 	}

@@ -5,11 +5,11 @@
     <classes>
       <class name="TestPackage.HomePageTestCases">
         <methods>
-          <include name="verifyUserIsAbleToSearchItemsWithValidData" invocation-numbers="0"/>
-          <include name="logResult"/>
-          <include name="CloseTheBrowser"/>
-          <include name="createTestForExtentReport"/>
-          <include name="setUpExtentReport"/>
+          <include name="captureResult"/>
+          <include name="verifyUserIsAbleToSearchItemWithValidData"/>
+          <include name="tearDownSuite"/>
+          <include name="startTest"/>
+          <include name="setupSuite"/>
         </methods>
       </class> <!-- TestPackage.HomePageTestCases -->
     </classes>

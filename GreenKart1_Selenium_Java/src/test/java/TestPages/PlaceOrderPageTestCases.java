@@ -5,26 +5,26 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import basePage.BasePage;
-import pageObjects.CartPageMethods;
-import pageObjects.HomePageMethods;
-import pageObjects.PlaceOrderPageMethods;
-import pageObjects.ProceedPageMethods;
+import base.BasePage;
+import pageObjects.CartPage;
+import pageObjects.HomePage;
+import pageObjects.PlaceOrderPage;
+import pageObjects.ProceedPage;
 
 public class PlaceOrderPageTestCases extends BasePage {
 
-	HomePageMethods homePage;
-	CartPageMethods cartPage;
-	PlaceOrderPageMethods placeOrderPage;
-	ProceedPageMethods proceedPage;
+	HomePage homePage;
+	CartPage cartPage;
+	PlaceOrderPage placeOrderPage;
+	ProceedPage proceedPage;
 	
 	
     @BeforeMethod(alwaysRun = true)
     	public void pageObjectInit() {
-    			homePage = HomePageMethods.getHomePageObject(driver);
-		cartPage = CartPageMethods.getCartPageObject(driver);
-		placeOrderPage = PlaceOrderPageMethods.getPlaceOrderPageObject(driver);
-		proceedPage = ProceedPageMethods.getProceedPageObject(driver);
+    			homePage = HomePage.getHomePageObject(driver);
+		cartPage = CartPage.getCartPageObject(driver);
+		placeOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
+		proceedPage = ProceedPage.getProceedPageObject(driver);
     }
 	
 	

@@ -8,21 +8,21 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import basePage.BasePage;
-import pageObjects.CartPageMethods;
-import pageObjects.HomePageMethods;;
+import base.BasePage;
+import pageObjects.CartPage;
+import pageObjects.HomePage;;
 
 public class HomePageTestCases extends BasePage {
 
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
-	HomePageMethods homePage;
-	CartPageMethods cartPage;
+	HomePage homePage;
+	CartPage cartPage;
 
 	@BeforeClass(alwaysRun = true)
 	public void pageObjectInit() {
-		homePage = HomePageMethods.getHomePageObject(driver);
-		cartPage = CartPageMethods.getCartPageObject(driver);
+		homePage = HomePage.getHomePageObject(driver);
+		cartPage = CartPage.getCartPageObject(driver);
 
 	}
 
@@ -129,7 +129,7 @@ public class HomePageTestCases extends BasePage {
 			String expectedName = orange;
 			Assert.assertEquals(itemName, expectedName, "Item is not searched correctly");
 			log.info(method.getName() + " : passed");
-			
+
 		} catch (Exception e) {
 			Assert.fail("Exception occurred: " + e.getMessage());
 			log.error(method.getName() + " : failed");
@@ -161,4 +161,28 @@ public class HomePageTestCases extends BasePage {
 	 * e.printStackTrace(); } }
 	 */
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

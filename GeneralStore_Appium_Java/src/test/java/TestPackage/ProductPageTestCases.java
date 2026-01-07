@@ -11,24 +11,24 @@ import org.testng.annotations.Test;
 
 
 import BasePage.BasePage;
-import PageObjects.CartPageObjects;
-import PageObjects.HomePageObjects;
-import PageObjects.ProductPageObjects;
+import PageObjects.CartPage;
+import PageObjects.HomePage;
+import PageObjects.ProductPage;
 
 public class ProductPageTestCases extends BasePage {
 
-	HomePageObjects objHome;
-	ProductPageObjects objProduct;
-	CartPageObjects objCart;
+	HomePage objHome;
+	ProductPage objProduct;
+	CartPage objCart;
 	
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
 
 	  @BeforeClass(alwaysRun = true)
 	    public void setUpPageObjects() {
-	        objHome = HomePageObjects.getHomePageObject(driver);
-	        objProduct = ProductPageObjects.getProductPageObject(driver);
-	        objCart = CartPageObjects.getCartPageObject(driver);
+	        objHome = HomePage.getHomePageObject(driver);
+	        objProduct = ProductPage.getProductPageObject(driver);
+	        objCart = CartPage.getCartPageObject(driver);
 	    }
 	@Test
 	public void verifyUserAbleToAddProductToCart(Method Method) {

@@ -1,31 +1,25 @@
 package pageObjects;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utilities.ActionsUtilitiy;
 
-public class PlaceOrderPageMethods extends ActionsUtilitiy {
+public class PlaceOrderPage extends ActionsUtilitiy {
 
 	WebDriver driver;
-    public static PlaceOrderPageMethods instance;
+    public static PlaceOrderPage instance;
 	// ✅ Constructor
-	public PlaceOrderPageMethods(WebDriver driver) {
+	public PlaceOrderPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
-	public static PlaceOrderPageMethods getPlaceOrderPageObject(WebDriver driver) {
+	public static PlaceOrderPage getPlaceOrderPageObject(WebDriver driver) {
 		if (instance == null) {
-	        instance = new PlaceOrderPageMethods(driver);
+	        instance = new PlaceOrderPage(driver);
 	    }
 	    return instance;
 	}

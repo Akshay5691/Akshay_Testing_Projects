@@ -9,22 +9,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
-import PageObjects.HomePageObjects;
-import PageObjects.ProductPageObjects;
+import PageObjects.HomePage;
+import PageObjects.ProductPage;
 
 
 public class HomePageTestCases extends BasePage {
 
-	HomePageObjects objHome;
-	ProductPageObjects objProduct;
+	HomePage objHome;
+	ProductPage objProduct;
 	
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
 	
 	  @BeforeClass(alwaysRun = true)
 	    public void setUpHomePageObjects() {
-	        objHome = HomePageObjects.getHomePageObject(driver);
-	        objProduct = ProductPageObjects.getProductPageObject(driver);
+	        objHome = HomePage.getHomePageObject(driver);
+	        objProduct = ProductPage.getProductPageObject(driver);
 	    }
      @Test
 	public void verifyUserIsAbleToEnterName(Method Method) {
