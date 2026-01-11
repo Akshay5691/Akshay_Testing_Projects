@@ -13,19 +13,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ActionsUtilitiy;
 
-public class PlaceOrderPageMethods extends ActionsUtilitiy {
+public class PlaceOrderPage extends ActionsUtilitiy {
 
 	WebDriver driver;
-    public static PlaceOrderPageMethods instance;
+    public static PlaceOrderPage instance;
 	// ✅ Constructor
-	public PlaceOrderPageMethods(WebDriver driver) {
+	public PlaceOrderPage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
-	public static PlaceOrderPageMethods getPlaceOrderPageObject(WebDriver driver) {
+	public static PlaceOrderPage getPlaceOrderPageObject(WebDriver driver) {
 		if (instance == null) {
-	        instance = new PlaceOrderPageMethods(driver);
+	        instance = new PlaceOrderPage(driver);
 	    }
 	    return instance;
 	}

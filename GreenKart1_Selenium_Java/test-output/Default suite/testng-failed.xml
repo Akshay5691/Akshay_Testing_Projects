@@ -5,12 +5,17 @@
     <classes>
       <class name="TestPages.HomePageTestCases">
         <methods>
-          <include name="setUpExtentReport"/>
           <include name="flushReport"/>
-          <include name="pageObjectInit"/>
-          <include name="closeBrowser"/>
-          <include name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" invocation-numbers="2"/>
           <include name="launchBrowser"/>
+          <include name="setUpExtentReport"/>
+          <include name="verifyItemNumberIsIncreasingWhileAddingMultipleItems"/>
+          <include name="verifyUserIsAbleToIncreaseCartPrice"/>
+          <include name="pageObjectInit"/>
+          <include name="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox"/>
+          <include name="closeBrowser"/>
+          <include name="verifyItemNumberIsNotIncreasingWhileAddingSameItem"/>
+          <include name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart"/>
+          <include name="verifyUserIsAbleToSearchItem"/>
         </methods>
       </class> <!-- TestPages.HomePageTestCases -->
     </classes>

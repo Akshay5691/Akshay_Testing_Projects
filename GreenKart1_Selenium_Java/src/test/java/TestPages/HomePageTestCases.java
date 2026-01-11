@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BasePage;
@@ -19,7 +20,7 @@ public class HomePageTestCases extends BasePage {
 	HomePage homePage;
 	CartPage cartPage;
 
-	@BeforeClass(alwaysRun = true)
+	@BeforeMethod(alwaysRun = true)
 	public void pageObjectInit() {
 		homePage = HomePage.getHomePageObject(driver);
 		cartPage = CartPage.getCartPageObject(driver);
@@ -29,7 +30,7 @@ public class HomePageTestCases extends BasePage {
 	String orange = "Orange";
 	String apple = "Apple";
 
-	@Test(dataProvider = "productsNamesFromExcel", dataProviderClass = dataProvider.DataProviders.class)
+	@Test(groups= {"smoke"},dataProvider = "productsNamesFromExcel", dataProviderClass = dataProvider.DataProviders.class)
 	public void verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(Method method, String productName) {
 		try {
 			homePage.searchItemAndAddToCart(productName);
@@ -46,7 +47,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test
+	@Test()
 	public void verifyItemNumberIsIncreasingWhileAddingMultipleItems(Method method) {
 		try {
 			homePage.searchItemAndAddToCart(orange);
@@ -64,7 +65,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(groups= {"smoke"})
 	public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
 		try {
 			homePage.searchItem(orange);
@@ -83,7 +84,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(groups= {"smoke"})
 	public void verifyUserIsAbleToIncreaseCartPrice(Method method) {
 		try {
 			homePage.searchItemAndAddToCart(apple);
@@ -101,7 +102,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(retryAnalyzer=retryFailedTests.reExecuteFailedTestCases.class)
 	public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
 		try {
 			homePage.searchItem(orange);
@@ -120,7 +121,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test
+	@Test(groups= {"smoke"})
 	public void verifyUserIsAbleToSearchItem(Method method) {
 		try {
 			homePage.searchItem(orange);

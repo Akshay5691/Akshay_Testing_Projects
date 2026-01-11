@@ -9,8 +9,11 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -31,6 +34,7 @@ public class BasePage {
 	public static Properties prop;
 	public static ExtentReports extent;
 
+	
 	@BeforeSuite
 	public void setUpExtentReport() {
 		String path = System.getProperty("user.dir") + "\\reports\\index.html";
@@ -58,24 +62,29 @@ public class BasePage {
 
 			    if (executionMode.equalsIgnoreCase("grid")) {
 
-			        DesiredCapabilities capabilities = new DesiredCapabilities();
-
 			        switch (actualDriver.toLowerCase()) {
+
 			        case "chrome":
-			            capabilities.setBrowserName("chrome");
+			            ChromeOptions chromeOptions = new ChromeOptions();
+			            driver = new RemoteWebDriver(
+			                    new URL("http://localhost:4444/wd/hub"), chromeOptions);
 			            break;
-			        case "edge":
-			            capabilities.setBrowserName("MicrosoftEdge");
-			            break;
+
 			        case "firefox":
-			            capabilities.setBrowserName("firefox");
+			            FirefoxOptions firefoxOptions = new FirefoxOptions();
+			            driver = new RemoteWebDriver(
+			                    new URL("http://localhost:4444/wd/hub"), firefoxOptions);
 			            break;
+
+			        case "edge":
+			            EdgeOptions edgeOptions = new EdgeOptions();
+			            driver = new RemoteWebDriver(
+			                    new URL("http://localhost:4444/wd/hub"), edgeOptions);
+			            break;
+
 			        default:
 			            throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
 			        }
-
-			        driver = new RemoteWebDriver(
-			                new URL("http://localhost:4444/wd/hub"), capabilities);
 
 			    } else {
 
@@ -128,13 +137,14 @@ public class BasePage {
 		} else {
 			test.skip(result.getThrowable());
 		}
-
+     
 	}
 
 	@AfterSuite
 	public void flushReport() {
-		driver.quit();
+	
 		extent.flush();
+		driver.quit();
 	}
 
 }

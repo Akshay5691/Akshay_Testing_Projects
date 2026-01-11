@@ -12,22 +12,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.ActionsUtilitiy;
 
-public class CartPageMethods extends ActionsUtilitiy {
+public class CartPage extends ActionsUtilitiy {
 
 	WebDriver driver;
-	public static CartPageMethods instance;
+	public static CartPage instance;
 
 	// ✅ Constructor — initializes all elements
-	public CartPageMethods(WebDriver driver) {
+	public CartPage(WebDriver driver) {
 
 		super(driver);
 		this.driver = driver;
 	}
 	
-	public static CartPageMethods getCartPageObject(WebDriver driver) {
+	public static CartPage getCartPageObject(WebDriver driver) {
 		
 		if (instance == null) {
-	        instance = new CartPageMethods(driver);
+	        instance = new CartPage(driver);
 	    }
 	    return instance;
 	}

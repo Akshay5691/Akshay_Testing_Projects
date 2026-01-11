@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/7/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Nov 27 21:27:38 IST 2025</td>
+<td>Started on:</td><td>Sun Jan 11 19:34:57 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>6 seconds (6446 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (722 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,10 +76,173 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='TestPages.CartPageTestCases.verifyItemQuantityIncreasingWhileAddingSameItem()'><b>verifyItemQuantityIncreasingWhileAddingSameItem</b><br>Test class: TestPages.CartPageTestCases<br>Parameters: public void TestPages.CartPageTestCases.verifyItemQuantityIncreasingWhileAddingSameItem(java.lang.reflect.Method)</td>
-<td></td>
-<td>5</td>
-<td>TestPages.CartPageTestCases@45c8d09f</td></tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Item count should not increase when adding same product twice", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1006624255", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1006624255'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Item count updates when adding different products", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1240843015", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1240843015'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Cart price increases after adding item", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1349025531", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1349025531'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Default quantity should not decrease below one", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace743219449", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace743219449'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User can search product successfully", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2113243119", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2113243119'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Item count increases when adding multiple products", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1726616678", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1726616678'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
+<tr>
+<td title='TestRunners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Item count updates when adding different products", "Home Page Functionality"</td>
+<td><div><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2111882926", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2111882926'><pre>java.lang.IllegalArgumentException: Driver must be set
+	at org.openqa.selenium.internal.Require.nonNull(Require.java:64)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:67)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:63)
+	at utilities.ActionsUtilitiy.&lt;init&gt;(ActionsUtilitiy.java:23)
+	at pageObjects.HomePageMethods.&lt;init&gt;(HomePageMethods.java:20)
+	at pageObjects.HomePageMethods.getHomePageObject(HomePageMethods.java:27)
+	at StepDefinitions.HomePageStepDefinitions.user_is_on_home_page(HomePageStepDefinitions.java:27)
+	at ✽.user is on the home page(file:///C:/Users/Akshay/eclipse-workspace/GreenKart1_Selenium_Java_Cucumber/src/test/resources/FeatureFiles/home.feature:8)
+</pre></div></td>
+<td>0</td>
+<td>TestRunners.TestRunner@47eaca72</td></tr>
 </table><p>
 </body>
 </html>

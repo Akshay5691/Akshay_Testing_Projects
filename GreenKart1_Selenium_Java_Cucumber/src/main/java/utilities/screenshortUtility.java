@@ -8,27 +8,41 @@ import java.time.format.DateTimeFormatter;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
 import basePage.BasePage;
-public class screenshortUtility extends BasePage {
+public class screenshortUtility {
 
 	
 	
 
-	   public static String takeScreenshort(String testCaseName)throws IOException {
-		   
-		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
-		   String timestamp = LocalDateTime.now().format(dtf);
+	  // Pass WebDriver explicitly
+    public static String takeScreenshort(WebDriver driver, String testCaseName) {
+        String path = "";
+        try {
+           
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd_HHmmss");
+            String timestamp = LocalDateTime.now().format(dtf);
 
-	
-		   
-			File screenshots = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			String path=System.getProperty("user.dir")+"\\screenshorts\\"+timestamp+"\\ "+testCaseName+".png";
-			File filepath = new File(path);
-			FileUtils.copyFile(screenshots, filepath);	
-			return path;
-		   }
-	
-	
-	
-	
+            // Take screenshot
+            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+            // Create folder if not exists
+            File dir = new File(System.getProperty("user.dir") + "/screenshots/" + timestamp);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            // Full path to save screenshot
+            path = dir.getAbsolutePath() + "/" + testCaseName + ".png";
+
+            // Copy file
+            FileUtils.copyFile(src, new File(path));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return path;
+    }
 }

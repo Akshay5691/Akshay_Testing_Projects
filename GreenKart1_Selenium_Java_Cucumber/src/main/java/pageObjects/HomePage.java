@@ -11,20 +11,20 @@ import org.openqa.selenium.support.PageFactory;
 
 import utilities.ActionsUtilitiy;
 
-public class HomePageMethods extends ActionsUtilitiy {
+public class HomePage extends ActionsUtilitiy {
 
 	 WebDriver driver;
-	 public static HomePageMethods instance;
+	 public static HomePage instance;
 
-	public HomePageMethods(WebDriver driver) {
+	public HomePage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
 
 	}
-	public static HomePageMethods getHomePageObject(WebDriver driver) {
+	public static HomePage getHomePageObject(WebDriver driver) {
 		
 		if (instance == null) {
-	        instance = new HomePageMethods(driver);
+	        instance = new HomePage(driver);
 	    }
 	    return instance;
 	}
