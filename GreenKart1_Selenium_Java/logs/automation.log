@@ -12,3 +12,11 @@
 2026-01-11 19:21:07 INFO  HomePageTestCases:132 - verifyUserIsAbleToSearchItem : passed
 2026-01-11 19:21:10 INFO  HomePageTestCases:115 - verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox : passed
 2026-01-11 19:40:57 INFO  HomePageTestCases:59 - verifyItemNumberIsIncreasingWhileAddingMultipleItems : passed
+2026-01-11 22:16:59 INFO  HomePageTestCases:57 - verifyItemNumberIsIncreasingWhileAddingMultipleItems : passed
+2026-01-11 22:17:07 INFO  HomePageTestCases:76 - verifyItemNumberIsNotIncreasingWhileAddingSameItem : passed
+2026-01-11 22:17:10 INFO  HomePageTestCases:39 - verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart : passed
+2026-01-11 22:17:14 INFO  HomePageTestCases:39 - verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart : passed
+2026-01-11 22:17:18 INFO  HomePageTestCases:39 - verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart : passed
+2026-01-11 22:17:22 INFO  HomePageTestCases:94 - verifyUserIsAbleToIncreaseCartPrice : passed
+2026-01-11 22:17:25 INFO  HomePageTestCases:130 - verifyUserIsAbleToSearchItem : passed
+2026-01-11 22:17:30 INFO  HomePageTestCases:113 - verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox : passed

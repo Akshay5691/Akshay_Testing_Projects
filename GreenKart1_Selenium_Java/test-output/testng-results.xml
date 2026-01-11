@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="5" total="6" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-11T19:40:51 IST" name="Default suite" finished-at="2026-01-11T19:40:57 IST" duration-ms="5616">
+  <suite started-at="2026-01-11T22:16:53 IST" name="Default suite" finished-at="2026-01-11T22:17:30 IST" duration-ms="37533">
     <groups>
+      <group name="smoke">
+        <method signature="HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" name="verifyItemNumberIsNotIncreasingWhileAddingSameItem" class="TestPages.HomePageTestCases"/>
+        <method signature="HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" class="TestPages.HomePageTestCases"/>
+        <method signature="HomePageTestCases.verifyUserIsAbleToIncreaseCartPrice(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" name="verifyUserIsAbleToIncreaseCartPrice" class="TestPages.HomePageTestCases"/>
+        <method signature="HomePageTestCases.verifyUserIsAbleToSearchItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" name="verifyUserIsAbleToSearchItem" class="TestPages.HomePageTestCases"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2026-01-11T19:40:51 IST" name="Default test" finished-at="2026-01-11T19:40:57 IST" duration-ms="5616">
+    <test started-at="2026-01-11T22:16:53 IST" name="Default test" finished-at="2026-01-11T22:17:30 IST" duration-ms="37533">
       <class name="TestPages.HomePageTestCases">
-        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:49 IST" name="setUpExtentReport" finished-at="2026-01-11T19:40:51 IST" duration-ms="1769" status="PASS">
+        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:53 IST" name="setUpExtentReport" finished-at="2026-01-11T22:16:53 IST" duration-ms="127" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpExtentReport -->
-        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:51 IST" name="launchBrowser" finished-at="2026-01-11T19:40:54 IST" duration-ms="2831" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:53 IST" name="launchBrowser" finished-at="2026-01-11T22:16:57 IST" duration-ms="4637" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,11 +28,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method is-config="true" signature="pageObjectInit()[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:54 IST" name="pageObjectInit" finished-at="2026-01-11T19:40:54 IST" duration-ms="29" status="PASS">
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:57 IST" name="driverUsage" finished-at="2026-01-11T22:16:57 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageObjectInit -->
-        <test-method signature="verifyItemNumberIsIncreasingWhileAddingMultipleItems(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:54 IST" name="verifyItemNumberIsIncreasingWhileAddingMultipleItems" finished-at="2026-01-11T19:40:57 IST" duration-ms="2632" status="PASS">
+        </test-method> <!-- driverUsage -->
+        <test-method signature="verifyItemNumberIsIncreasingWhileAddingMultipleItems(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:57 IST" name="verifyItemNumberIsIncreasingWhileAddingMultipleItems" finished-at="2026-01-11T22:16:59 IST" duration-ms="1456" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,18 +43,292 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyItemNumberIsIncreasingWhileAddingMultipleItems -->
-        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:57 IST" name="closeBrowser" finished-at="2026-01-11T19:40:57 IST" duration-ms="8" status="PASS">
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:59 IST" name="closeBrowser" finished-at="2026-01-11T22:16:59 IST" duration-ms="237" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyItemNumberIsIncreasingWhileAddingMultipleItems status=SUCCESS method=HomePageTestCases.verifyItemNumberIsIncreasingWhileAddingMultipleItems(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@502f1f4c] output={null}]]]>
+                <![CDATA[[TestResult name=verifyItemNumberIsIncreasingWhileAddingMultipleItems status=SUCCESS method=HomePageTestCases.verifyItemNumberIsIncreasingWhileAddingMultipleItems(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-        <test-method is-config="true" signature="flushReport()[pri:0, instance:TestPages.HomePageTestCases@502f1f4c]" started-at="2026-01-11T19:40:57 IST" name="flushReport" finished-at="2026-01-11T19:40:58 IST" duration-ms="1347" status="PASS">
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:16:59 IST" name="launchBrowser" finished-at="2026-01-11T22:17:02 IST" duration-ms="2991" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:02 IST" name="verifyItemNumberIsNotIncreasingWhileAddingSameItem" finished-at="2026-01-11T22:17:07 IST" duration-ms="4484" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyItemNumberIsNotIncreasingWhileAddingSameItem -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:02 IST" name="driverUsage" finished-at="2026-01-11T22:17:02 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:07 IST" name="closeBrowser" finished-at="2026-01-11T22:17:07 IST" duration-ms="250" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyItemNumberIsNotIncreasingWhileAddingSameItem status=SUCCESS method=HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:07 IST" name="launchBrowser" finished-at="2026-01-11T22:17:10 IST" duration-ms="2695" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:10 IST" name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" data-provider="productsNamesFromExcel" finished-at="2026-01-11T22:17:10 IST" duration-ms="649" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Carrot]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:10 IST" name="driverUsage" finished-at="2026-01-11T22:17:10 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:11 IST" name="closeBrowser" finished-at="2026-01-11T22:17:11 IST" duration-ms="174" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart status=SUCCESS method=HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:11 IST" name="launchBrowser" finished-at="2026-01-11T22:17:14 IST" duration-ms="2927" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:14 IST" name="driverUsage" finished-at="2026-01-11T22:17:14 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method signature="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:14 IST" name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" data-provider="productsNamesFromExcel" finished-at="2026-01-11T22:17:14 IST" duration-ms="682" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Orange]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:14 IST" name="closeBrowser" finished-at="2026-01-11T22:17:14 IST" duration-ms="189" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart status=SUCCESS method=HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:14 IST" name="launchBrowser" finished-at="2026-01-11T22:17:17 IST" duration-ms="2797" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:17 IST" name="verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart" data-provider="productsNamesFromExcel" finished-at="2026-01-11T22:17:18 IST" duration-ms="694" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Apple]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:17 IST" name="driverUsage" finished-at="2026-01-11T22:17:17 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:18 IST" name="closeBrowser" finished-at="2026-01-11T22:17:18 IST" duration-ms="185" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart status=SUCCESS method=HomePageTestCases.verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(java.lang.reflect.Method,java.lang.String)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:18 IST" name="launchBrowser" finished-at="2026-01-11T22:17:21 IST" duration-ms="2719" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsAbleToIncreaseCartPrice(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyUserIsAbleToIncreaseCartPrice(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:21 IST" name="verifyUserIsAbleToIncreaseCartPrice" finished-at="2026-01-11T22:17:22 IST" duration-ms="819" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsAbleToIncreaseCartPrice(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserIsAbleToIncreaseCartPrice -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:21 IST" name="driverUsage" finished-at="2026-01-11T22:17:21 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:22 IST" name="closeBrowser" finished-at="2026-01-11T22:17:22 IST" duration-ms="210" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserIsAbleToIncreaseCartPrice status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToIncreaseCartPrice(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:22 IST" name="launchBrowser" finished-at="2026-01-11T22:17:25 IST" duration-ms="2963" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsAbleToSearchItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyUserIsAbleToSearchItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:25 IST" name="verifyUserIsAbleToSearchItem" finished-at="2026-01-11T22:17:25 IST" duration-ms="450" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsAbleToSearchItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserIsAbleToSearchItem -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:25 IST" name="driverUsage" finished-at="2026-01-11T22:17:25 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:25 IST" name="closeBrowser" finished-at="2026-01-11T22:17:26 IST" duration-ms="180" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserIsAbleToSearchItem status=SUCCESS method=HomePageTestCases.verifyUserIsAbleToSearchItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:26 IST" name="launchBrowser" finished-at="2026-01-11T22:17:28 IST" duration-ms="2891" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:28 IST" name="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox" finished-at="2026-01-11T22:17:30 IST" duration-ms="1649" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:28 IST" name="driverUsage" finished-at="2026-01-11T22:17:28 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:30 IST" name="closeBrowser" finished-at="2026-01-11T22:17:30 IST" duration-ms="174" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox status=SUCCESS method=HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@fd8294b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="flushReport()[pri:0, instance:TestPages.HomePageTestCases@fd8294b]" started-at="2026-01-11T22:17:30 IST" name="flushReport" finished-at="2026-01-11T22:17:30 IST" duration-ms="169" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReport -->

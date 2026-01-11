@@ -7,7 +7,7 @@ import utilities.ActionsUtilitiy;
 
 public class ProceedPage extends ActionsUtilitiy {
 	WebDriver driver;
-     private static ProceedPage instance;
+   
      
 	public ProceedPage(WebDriver driver) {
 		super(driver);
@@ -15,13 +15,6 @@ public class ProceedPage extends ActionsUtilitiy {
 
 	}
 	
-	public static ProceedPage getProceedPageObject(WebDriver driver) {
-
-		if (instance == null) {
-	        instance = new ProceedPage(driver);
-	    }
-	    return instance;
-	}
 
 	// =================== 🔹 Locators ===================
 

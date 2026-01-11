@@ -16,16 +16,14 @@ import pageObjects.HomePage;;
 public class HomePageTestCases extends BasePage {
 
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
-
+	
 	HomePage homePage;
 	CartPage cartPage;
-
-	@BeforeMethod(alwaysRun = true)
-	public void pageObjectInit() {
-		homePage = HomePage.getHomePageObject(driver);
-		cartPage = CartPage.getCartPageObject(driver);
-
-	}
+	@BeforeMethod
+    public void driverUsage() {
+	 homePage = new HomePage(driver);
+	 cartPage = new CartPage(driver);
+       }
 
 	String orange = "Orange";
 	String apple = "Apple";

@@ -21,13 +21,7 @@ public class HomePage extends ActionsUtilitiy {
 		this.driver = driver;
 
 	}
-	public static HomePage getHomePageObject(WebDriver driver) {
-		
-		if (instance == null) {
-	        instance = new HomePage(driver);
-	    }
-	    return instance;
-	}
+	
 	
     // driver.findelement(By.Tagname("label")).above(element);
 

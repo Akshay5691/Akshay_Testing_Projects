@@ -16,18 +16,15 @@ public class PlaceOrderPageTestCases extends BasePage {
 	HomePage homePage;
 	CartPage cartPage;
 	PlaceOrderPage placeOrderPage;
-	ProceedPage proceedPage;
-	
-	
-    @BeforeMethod(alwaysRun = true)
-    	public void pageObjectInit() {
-    			homePage = HomePage.getHomePageObject(driver);
-		cartPage = CartPage.getCartPageObject(driver);
-		placeOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
-		proceedPage = ProceedPage.getProceedPageObject(driver);
-    }
-	
-	
+	ProceedPage proceedPage ;
+	@BeforeMethod
+    public void driverUsage() {
+	 homePage = new HomePage(driver);
+	 cartPage = new CartPage(driver);
+	 placeOrderPage =new PlaceOrderPage(driver);
+	 proceedPage =new ProceedPage(driver);
+	 
+       }
 	
 	
 	String orange = "Orange";

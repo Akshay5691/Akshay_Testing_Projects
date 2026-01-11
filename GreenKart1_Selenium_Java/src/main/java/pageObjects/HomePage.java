@@ -7,7 +7,7 @@ import utilities.ActionsUtilitiy;
 public class HomePage extends ActionsUtilitiy {
 
 	WebDriver driver;
-	public static HomePage instance;
+
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -15,13 +15,6 @@ public class HomePage extends ActionsUtilitiy {
 
 	}
 
-	public static HomePage getHomePageObject(WebDriver driver) {
-
-		if (instance == null) {
-			instance = new HomePage(driver);
-		}
-		return instance;
-	}
 
 	// driver.findelement(By.Tagname("label")).above(element);
 

@@ -22,9 +22,10 @@ public class HomePageStepDefinitions {
 
 	    @Given("user is on GreenKart home page")
 	    public void user_is_on_home_page() {
-	        driver = BasePage.driver;
-	        homePage = HomePage.getHomePageObject(driver);
-	        cartPage = CartPage.getCartPageObject(driver);
+	    	BasePage base= new BasePage();
+	        driver = base.getDriver();
+	        homePage = new HomePage(driver);
+	        cartPage = new CartPage(driver);
 	    }
 
 	    @When("user searches and adds {string} to cart")

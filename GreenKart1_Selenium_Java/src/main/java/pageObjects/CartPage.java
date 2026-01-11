@@ -16,13 +16,7 @@ public class CartPage extends ActionsUtilitiy {
 		this.driver = driver;
 	}
 	
-	public static CartPage getCartPageObject(WebDriver driver) {
-		
-		if (instance == null) {
-	        instance = new CartPage(driver);
-	    }
-	    return instance;
-	}
+	
 	// =================== 🔹 Locators ===================
 
 	private By removeButton() {

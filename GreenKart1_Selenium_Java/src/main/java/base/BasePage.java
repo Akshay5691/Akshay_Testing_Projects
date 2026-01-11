@@ -47,8 +47,13 @@ public class BasePage {
 		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Akshay");
 		
-		
 
+	}
+
+	@BeforeMethod(alwaysRun = true)
+	public void launchBrowser(Method method) {
+		
+		
 		try {
 			prop = new Properties();
 			FileInputStream file = new FileInputStream(
@@ -103,27 +108,20 @@ public class BasePage {
 			        }
 			    }
 
-
 			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
+			driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			
+			test = extent.createTest(method.getName());		
+					
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
-	@BeforeMethod(alwaysRun = true)
-	public void launchBrowser(Method method) {
 		
-		test = extent.createTest(method.getName());
 		
-		driver.manage().deleteAllCookies();
-		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
-		driver.navigate().refresh();
-
-	}
 
 	@AfterMethod(alwaysRun = true)
 	public void closeBrowser(ITestResult result) throws IOException {
@@ -137,6 +135,7 @@ public class BasePage {
 		} else {
 			test.skip(result.getThrowable());
 		}
+		driver.quit();
      
 	}
 
@@ -144,7 +143,7 @@ public class BasePage {
 	public void flushReport() {
 	
 		extent.flush();
-		driver.quit();
+		
 	}
 
 }

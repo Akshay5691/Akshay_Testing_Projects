@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BasePage;
@@ -14,19 +15,30 @@ import pageObjects.PlaceOrderPage;
 import pageObjects.ProceedPage;
 
 public class ProceedPageTestCases extends BasePage {
-	HomePage objHomePage = HomePage.getHomePageObject(driver);
-	CartPage objCartPage = CartPage.getCartPageObject(driver);
-	PlaceOrderPage objPlaceOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
-	ProceedPage objProceedPage = ProceedPage.getProceedPageObject(driver);
+	
+	HomePage homePage;
+	CartPage cartPage;
+	PlaceOrderPage placeOrderPage;
+	ProceedPage proceedPage ;
+	
+	@BeforeMethod
+    public void driverUsage() {
+	 homePage = new HomePage(driver);
+	 cartPage = new CartPage(driver);
+	 placeOrderPage =new PlaceOrderPage(driver);
+	 proceedPage =new ProceedPage(driver);
+	 
+       }
+	
 
 	@Test
 	public void VerifyUserIsAbleToSelectCountry(Method method) {
 		try {
-			objHomePage.searchItemAndAddToCart("orange");
-			objHomePage.clickOnCartBag();
-			objCartPage.clickOnProceedToCheckoutButton();
-			objPlaceOrderPage.clickOnPlaceOrderButton();
-			objProceedPage.selectCountryByVisibleText("India");
+			homePage.searchItemAndAddToCart("orange");
+			homePage.clickOnCartBag();
+			cartPage.clickOnProceedToCheckoutButton();
+			placeOrderPage.clickOnPlaceOrderButton();
+			proceedPage.selectCountryByVisibleText("India");
 
 			String expectedCountry = "India";
 
@@ -42,14 +54,14 @@ public class ProceedPageTestCases extends BasePage {
 	@Test
 	public void VerifyUserIsAbleToAcceptTermsAndConditions(Method method) {
 		try {
-			objHomePage.searchItemAndAddToCart("Orange");
-			objHomePage.clickOnCartBag();
-			objCartPage.clickOnProceedToCheckoutButton();
-			objPlaceOrderPage.clickOnPlaceOrderButton();
-			objProceedPage.selectCountryByVisibleText("India");
-			objProceedPage.clickOnTermsAndConditions();
+			homePage.searchItemAndAddToCart("Orange");
+			homePage.clickOnCartBag();
+			cartPage.clickOnProceedToCheckoutButton();
+			placeOrderPage.clickOnPlaceOrderButton();
+			proceedPage.selectCountryByVisibleText("India");
+			proceedPage.clickOnTermsAndConditions();
 
-			WebElement checkBox = objProceedPage.termsAndConditionsCheckBoxElement();
+			WebElement checkBox = proceedPage.termsAndConditionsCheckBoxElement();
 			Assert.assertTrue(checkBox.isSelected(), "User is not able to accept Terms and Conditions");
 			System.out.println(method.getName() + " : Passed");
 		} catch (Exception e) {
@@ -62,17 +74,17 @@ public class ProceedPageTestCases extends BasePage {
 	public void VerifyUserIsAbleToProceedAndGetConformationMessage(Method method) {
 		try {
 
-			objHomePage.searchItemAndAddToCart("orange");
-			objHomePage.clickOnCartBag();
-			objCartPage.clickOnProceedToCheckoutButton();
+			homePage.searchItemAndAddToCart("orange");
+			homePage.clickOnCartBag();
+			cartPage.clickOnProceedToCheckoutButton();
 			Thread.sleep(2000);
-			objPlaceOrderPage.clickOnPlaceOrderButton();
+			placeOrderPage.clickOnPlaceOrderButton();
 
-			objProceedPage.selectCountryByVisibleText("India");
-			objProceedPage.clickOnTermsAndConditions();
-			objProceedPage.clickOnProceedButton();
+			proceedPage.selectCountryByVisibleText("India");
+			proceedPage.clickOnTermsAndConditions();
+			proceedPage.clickOnProceedButton();
 
-			String actualConformation = objProceedPage.acceptTermsAndConditionsMessageText();
+			String actualConformation = proceedPage.acceptTermsAndConditionsMessageText();
 			String expectedConformation = "Thank you, your order has been placed successfully.";
 			Assert.assertEquals(actualConformation, expectedConformation, "User is not getting expected error message");
 			System.out.println(method.getName() + " :Passed");
@@ -86,14 +98,14 @@ public class ProceedPageTestCases extends BasePage {
 	@Test
 	public void VerifyUserIsUnableToProceedWithOutAcceptingTermsAndCoditions(Method method) {
 		try {
-			objHomePage.searchItemAndAddToCart("Orange");
-			objHomePage.clickOnCartBag();
-			objCartPage.clickOnProceedToCheckoutButton();
-			objPlaceOrderPage.clickOnPlaceOrderButton();
-			objProceedPage.selectCountryByVisibleText("India");
-			objProceedPage.clickOnProceedButton();
+			homePage.searchItemAndAddToCart("Orange");
+			homePage.clickOnCartBag();
+			cartPage.clickOnProceedToCheckoutButton();
+			placeOrderPage.clickOnPlaceOrderButton();
+			proceedPage.selectCountryByVisibleText("India");
+			proceedPage.clickOnProceedButton();
 
-			String actualError = objProceedPage.acceptTermsAndConditionsMessageText();
+			String actualError = proceedPage.acceptTermsAndConditionsMessageText();
 			String expectedError = "Please accept Terms & Conditions - Required";
 			Assert.assertEquals(actualError, expectedError, "User is not getting expected error message");
 			System.out.println(method.getName() + " :Passed");

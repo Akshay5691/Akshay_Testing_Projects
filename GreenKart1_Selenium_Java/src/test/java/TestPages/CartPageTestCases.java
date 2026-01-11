@@ -24,13 +24,14 @@ public class CartPageTestCases extends BasePage {
 	HomePage homePage;
 	CartPage cartPage;
 	PlaceOrderPage placeOrderPage;
+	@BeforeMethod
+    public void driverUsage() {
+	 homePage = new HomePage(driver);
+	 cartPage = new CartPage(driver);
+	 placeOrderPage =new PlaceOrderPage(driver);
+       }
+
 	
-	@BeforeClass(alwaysRun = true)
-	public void pageObjectInit() {
-		homePage = HomePage.getHomePageObject(driver);
-		cartPage = CartPage.getCartPageObject(driver);
-		placeOrderPage = PlaceOrderPage.getPlaceOrderPageObject(driver);
-	}
 	String orange = "Orange";
 
 	@Test
