@@ -15,7 +15,7 @@ import utilities.ActionsUtilitiy;
 public class CartPage extends ActionsUtilitiy {
 
 	WebDriver driver;
-	public static CartPage instance;
+	
 
 	// ✅ Constructor — initializes all elements
 	public CartPage(WebDriver driver) {
@@ -24,13 +24,7 @@ public class CartPage extends ActionsUtilitiy {
 		this.driver = driver;
 	}
 	
-	public static CartPage getCartPageObject(WebDriver driver) {
-		
-		if (instance == null) {
-	        instance = new CartPage(driver);
-	    }
-	    return instance;
-	}
+	
 	// =================== 🔹 Locators ===================
 
 	private By removeButton() {

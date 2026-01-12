@@ -29,14 +29,14 @@ import io.cucumber.java.Scenario;
 import utilities.screenshortUtility;
 
 public class BasePage {
-	   public static WebDriver driver;
-	    public static Properties prop;
-	    public static ExtentReports extent;
-	    public static ExtentTest test;
+	
+	    private static WebDriver driver;
+	    private static Properties prop;
+	    private static ExtentReports extent;
+	    private static ExtentTest test;
 
-	    // Runs once before all scenarios
-	    @Before(order = 0)
-	    public void setUpExtentReport() {
+	    @BeforeAll
+	    public static void setUpExtentReport() {
 	        if (extent == null) {
 	            String path = System.getProperty("user.dir") + "/reports/index.html";
 	            ExtentSparkReporter reporter = new ExtentSparkReporter(path);
@@ -49,35 +49,32 @@ public class BasePage {
 	        }
 	    }
 
-	    // Runs before each scenario
 	    @Before
 	    public void launchBrowser(Scenario scenario) {
-
 	        try {
-	            
-	                prop = new Properties();
-	                FileInputStream file = new FileInputStream(
-	                        System.getProperty("user.dir") + "/src/test/resources/GlobalTestProperties");
-	                prop.load(file);
+	            prop = new Properties();
+	            FileInputStream file = new FileInputStream(
+	                    System.getProperty("user.dir") + "/src/test/resources/GlobalTestProperties");
+	            prop.load(file);
 
-	                String actualDriver = prop.getProperty("browser");
+	            String actualDriver = prop.getProperty("browser", "chrome");
 
-	                switch (actualDriver.toLowerCase()) {
-	                    case "chrome":
-	                        driver = new ChromeDriver();
-	                        break;
-	                    case "edge":
-	                        driver = new EdgeDriver();
-	                        break;
-	                    case "firefox":
-	                        driver = new FirefoxDriver();
-	                        break;
-	                    default:
-	                        throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
-	                }
-	                driver.manage().window().maximize();
-	                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+	            switch (actualDriver.toLowerCase()) {
+	                case "chrome":
+	                    driver = new ChromeDriver();
+	                    break;
+	                case "edge":
+	                    driver = new EdgeDriver();
+	                    break;
+	                case "firefox":
+	                    driver = new FirefoxDriver();
+	                    break;
+	                default:
+	                    throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+	            }
 
+	            driver.manage().window().maximize();
+	            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	            driver.manage().deleteAllCookies();
 	            driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
@@ -88,37 +85,37 @@ public class BasePage {
 	        }
 	    }
 
-	    // Runs after each scenario
 	    @After
 	    public void tearDown(Scenario scenario) {
-
 	        try {
 	            if (scenario.isFailed()) {
+	                // implement ScreenshotUtility properly
 	                String path = screenshortUtility.takeScreenshort(driver, scenario.getName());
 	                test.fail("Scenario Failed");
 	                test.addScreenCaptureFromPath(path);
 	            } else {
-	                test.pass("Scenario Passed");   
+	                test.pass("Scenario Passed");
 	            }
-	            if (driver != null) {
-		            driver.quit();
-		        }
 	        } catch (Exception e) {
 	            e.printStackTrace();
+	        } finally {
+	            if (driver != null) {
+	                driver.quit();
+	                driver = null;
+	            }
 	        }
 	    }
 
-	    // Runs once after all scenarios (flush report & quit driver)
-	    @After(order = 0)
-	    public void flushReportAndQuit() {
+	    @AfterAll
+	    public static void flushReport() {
 	        if (extent != null) {
 	            extent.flush();
 	        }
-	       
 	    }
 
 	    public static WebDriver getDriver() {
 	        return driver;
 	    }
+	}
+
 	
-}

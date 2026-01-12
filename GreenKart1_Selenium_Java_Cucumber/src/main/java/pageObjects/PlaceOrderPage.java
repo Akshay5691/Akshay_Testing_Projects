@@ -23,12 +23,7 @@ public class PlaceOrderPage extends ActionsUtilitiy {
 		this.driver = driver;
 
 	}
-	public static PlaceOrderPage getPlaceOrderPageObject(WebDriver driver) {
-		if (instance == null) {
-	        instance = new PlaceOrderPage(driver);
-	    }
-	    return instance;
-	}
+	
 
 	// =================== 🔹 Locators ===================
 
