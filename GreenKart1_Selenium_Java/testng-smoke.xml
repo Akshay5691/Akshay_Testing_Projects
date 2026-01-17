@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Smoke Suite">
+    <test name="Smoke Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="TestPages.HomePageTestCases"/>
+            <class name="TestPages.CartPageTestCases"/>
+            <class name="TestPages.PlaceOrderPageTestCases"/>
+            <class name="TestPages.ProceedPageTestCases"/>
+        </classes>
+    </test>
+</suite>

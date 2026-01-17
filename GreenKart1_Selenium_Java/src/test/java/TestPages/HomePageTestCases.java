@@ -19,7 +19,7 @@ public class HomePageTestCases extends BasePage {
 	
 	HomePage homePage;
 	CartPage cartPage;
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
     public void driverUsage() {
 	 homePage = new HomePage(driver);
 	 cartPage = new CartPage(driver);
@@ -28,7 +28,7 @@ public class HomePageTestCases extends BasePage {
 	String orange = "Orange";
 	String apple = "Apple";
 
-	@Test(groups= {"smoke"},dataProvider = "productsNamesFromExcel", dataProviderClass = dataProvider.DataProviders.class)
+	@Test(dataProvider = "productsNamesFromExcel", dataProviderClass = dataProvider.DataProviders.class)
 	public void verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(Method method, String productName) {
 		try {
 			homePage.searchItemAndAddToCart(productName);
@@ -100,7 +100,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test(retryAnalyzer=retryFailedTests.reExecuteFailedTestCases.class)
+	@Test(groups= {"smoke"},retryAnalyzer=retryFailedTests.reExecuteFailedTestCases.class)
 	public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
 		try {
 			homePage.searchItem(orange);
@@ -119,7 +119,7 @@ public class HomePageTestCases extends BasePage {
 		}
 	}
 
-	@Test(groups= {"smoke"})
+	@Test()
 	public void verifyUserIsAbleToSearchItem(Method method) {
 		try {
 			homePage.searchItem(orange);

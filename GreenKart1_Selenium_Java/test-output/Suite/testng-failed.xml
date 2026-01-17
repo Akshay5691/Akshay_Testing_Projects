@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="TestPages.HomePageTestCases">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="setUpExtentReport"/>
+          <include name="verifyUserIsAbleToIncreaseCartPrice" invocation-numbers="0"/>
+          <include name="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox" invocation-numbers="0"/>
+          <include name="closeBrowser"/>
+          <include name="verifyItemNumberIsNotIncreasingWhileAddingSameItem" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- TestPages.HomePageTestCases -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

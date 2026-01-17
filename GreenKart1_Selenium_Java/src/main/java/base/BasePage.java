@@ -34,8 +34,7 @@ public class BasePage {
 	public static Properties prop;
 	public static ExtentReports extent;
 
-	
-	@BeforeSuite
+	 @BeforeSuite(alwaysRun = true)
 	public void setUpExtentReport() {
 		String path = System.getProperty("user.dir") + "\\reports\\index.html";
 		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
@@ -46,14 +45,12 @@ public class BasePage {
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 		extent.setSystemInfo("Tester", "Akshay");
-		
 
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void launchBrowser(Method method) {
-		
-		
+
 		try {
 			prop = new Properties();
 			FileInputStream file = new FileInputStream(
@@ -61,67 +58,61 @@ public class BasePage {
 					System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties");
 
 			prop.load(file);
-			
-			   String actualDriver = prop.getProperty("browser");
-			    String executionMode = prop.getProperty("execution"); 
 
-			    if (executionMode.equalsIgnoreCase("grid")) {
+			String actualDriver = prop.getProperty("browser");
+			String executionMode = prop.getProperty("execution");
 
-			        switch (actualDriver.toLowerCase()) {
+			if (executionMode.equalsIgnoreCase("grid")) {
 
-			        case "chrome":
-			            ChromeOptions chromeOptions = new ChromeOptions();
-			            driver = new RemoteWebDriver(
-			                    new URL("http://localhost:4444/wd/hub"), chromeOptions);
-			            break;
+				switch (actualDriver.toLowerCase()) {
 
-			        case "firefox":
-			            FirefoxOptions firefoxOptions = new FirefoxOptions();
-			            driver = new RemoteWebDriver(
-			                    new URL("http://localhost:4444/wd/hub"), firefoxOptions);
-			            break;
+				case "chrome":
+					ChromeOptions chromeOptions = new ChromeOptions();
+					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
+					break;
 
-			        case "edge":
-			            EdgeOptions edgeOptions = new EdgeOptions();
-			            driver = new RemoteWebDriver(
-			                    new URL("http://localhost:4444/wd/hub"), edgeOptions);
-			            break;
+				case "firefox":
+					FirefoxOptions firefoxOptions = new FirefoxOptions();
+					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions);
+					break;
 
-			        default:
-			            throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
-			        }
+				case "edge":
+					EdgeOptions edgeOptions = new EdgeOptions();
+					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), edgeOptions);
+					break;
 
-			    } else {
+				default:
+					throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+				}
 
-			        switch (actualDriver.toLowerCase()) {
-			        case "chrome":
-			            driver = new ChromeDriver();
-			            break;
-			        case "edge":
-			            driver = new EdgeDriver();
-			            break;
-			        case "firefox":
-			            driver = new FirefoxDriver();
-			            break;
-			        default:
-			            throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
-			        }
-			    }
+			} else {
+
+				switch (actualDriver.toLowerCase()) {
+				case "chrome":
+					driver = new ChromeDriver();
+					break;
+				case "edge":
+					driver = new EdgeDriver();
+					break;
+				case "firefox":
+					driver = new FirefoxDriver();
+					break;
+				default:
+					throw new IllegalArgumentException("Invalid browser name: " + actualDriver);
+				}
+			}
 
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-			test = extent.createTest(method.getName());		
-					
+			test = extent.createTest(method.getName());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-		
-		
 
 	@AfterMethod(alwaysRun = true)
 	public void closeBrowser(ITestResult result) throws IOException {
@@ -136,14 +127,14 @@ public class BasePage {
 			test.skip(result.getThrowable());
 		}
 		driver.quit();
-     
+
 	}
 
 	@AfterSuite
 	public void flushReport() {
-	
+
 		extent.flush();
-		
+
 	}
 
 }

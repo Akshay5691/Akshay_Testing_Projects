@@ -29,13 +29,7 @@ public class HomePageTestCases extends BasePage {
 		
 		
 		 
-  	  List <String> list =new ArrayList <String> ();
-  	  
-  	  list.add("Hyderabad");
-  	  list.add("Bangalore");
-  	  list.add("Chennai");
-  	  list.add("Pune");
-  	   System.out.println(list);
+  	 
   	  
   	   
   	   
