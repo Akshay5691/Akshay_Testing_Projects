@@ -44,7 +44,7 @@ public class HomePage extends ActionsUtilitiy {
 		return By.xpath("(//div//a[@class='decrement'])[1]");
 	}
 
-	private By quantityBoxOnItem() {
+	private static By quantityBoxOnItem() {
 		return By.xpath("(//input[@class='quantity'])[1]");
 	}
 

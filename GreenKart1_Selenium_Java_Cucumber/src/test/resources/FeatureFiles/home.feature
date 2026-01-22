@@ -4,7 +4,7 @@ Feature: Cart functionality on Home Page
     Given user is on GreenKart home page
    
 
-  @smoke
+  
   Scenario Outline: Verify item number is updating while adding different products to cart
     When user searches and adds "<productName>" to cart
     Then cart item number should be 1

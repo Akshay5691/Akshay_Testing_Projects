@@ -3,6 +3,7 @@ package BasePage;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
@@ -24,7 +25,6 @@ import utilityClasses.screenshortUtility;
 
 public class BasePage {
    public static ExtentTest test ;  
-   
    public static Properties prop;
    public static ExtentReports extent;
    public static AndroidDriver driver;
@@ -33,91 +33,83 @@ public class BasePage {
    
 	
     
-    @BeforeSuite
-    public void setUpExtentReport() {
-    	
-    	 try {        
-    		   
-    		 //   prop =new Properties();
-    		 //  FileInputStream file =new  FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\GlobalTestProperties" );
-    		//   prop.load(file);   
-    		  // String actualDriver = prop.getProperty("browser");		
+   @BeforeSuite
+   public void setUpExtentReport() {
 
-    	   
-    	       service = new AppiumServiceBuilder()
-    	               .withAppiumJS(new File("C:\\Users\\Akshay\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
-    	               .withIPAddress("127.0.0.1")
-    	               .usingPort(4723)
-    	               .withTimeout(Duration.ofSeconds(60))
-    	               .build();
+       try {
+           service = new AppiumServiceBuilder()
+                   .withAppiumJS(new File(System.getProperty("user.home")
+                           + "\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+                   .withIPAddress("127.0.0.1")
+                   .usingPort(4723)
+                   .withTimeout(Duration.ofSeconds(60))
+                   .build();
+           service.start();
+       } catch (Exception e) {
+           System.out.println("Error launching Appium server: " + e.getMessage());
+       }
 
-    	       service.start();
+       String path = System.getProperty("user.dir") + "\\reports\\index.html";
+       ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+       reporter.config().setReportName("Mobile Automation Results");
+       reporter.config().setDocumentTitle("Test Results");
 
-    	   
-    	       UiAutomator2Options options = new UiAutomator2Options();
-    	       options.setDeviceName("AkshayEmulator2");  
-    	       options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
-    	       options.setAutomationName("UiAutomator2");
-    	       options.setPlatformName("Android");
-    	       options.setAppPackage("com.androidsample.generalstore");
-    	       options.setAppActivity("com.androidsample.generalstore.SplashActivity");
-    	       options.setNewCommandTimeout(Duration.ofSeconds(60));
-    	       
-    	       
-    	       driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-    	       System.out.println("App launched successfully using UiAutomator2!");
-    	   }
-    			 catch (Exception e) {
-    		            System.out.println("Error launching the browser: " + e.getMessage());
-    		            e.printStackTrace();      
-    			}
-    
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-         
-       String path = System.getProperty("user.dir") + "\\reports\\index.html";	
-  	   ExtentSparkReporter reporter = new ExtentSparkReporter(path);
-        reporter.config().setReportName("Web Automation Results");
-        reporter.config().setDocumentTitle("Test Result");
-        extent = new ExtentReports();
-        extent.attachReporter(reporter);
-        extent.setSystemInfo("Akshay", "Tester");     
-     }
-    
-  
-    @BeforeMethod(alwaysRun =true)
-    public void createTestForExtentReport(Method method) {  
-    	
-    	  String appPackage = "com.androidsample.generalstore"; 
-    	driver.terminateApp(appPackage); 
-        test = extent.createTest(method.getName());             
-        driver.activateApp(appPackage);
-    }
-    
-    @AfterMethod(alwaysRun =true)
-    public void logResult(ITestResult result) throws IOException {	
-        if (result.getStatus() == ITestResult.FAILURE) {
-        	String path= screenshortUtility.takeScreenshort(result.getName());
-        	test.addScreenCaptureFromPath(path, result.getName());
-            test.fail(result.getThrowable());        
-        }
-        else if (result.getStatus() == ITestResult.SUCCESS) {
-			test.pass("Test Passed");
-		} else {
-			test.skip(result.getThrowable());
-		}
-       
-    }
-	
-	
-    @AfterSuite
-    public void CloseTheBrowser(){
-  		 driver.quit();	
-    	 extent.flush();
-     }
-    
+       extent = new ExtentReports();
+       extent.attachReporter(reporter);
+       extent.setSystemInfo("Tester", "Akshay");
+   }
 
-    
+   @BeforeMethod(alwaysRun = true)
+   public void createTestForExtentReport(Method method) {
 
+       test = extent.createTest(method.getName());
+
+       try {
+           UiAutomator2Options options = new UiAutomator2Options();
+           options.setDeviceName("AkshayEmulator2");
+           options.setApp(System.getProperty("user.dir") + "\\apps\\General-Store.apk");
+           options.setAutomationName("UiAutomator2");
+           options.setPlatformName("Android");
+           options.setAppPackage("com.androidsample.generalstore");
+           options.setAppActivity("com.androidsample.generalstore.SplashActivity");
+           options.setNewCommandTimeout(Duration.ofSeconds(60));
+
+           driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+           System.out.println("App launched successfully!");
+        
+
+       }  catch (Exception e) {
+           test.fail("Failed to launch the app: " + e.getMessage());
+           throw new RuntimeException(e);
+       }
+   }
+
+   @AfterMethod(alwaysRun = true)
+   public void logResult(ITestResult result) throws IOException {
+
+       if (result.getStatus() == ITestResult.FAILURE) {
+           String path = screenshortUtility.takeScreenshort(result.getName());
+           test.addScreenCaptureFromPath(path);
+           test.fail(result.getThrowable());
+       } else if (result.getStatus() == ITestResult.SUCCESS) {
+           test.pass("Test Passed");
+       } else {
+           test.skip(result.getThrowable());
+       }
+
+       if (driver != null) {
+           driver.quit();
+       }
+   }
+
+   @AfterSuite
+   public void tearDown() {
+       extent.flush();
+       if (service != null) {
+           service.stop();
+       }
+   }
+    
 
 
 }

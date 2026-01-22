@@ -32,6 +32,7 @@ public class HomePageTestCases extends BasePage {
 	public void verifyItemNumberIsUpdatingWhileAddingDifferentProductsToCart(Method method, String productName) {
 		try {
 			homePage.searchItemAndAddToCart(productName);
+		
 
 			int actualItemNumber = homePage.getItemNumberValue();
 			int expectedValue = 1;
@@ -43,6 +44,7 @@ public class HomePageTestCases extends BasePage {
 			log.error(method.getName() + " : failed");
 
 		}
+		
 	}
 
 	@Test()
@@ -106,6 +108,7 @@ public class HomePageTestCases extends BasePage {
 			homePage.searchItem(orange);
 			Thread.sleep(1000);
 			homePage.clickMinusButtonAddToCart();
+			homePage.clearQuantityBox();
 
 			int defaultQuantity = homePage.getItemQuantityInBox();
 			int expectedValue = 1;

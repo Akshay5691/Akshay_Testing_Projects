@@ -524,21 +524,37 @@ public class coding {
 	}
 	
 	
+	public void sumOfPositiveNumber() {
+		int[]number = {1, 3 , 5,7,-6,-5};
+		int sum=0;
+		
+		
+		for (int i = 0; i < number.length; i++) {
+			int j = number[i];
+			
+			if(j>0) {
+				sum+=j;		
+			}	
+		}
+		
+		System.out.println(sum);
+			
+		}
+	
+	
+	
 	@Test
-	public void PractiseHere() {
-		
+	public void PractiseHere() {	
 	
-		
-		
+	
+	
+	
+	
+	
+	
+	
+	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

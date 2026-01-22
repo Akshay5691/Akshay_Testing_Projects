@@ -23,7 +23,7 @@ public class screenshortUtility extends BasePage {
 	
 		   
 			File screenshots = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			String path=System.getProperty("user.dir")+"\\screenshorts\\"+timestamp+"\\ "+testCaseName+".png";
+			String path=System.getProperty("user.dir")+"\\screenshots\\"+timestamp+"\\ "+testCaseName+".png";
 			File filepath = new File(path);
 			FileUtils.copyFile(screenshots, filepath);	
 			return path;
