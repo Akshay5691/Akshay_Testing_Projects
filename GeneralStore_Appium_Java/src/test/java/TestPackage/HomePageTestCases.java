@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import BasePage.BasePage;
@@ -21,10 +22,10 @@ public class HomePageTestCases extends BasePage {
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
 	
-	  @BeforeClass(alwaysRun = true)
+	  @BeforeMethod(alwaysRun = true)
 	    public void setUpHomePageObjects() {
-	        objHome = HomePage.getHomePageObject(driver);
-	        objProduct = ProductPage.getProductPageObject(driver);
+	        objHome =new HomePage(driver);
+	        objProduct =new ProductPage(driver);
 	    }
      @Test
 	public void verifyUserIsAbleToEnterName(Method Method) {

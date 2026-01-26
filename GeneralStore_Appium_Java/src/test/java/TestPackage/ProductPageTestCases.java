@@ -24,11 +24,11 @@ public class ProductPageTestCases extends BasePage {
 	private static final Logger log = LogManager.getLogger(HomePageTestCases.class);
 
 
-	  @BeforeClass(alwaysRun = true)
+	  @BeforeMethod(alwaysRun = true)
 	    public void setUpPageObjects() {
-	        objHome = HomePage.getHomePageObject(driver);
-	        objProduct = ProductPage.getProductPageObject(driver);
-	        objCart = CartPage.getCartPageObject(driver);
+	        objHome = new HomePage(driver);
+	        objProduct = new ProductPage(driver);
+	        objCart =new  CartPage(driver);
 	    }
 	@Test
 	public void verifyUserAbleToAddProductToCart(Method Method) {

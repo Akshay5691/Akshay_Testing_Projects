@@ -15,13 +15,7 @@ public class ProductPage extends ActionsUtilitiy {
 		this.driver = driver;
 	}
 
-	public static ProductPage getProductPageObject(AndroidDriver driver) {
-
-		if (instance == null) {
-			instance = new ProductPage(driver);
-		}
-		return instance;
-	}
+	
 	
 	// =================== 🔹 Locators ===================
 

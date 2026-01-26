@@ -18,13 +18,7 @@ public class CartPage extends ActionsUtilitiy {
 
 	}
 
-	public static CartPage getCartPageObject(AndroidDriver driver) {
-
-		if (instance == null) {
-			instance = new CartPage(driver);
-		}
-		return instance;
-	}
+	
 
 	// =================== 🔹 Locators ===================
 

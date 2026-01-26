@@ -89,7 +89,7 @@ public class coding {
 	@Test
 	public void fibonacciSeries() {
 		int n1 = 0, n2 = 1, n3, count = 10;
-		System.out.print(n1 + " " + n2);
+	
 		for (int i = 2; i < count; i++) {
 			n3 = n1 + n2;
 			System.out.print(" " + n3);
@@ -111,13 +111,13 @@ public class coding {
 		for (int i = 0; i < list.size(); i++) {
 
 			String city = list.get(i).toLowerCase();
-			List<String> vowels = new ArrayList<String>(Arrays.asList("a", "e", "i", "o", "u"));
+			String [] vowels= {"a","e","i","o","u"};
 
-			for (int j = 0; j < vowels.size(); j++) {
+			for (int j = 0; j < vowels.length; j++) {
 
-				if (city.contains(vowels.get(j))) {
+				if (city.contains(vowels[j])) {
 
-					String[] splitted = city.split(vowels.get(j));
+					String[] splitted = city.split(vowels[j]);
 
 					String string = String.join("", splitted);
 					list.set(i, string);
@@ -132,15 +132,15 @@ public class coding {
 
 	@Test
 	public void removeVowelsFromString() {
-		String city = "I am learning Selenium Automation";
+		String city = "Hyderabad";
 
-		List<String> vowels = new ArrayList<String>(Arrays.asList("a", "e", "i", "o", "u"));
+		String [] vowels= {"a","e","i","o","u"};
 
-		for (int j = 0; j < vowels.size(); j++) {
+		for (int j = 0; j < vowels.length; j++) {
 
-			if (city.contains(vowels.get(j))) {
+			if (city.contains(vowels[j])) {
 
-				String[] splitted = city.split(vowels.get(j));
+				String[] splitted = city.split(vowels[j]);
 
 				city = String.join("", splitted);
 			}
@@ -226,27 +226,25 @@ public class coding {
 	@Test
 	public void countingRepeatingCharactersInString() {
 
-		String name1 = "Akshay chary";
+		String name1 = "AkshayChary";
 		String name = name1.toLowerCase();
 		String counted = "";
 
 		for (int i = 0; i < name.length(); i++) {
-
-			char character = name.charAt(i);
-
-			if (counted.contains(String.valueOf(character))) {
+			
+			if (counted.contains(String.valueOf(name.charAt(i)))) {
 				continue;
 			}
 
 			int count = 0;
 			for (int j = 0; j < name.length(); j++) {
-				if (character == name.charAt(j)) {
+				if (name.charAt(i)== name.charAt(j)) {
 					count++;
 				}
 			}
 
-			counted = counted + character;
-			System.out.println(character + " " + count);
+			counted = counted + name.charAt(i);
+			System.out.println(name.charAt(i) + " " + count);
 		}
 
 	}
@@ -336,7 +334,7 @@ public class coding {
 
 		int[] array = { 10, 40, 20, 80, 50, 30, 60 };
 		int min;
-		int temp;
+		
 
 		for (int i = 0; i < array.length; i++) {
 
@@ -411,7 +409,7 @@ public class coding {
 		System.out.println(chars);
 
 	}
-
+    @Test
 	public void alphabetsAscendingOrderInStringWithOutSort() {
 
 		String alphabets = "hsbdfbjkbskjbjkbaskltertiuweyqpcxbncmf";
@@ -544,17 +542,53 @@ public class coding {
 	
 	
 	@Test
-	public void PractiseHere() {	
+	public void removeDuplicatesFromString() {	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		String str = "programming";
+		String result = "";
+
+
+		for (int i = 0; i < str.length(); i++) {
+			
+		if (!result.contains(String.valueOf(str.charAt(i)))) {
+		result += str.charAt(i);
+		   }
+		}
+
+
+		System.out.println(result); 
 	}
+	
+	
+	public void PrintDuplicateStringsFromArray() {	
+		
+		String[] arr = {"java", "selenium", "api", "java", "testing", "api"};
+
+
+		for (int i = 0; i < arr.length; i++) {
+		for (int j = i + 1; j < arr.length; j++) {
+			
+		if (arr[i].equals(arr[j])) {
+		System.out.println(arr[i]);
+		break;
+		           }
+	         	}
+		   }
+		}
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

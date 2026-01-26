@@ -17,13 +17,7 @@ public class HomePage extends ActionsUtilitiy {
 		this.driver = driver;
 
 	}
-	public static HomePage getHomePageObject(AndroidDriver driver) {
-
-		  if (instance == null) {
-		        instance = new HomePage(driver);
-		    }
-		    return instance;
-	}
+	
 
 	// =================== Locators ===================
 
