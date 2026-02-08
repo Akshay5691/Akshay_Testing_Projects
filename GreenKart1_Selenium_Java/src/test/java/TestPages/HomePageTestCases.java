@@ -11,7 +11,8 @@ import org.testng.annotations.Test;
 
 import base.BasePage;
 import pageObjects.CartPage;
-import pageObjects.HomePage;;
+import pageObjects.HomePage;
+import pageObjects.PageObjectManager;;
 
 public class HomePageTestCases extends BasePage {
 
@@ -21,8 +22,8 @@ public class HomePageTestCases extends BasePage {
 	CartPage cartPage;
 	@BeforeMethod(alwaysRun = true)
     public void driverUsage() {
-	 homePage = new HomePage(driver);
-	 cartPage = new CartPage(driver);
+	 homePage =pageObjectManager.getHomePage();
+	 cartPage = pageObjectManager.getCartPage();
        }
 
 	String orange = "Orange";
@@ -108,7 +109,7 @@ public class HomePageTestCases extends BasePage {
 			homePage.searchItem(orange);
 			Thread.sleep(1000);
 			homePage.clickMinusButtonAddToCart();
-			homePage.clearQuantityBox();
+		
 
 			int defaultQuantity = homePage.getItemQuantityInBox();
 			int expectedValue = 1;

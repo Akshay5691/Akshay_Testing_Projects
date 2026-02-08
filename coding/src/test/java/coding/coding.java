@@ -559,7 +559,7 @@ public class coding {
 		System.out.println(result); 
 	}
 	
-	
+	@Test
 	public void PrintDuplicateStringsFromArray() {	
 		
 		String[] arr = {"java", "selenium", "api", "java", "testing", "api"};

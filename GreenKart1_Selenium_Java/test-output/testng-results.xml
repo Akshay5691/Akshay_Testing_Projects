@@ -1,11 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+<testng-results ignored="23" total="25" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-17T12:55:26 IST" name="Smoke Suite" finished-at="2026-01-17T12:55:26 IST" duration-ms="16">
+  <suite started-at="2026-02-08T15:47:50 IST" name="Smoke Suite" finished-at="2026-02-08T15:48:05 IST" duration-ms="15521">
     <groups>
+      <group name="smoke">
+        <method signature="HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" name="verifyItemNumberIsNotIncreasingWhileAddingSameItem" class="TestPages.HomePageTestCases"/>
+        <method signature="HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" name="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox" class="TestPages.HomePageTestCases"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2026-01-17T12:55:26 IST" name="Smoke Tests" finished-at="2026-01-17T12:55:26 IST" duration-ms="16">
+    <test started-at="2026-02-08T15:47:50 IST" name="Smoke Tests" finished-at="2026-02-08T15:48:05 IST" duration-ms="15521">
+      <class name="TestPages.HomePageTestCases">
+        <test-method is-config="true" signature="setUpExtentReport()[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:47:50 IST" name="setUpExtentReport" finished-at="2026-02-08T15:47:50 IST" duration-ms="196" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpExtentReport -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:47:50 IST" name="launchBrowser" finished-at="2026-02-08T15:47:54 IST" duration-ms="4140" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:47:54 IST" name="driverUsage" finished-at="2026-02-08T15:47:54 IST" duration-ms="28" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method signature="verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:47:54 IST" name="verifyItemNumberIsNotIncreasingWhileAddingSameItem" finished-at="2026-02-08T15:47:59 IST" duration-ms="5165" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyItemNumberIsNotIncreasingWhileAddingSameItem -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:47:59 IST" name="closeBrowser" finished-at="2026-02-08T15:48:00 IST" duration-ms="432" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyItemNumberIsNotIncreasingWhileAddingSameItem status=SUCCESS method=HomePageTestCases.verifyItemNumberIsNotIncreasingWhileAddingSameItem(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method is-config="true" signature="launchBrowser(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:48:00 IST" name="launchBrowser" finished-at="2026-02-08T15:48:03 IST" duration-ms="3346" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:48:03 IST" name="verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox" finished-at="2026-02-08T15:48:05 IST" duration-ms="2086" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void TestPages.HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox -->
+        <test-method is-config="true" signature="driverUsage()[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:48:03 IST" name="driverUsage" finished-at="2026-02-08T15:48:03 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- driverUsage -->
+        <test-method is-config="true" signature="closeBrowser(org.testng.ITestResult)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808]" started-at="2026-02-08T15:48:05 IST" name="closeBrowser" finished-at="2026-02-08T15:48:05 IST" duration-ms="261" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox status=SUCCESS method=HomePageTestCases.verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(java.lang.reflect.Method)[pri:0, instance:TestPages.HomePageTestCases@1fcb4808] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- TestPages.HomePageTestCases -->
     </test> <!-- Smoke Tests -->
   </suite> <!-- Smoke Suite -->
 </testng-results>

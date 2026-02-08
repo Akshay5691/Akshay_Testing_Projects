@@ -26,6 +26,8 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import pageObjects.PageObjectManager;
 import utilities.screenshortUtility;
 
 public class BasePage {
@@ -33,6 +35,7 @@ public class BasePage {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static ExtentReports extent;
+	 protected PageObjectManager pageObjectManager;
 
 	 @BeforeSuite(alwaysRun = true)
 	public void setUpExtentReport() {
@@ -107,6 +110,7 @@ public class BasePage {
 			driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			test = extent.createTest(method.getName());
+			pageObjectManager = new PageObjectManager(driver);
 
 		} catch (Exception e) {
 			e.printStackTrace();

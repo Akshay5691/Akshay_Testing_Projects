@@ -19,10 +19,10 @@ public class PlaceOrderPageTestCases extends BasePage {
 	ProceedPage proceedPage ;
 	@BeforeMethod
     public void driverUsage() {
-	 homePage = new HomePage(driver);
-	 cartPage = new CartPage(driver);
-	 placeOrderPage =new PlaceOrderPage(driver);
-	 proceedPage =new ProceedPage(driver);
+		 homePage =pageObjectManager.getHomePage();
+		 cartPage = pageObjectManager.getCartPage();
+	 placeOrderPage =pageObjectManager.getPlaceOrderPage();
+	 proceedPage =pageObjectManager.getProceedPage();
 	 
        }
 	

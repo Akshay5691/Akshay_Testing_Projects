@@ -26,9 +26,9 @@ public class CartPageTestCases extends BasePage {
 	PlaceOrderPage placeOrderPage;
 	@BeforeMethod
     public void driverUsage() {
-	 homePage = new HomePage(driver);
-	 cartPage = new CartPage(driver);
-	 placeOrderPage =new PlaceOrderPage(driver);
+		 homePage =pageObjectManager.getHomePage();
+		 cartPage = pageObjectManager.getCartPage();
+	 placeOrderPage =pageObjectManager.getPlaceOrderPage();
        }
 
 	
