@@ -70,6 +70,7 @@ public class HomePageTestCases extends BasePage {
 	public void verifyItemNumberIsNotIncreasingWhileAddingSameItem(Method method) {
 		try {
 			homePage.searchItem(orange);
+			
 			homePage.clickOnAddToCart(orange);
 			homePage.clickOnAddToCart(orange);
 
@@ -107,6 +108,7 @@ public class HomePageTestCases extends BasePage {
 	public void verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox(Method method) {
 		try {
 			homePage.searchItem(orange);
+			
 			Thread.sleep(1000);
 			homePage.clickMinusButtonAddToCart();
 		
@@ -127,6 +129,7 @@ public class HomePageTestCases extends BasePage {
 	public void verifyUserIsAbleToSearchItem(Method method) {
 		try {
 			homePage.searchItem(orange);
+			
 
 			String itemName = homePage.getProductName(orange);
 			String expectedName = orange;

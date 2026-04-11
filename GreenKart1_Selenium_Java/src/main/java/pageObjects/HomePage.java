@@ -68,7 +68,9 @@ public class HomePage extends ActionsUtilitiy {
 	// =================== 🔹 Action Methods ===================
 
 	public void searchItem(String itemName) {
+		
 		type(searchBox(), itemName);
+		
 		click(searchButton());
 	}
 

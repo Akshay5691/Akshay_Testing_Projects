@@ -33,20 +33,23 @@ public class ActionsUtilitiy {
 	}
 
 	public void click(By locator) {
-		try {
+		
 			waitUntilElementClickable(locator);
+			
 			driver.findElement(locator).click();
-		} catch (Exception e) {
-			System.out.println("Element not found to click: " +e.getMessage()+ locator);
-		}
+			
+		
 	}
 
 	public void type(By locator, String text) {
 		try {
 			waitUntilElementVisible(locator);
+			
 			WebElement element = driver.findElement(locator);
 			element.clear();
+			
 			element.sendKeys(text);
+			
 		} catch (Exception e) {
 			System.out.println("Element not found to type: " +e.getMessage() + locator);
 		}

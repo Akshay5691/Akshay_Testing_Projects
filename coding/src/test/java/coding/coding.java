@@ -23,7 +23,7 @@ public class coding {
 
 		for (int i = 1; i <= number; i++) {
 			factorial = factorial * i;
-			System.out.print(factorial + "  ");
+			
 		}
 		System.out.println("Factorial of " + number + " is: " + factorial);
 	}
@@ -90,7 +90,7 @@ public class coding {
 	public void fibonacciSeries() {
 		int n1 = 0, n2 = 1, n3, count = 10;
 	
-		for (int i = 2; i < count; i++) {
+		for (int i = 1; i < count; i++) {
 			n3 = n1 + n2;
 			System.out.print(" " + n3);
 			n1 = n2;
@@ -188,6 +188,7 @@ public class coding {
 
 				if (ch == vowels[j]) {
 					VowelsCount++;
+					break;
 				}
 			}
 
@@ -211,8 +212,9 @@ public class coding {
 
 	@Test
 	public void evenOrOddNumber() {
-		System.out.println("enter number");
+		
 		Scanner sc = new Scanner(System.in);
+		System.out.println("enter number");
 		int number = sc.nextInt();
 
 		if (number % 2 == 0) {
@@ -333,7 +335,7 @@ public class coding {
 	public void sortingArrayMaxToMin() {
 
 		int[] array = { 10, 40, 20, 80, 50, 30, 60 };
-		int min;
+		int temp;
 		
 
 		for (int i = 0; i < array.length; i++) {
@@ -341,9 +343,9 @@ public class coding {
 			for (int j = i + 1; j < array.length; j++) {
 
 				if (array[i] < array[j]) {
-					min = array[i];
+					temp = array[i];
 					array[i] = array[j];
-					array[j] = min;
+					array[j] = temp;
 				}
 			}
 
@@ -502,7 +504,7 @@ public class coding {
 				}
 			}
 
-			if (!isDuplicate) {
+			if (isDuplicate==false) {
 				temp[index++] = numbers[i];
 			}
 		}
@@ -578,18 +580,63 @@ public class coding {
 		
 		
 		
-		
-		
+	@Test	
+	public void PrintDuplicates(){
+	
+	String str = "akshay";
+
+	for (int i = 0; i < str.length(); i++) {
+	    for (int j = i + 1; j < str.length(); j++) {
+	        if (str.charAt(i) == str.charAt(j)) {
+	            System.out.println(str.charAt(i));
+	            
+	            break;
+	        }
+	    }
+	}
 	
 	
 	
 	
 	
+		}
+	public void printVowels() {
+
+        String str1 = "hello";
+        String str = str1.toLowerCase();
+        
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'
+               ) {
+
+                System.out.println(ch + " is a Vowel");
+
+            } else if ((ch >= 'a' && ch <= 'z')) {
+
+                System.out.println(ch + " is a Consonant");
+            }
+        }
+    }
 	
 	
 	
-	
-	
-	
+	  public void sumOfNumbersInString() {
+
+	        String str = "a1b2c3";
+	        int sum = 0;
+
+	        for (int i = 0; i < str.length(); i++) {
+	            char ch = str.charAt(i);
+
+	            if (Character.isDigit(ch)) {
+	                sum += Character.getNumericValue(ch); 
+	            }
+	        }
+
+	        System.out.println("Sum: " + sum);
+	  }
 
 }

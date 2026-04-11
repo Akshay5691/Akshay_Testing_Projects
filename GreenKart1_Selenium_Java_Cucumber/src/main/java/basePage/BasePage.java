@@ -48,7 +48,7 @@ public class BasePage {
 	            extent.setSystemInfo("Tester", "Akshay");
 	        }
 	    }
-
+              // @Before("@Smoke") --- @After("@Smoke")  tagged hooks
 	    @Before
 	    public void launchBrowser(Scenario scenario) {
 	        try {
@@ -116,6 +116,10 @@ public class BasePage {
 	    public static WebDriver getDriver() {
 	        return driver;
 	    }
+	    
+	    
+	    
+	    
 	}
 
 	

@@ -111,6 +111,7 @@ public class BasePage {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 			test = extent.createTest(method.getName());
 			pageObjectManager = new PageObjectManager(driver);
+		
 
 		} catch (Exception e) {
 			e.printStackTrace();
