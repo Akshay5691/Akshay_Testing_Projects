@@ -1,24 +1,30 @@
-import { expect } from '@playwright/test';
-import { customTest as test } from '../utils_ts/test-base';
+import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { POManager } from '../pageobjects_ts/POManager';
+
+const BASE_URL = 'https://rahulshettyacademy.com/client';
+const SESSION_PATH = 'state.json';
+
+let page: Page;
+let poManager: POManager;
+let context: BrowserContext;
 
 test.describe('Checkout Page Tests - Page Object Model', () => {
     
-    test.beforeAll(async ({ browser }) => {
-        const context = await browser.newContext();
-        const loginPage = await context.newPage();
-        
-        // Perform login once to save session
-        await loginPage.goto('https://rahulshettyacademy.com/client');
-        await loginPage.locator('#userEmail').fill('rahulshetty@gmail.com');
-        await loginPage.locator('#userPassword').fill('Iamking@000');
-        await loginPage.locator("[value='Login']").click();
-        await loginPage.waitForLoadState('networkidle');
-        await loginPage.context().storageState({ path: 'state.json' });
-        
-        await context.close();
+    test.beforeEach(async () => {
+        const browser = await chromium.launch();
+        context = await browser.newContext({ storageState: SESSION_PATH });
+        page = await context.newPage();
+        await page.goto(BASE_URL);
+        await page.waitForLoadState('domcontentloaded');
+        poManager = new POManager(page);
+    });
+    
+    test.afterEach(async () => {
+        if (page) await page.close();
+        if (context) await context.close();
     });
 
-    test('@Checkout TC001 - Navigate to Checkout Page and Verify Page Loads', async ({ page, poManager }) => {
+    test('@Checkout TC001 - Navigate to Checkout Page and Verify Page Loads', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -35,7 +41,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         expect(url).toContain('checkout');
     });
 
-    test('@Checkout TC002 - Verify All Products Appear in Checkout Page', async ({ page, poManager }) => {
+    test('@Checkout TC002 - Verify All Products Appear in Checkout Page', async () => {
         // Arrange
         const productName = 'ADIDAS ORIGINAL';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -56,7 +62,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         expect(isProductInCheckout).toBeTruthy();
     });
 
-    test('@Checkout TC003 - Verify Product Price is Displayed in Checkout', async ({ page, poManager }) => {
+    test('@Checkout TC003 - Verify Product Price is Displayed in Checkout', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -74,7 +80,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         console.log(`Product ${productName} price: ${price}`);
     });
 
-    test('@Checkout TC004 - Verify Subtotal and Total Amount Calculation', async ({ page, poManager }) => {
+    test('@Checkout TC004 - Verify Subtotal and Total Amount Calculation', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -97,7 +103,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         expect(total).not.toBeNull();
     });
 
-    test('@Checkout TC005 - Apply Discount Code and Verify Amount is Updated', async ({ page, poManager }) => {
+    test('@Checkout TC005 - Apply Discount Code and Verify Amount is Updated', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const discountCode = 'rahulshettyacademy';
@@ -125,7 +131,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         }
     });
 
-    test('@Checkout TC006 - Update Product Quantity in Checkout', async ({ page, poManager }) => {
+    test('@Checkout TC006 - Update Product Quantity in Checkout', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const newQuantity = 2;
@@ -147,7 +153,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         }
     });
 
-    test('@Checkout TC007 - Remove Product from Checkout', async ({ page, poManager }) => {
+    test('@Checkout TC007 - Remove Product from Checkout', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -170,7 +176,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         }
     });
 
-    test('@Checkout TC008 - Verify Place Order Button is Visible and Enabled', async ({ page, poManager }) => {
+    test('@Checkout TC008 - Verify Place Order Button is Visible and Enabled', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -190,7 +196,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         expect(isEnabled).toBeTruthy();
     });
 
-    test('@Checkout TC009 - Get Checkout Item Details', async ({ page, poManager }) => {
+    test('@Checkout TC009 - Get Checkout Item Details', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -211,7 +217,7 @@ test.describe('Checkout Page Tests - Page Object Model', () => {
         expect(itemDetails?.price).toBeTruthy();
     });
 
-    test('@Checkout TC010 - Navigate to Place Order Page from Checkout', async ({ page, poManager }) => {
+    test('@Checkout TC010 - Navigate to Place Order Page from Checkout', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();

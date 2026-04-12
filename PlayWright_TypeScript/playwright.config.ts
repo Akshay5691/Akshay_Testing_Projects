@@ -1,10 +1,9 @@
-// @ts-check
-const { devices } = require('@playwright/test');
+import { PlaywrightTestConfig, devices } from '@playwright/test';
 
-const config = {
+const config: PlaywrightTestConfig = {
   testDir: './tests',
   retries: 0,
-  workers: 2,
+  workers: 1,
   
   /* Run your local dev server before starting tests */
   webServer: undefined,
@@ -28,4 +27,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;

@@ -1,24 +1,30 @@
-import { expect } from '@playwright/test';
-import { customTest as test } from '../utils_ts/test-base';
+import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { POManager } from '../pageobjects_ts/POManager';
+
+const BASE_URL = 'https://rahulshettyacademy.com/client';
+const SESSION_PATH = 'state.json';
+
+let page: Page;
+let poManager: POManager;
+let context: BrowserContext;
 
 test.describe('Place Order Page Tests - Page Object Model', () => {
     
-    test.beforeAll(async ({ browser }) => {
-        const context = await browser.newContext();
-        const loginPage = await context.newPage();
-        
-        // Perform login once to save session
-        await loginPage.goto('https://rahulshettyacademy.com/client');
-        await loginPage.locator('#userEmail').fill('rahulshetty@gmail.com');
-        await loginPage.locator('#userPassword').fill('Iamking@000');
-        await loginPage.locator("[value='Login']").click();
-        await loginPage.waitForLoadState('networkidle');
-        await loginPage.context().storageState({ path: 'state.json' });
-        
-        await context.close();
+    test.beforeEach(async () => {
+        const browser = await chromium.launch();
+        context = await browser.newContext({ storageState: SESSION_PATH });
+        page = await context.newPage();
+        await page.goto(BASE_URL);
+        await page.waitForLoadState('domcontentloaded');
+        poManager = new POManager(page);
+    });
+    
+    test.afterEach(async () => {
+        if (page) await page.close();
+        if (context) await context.close();
     });
 
-    test('@PlaceOrder TC001 - Navigate to Place Order Page and Verify Page Loads', async ({ page, poManager }) => {
+    test('@PlaceOrder TC001 - Navigate to Place Order Page and Verify Page Loads', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -36,7 +42,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(await poManager.getPlaceOrderPage().isPlaceOrderPageLoaded()).toBeTruthy();
     });
 
-    test('@PlaceOrder TC002 - Verify All Form Sections are Visible', async ({ page, poManager }) => {
+    test('@PlaceOrder TC002 - Verify All Form Sections are Visible', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -62,7 +68,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log(`Order Summary: ${hasOrderSummary}`);
     });
 
-    test('@PlaceOrder TC003 - Verify Order Summary with Products', async ({ page, poManager }) => {
+    test('@PlaceOrder TC003 - Verify Order Summary with Products', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -87,7 +93,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(totalAmount).not.toBeNull();
     });
 
-    test('@PlaceOrder TC004 - Fill Personal Details', async ({ page, poManager }) => {
+    test('@PlaceOrder TC004 - Fill Personal Details', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const name = 'John Doe';
@@ -111,7 +117,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(await poManager.getPlaceOrderPage().verifyPersonDetailsSection()).toBeTruthy();
     });
 
-    test('@PlaceOrder TC005 - Fill Shipping Address', async ({ page, poManager }) => {
+    test('@PlaceOrder TC005 - Fill Shipping Address', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const street = '123 Main Street';
@@ -136,7 +142,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(await poManager.getPlaceOrderPage().verifyShippingAddressSection()).toBeTruthy();
     });
 
-    test('@PlaceOrder TC006 - Select Country', async ({ page, poManager }) => {
+    test('@PlaceOrder TC006 - Select Country', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const country = 'United States';
@@ -157,7 +163,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log(`Country ${country} selected successfully`);
     });
 
-    test('@PlaceOrder TC007 - Fill Payment Details', async ({ page, poManager }) => {
+    test('@PlaceOrder TC007 - Fill Payment Details', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const cardName = 'John Doe';
@@ -180,7 +186,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(await poManager.getPlaceOrderPage().verifyPaymentDetailsSection()).toBeTruthy();
     });
 
-    test('@PlaceOrder TC008 - Accept Terms and Conditions', async ({ page, poManager }) => {
+    test('@PlaceOrder TC008 - Accept Terms and Conditions', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         
@@ -200,7 +206,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log(`Terms accepted: ${accepted}`);
     });
 
-    test('@PlaceOrder TC009 - Verify Place Order Button is Visible and Enabled', async ({ page, poManager }) => {
+    test('@PlaceOrder TC009 - Verify Place Order Button is Visible and Enabled', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -222,7 +228,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         expect(isEnabled).toBeTruthy();
     });
 
-    test('@PlaceOrder TC010 - Complete Order with Valid Details and Verify Confirmation', async ({ page, poManager }) => {
+    test('@PlaceOrder TC010 - Complete Order with Valid Details and Verify Confirmation', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const name = 'John Doe';
@@ -272,7 +278,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log('Order Number:', orderNumber);
     });
 
-    test('@PlaceOrder TC011 - Fill Complete Form and Verify All Validations Pass', async ({ page, poManager }) => {
+    test('@PlaceOrder TC011 - Fill Complete Form and Verify All Validations Pass', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         const name = 'John Doe';
@@ -309,7 +315,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log('Form validation passed with no errors');
     });
 
-    test('@PlaceOrder TC012 - Verify Order Summary in Place Order Page', async ({ page, poManager }) => {
+    test('@PlaceOrder TC012 - Verify Order Summary in Place Order Page', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         
@@ -339,7 +345,7 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log('Total:', totalAmount);
     });
 
-    test('@PlaceOrder TC013 - Test Form Field Validations with Empty Fields', async ({ page, poManager }) => {
+    test('@PlaceOrder TC013 - Test Form Field Validations with Empty Fields', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         

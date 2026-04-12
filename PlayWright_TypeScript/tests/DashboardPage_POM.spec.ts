@@ -1,24 +1,30 @@
-import { expect } from '@playwright/test';
-import { customTest as test } from '../utils_ts/test-base';
+import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { POManager } from '../pageobjects_ts/POManager';
+
+const BASE_URL = 'https://rahulshettyacademy.com/client';
+const SESSION_PATH = 'state.json';
+
+let page: Page;
+let poManager: POManager;
+let context: BrowserContext;
 
 test.describe('Dashboard Page Tests - Page Object Model', () => {
     
-    test.beforeAll(async ({ browser }) => {
-        const context = await browser.newContext();
-        const loginPage = await context.newPage();
-        
-        // Perform login once to save session
-        await loginPage.goto('https://rahulshettyacademy.com/client');
-        await loginPage.locator('#userEmail').fill('rahulshetty@gmail.com');
-        await loginPage.locator('#userPassword').fill('Iamking@000');
-        await loginPage.locator("[value='Login']").click();
-        await loginPage.waitForLoadState('networkidle');
-        await loginPage.context().storageState({ path: 'state.json' });
-        
-        await context.close();
+    test.beforeEach(async () => {
+        const browser = await chromium.launch();
+        context = await browser.newContext({ storageState: SESSION_PATH });
+        page = await context.newPage();
+        await page.goto(BASE_URL);
+        await page.waitForLoadState('domcontentloaded');
+        poManager = new POManager(page);
+    });
+    
+    test.afterEach(async () => {
+        if (page) await page.close();
+        if (context) await context.close();
     });
 
-    test('@Dashboard TC001 - Verify Dashboard Loads with Products', async ({ page, poManager }) => {
+    test('@Dashboard TC001 - Verify Dashboard Loads with Products', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -29,7 +35,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(productCount).toBeGreaterThan(0);
     });
 
-    test('@Dashboard TC002 - Verify All Products Display Names', async ({ page, poManager }) => {
+    test('@Dashboard TC002 - Verify All Products Display Names', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -44,7 +50,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         console.log('Available Products:', productNames);
     });
 
-    test('@Dashboard TC003 - Verify Add to Cart Button Count', async ({ page, poManager }) => {
+    test('@Dashboard TC003 - Verify Add to Cart Button Count', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -56,7 +62,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(await poManager.getDashboardPage().isAddToCartButtonVisible()).toBeTruthy();
     });
 
-    test('@Dashboard TC004 - Search and Add Specific Product to Cart', async ({ page, poManager }) => {
+    test('@Dashboard TC004 - Search and Add Specific Product to Cart', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -70,7 +76,8 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(true).toBeTruthy(); // Product search and add executed
     });
 
-    test('@Dashboard TC005 - Get Product Names and Verify Format', async ({ page, poManager }) => {
+    test.only
+    ('@Dashboard TC005 - Get Product Names and Verify Format', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -86,7 +93,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         });
     });
 
-    test('@Dashboard TC006 - Verify Navigation to Cart', async ({ page, poManager }) => {
+    test('@Dashboard TC006 - Verify Navigation to Cart', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -98,7 +105,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(url).toContain('cart');
     });
 
-    test('@Dashboard TC007 - Verify Navigation to Orders', async ({ page, poManager }) => {
+    test('@Dashboard TC007 - Verify Navigation to Orders', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -110,7 +117,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(url).toContain('myorders');
     });
 
-    test('@Dashboard TC008 - Add Multiple Products Sequentially', async ({ page, poManager }) => {
+    test('@Dashboard TC008 - Add Multiple Products Sequentially', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -134,7 +141,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(buttonCount).toBeGreaterThan(0);
     });
 
-    test('@Dashboard TC009 - Verify Product Count Greater Than 0', async ({ page, poManager }) => {
+    test('@Dashboard TC009 - Verify Product Count Greater Than 0', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -147,7 +154,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         console.log('Total Products on Dashboard:', productCount);
     });
 
-    test('@Dashboard TC010 - Verify Dashboard URL', async ({ page, poManager }) => {
+    test('@Dashboard TC010 - Verify Dashboard URL', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         
@@ -158,7 +165,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(url).toContain('rahulshettyacademy.com/client');
     });
 
-    test('@Dashboard TC011 - Get Specific Product by Name', async ({ page, poManager }) => {
+    test('@Dashboard TC011 - Get Specific Product by Name', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await poManager.getDashboardPage().waitForDashboardToLoad();
@@ -171,7 +178,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         console.log(`Product "${productName}" is visible on dashboard: ${productExists}`);
     });
 
-    test('@Dashboard TC012 - Get Product by Index and Verify Name', async ({ page, poManager }) => {
+    test('@Dashboard TC012 - Get Product by Index and Verify Name', async () => {
         // Arrange
         await poManager.getDashboardPage().waitForDashboardToLoad();
         

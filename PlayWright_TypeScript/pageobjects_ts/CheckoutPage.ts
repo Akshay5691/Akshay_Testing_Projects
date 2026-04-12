@@ -42,7 +42,7 @@ export class CheckoutPage
         this.discountCodeInput = page.locator('input[placeholder*="discount"], input[placeholder*="coupon"], input[class*="discount"]');
         this.applyDiscountButton = page.locator('button:has-text("Apply"), button:has-text("Redeem")');
         this.totalPrice = page.locator('[class*="total"] b, text=" Total Amount", [class*="order-total"]');
-        this.proceedButton = page.locator('button:has-text("Place Order"), text=Place Order');
+        this.proceedButton = page.locator('button:has-text("Place Order")');
         this.continueShoppingButton = page.locator('button:has-text("Continue Shopping")');
         this.removeButton = page.locator('button:has-text("Delete"), [class*="remove"], [class*="delete"]');
         this.cartSummary = page.locator('[class*="summary"], [class*="order-summary"]');

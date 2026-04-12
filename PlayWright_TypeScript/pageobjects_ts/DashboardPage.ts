@@ -23,10 +23,10 @@ export class DashboardPage
         this.productsText = page.locator(".card-body b");
         this.cart = page.locator("[routerlink*='cart']");
         this.orders = page.locator("button[routerlink*='myorders']");
-        this.addToCartButtons = page.locator("text= Add To Cart");
+        this.addToCartButtons = page.locator("button:has-text('Add To Cart')");
         this.productPrice = page.locator(".card-body .price");
         this.productDescription = page.locator(".card-body p");
-        this.dashboardTitle = page.locator("text=Dashboard, Orders");
+        this.dashboardTitle = page.locator("h1, h2, .dashboard-title");
         this.searchInput = page.locator(".search input, [placeholder*='search']");
         this.toastMessage = page.locator(".toast-container, .toastr");
         this.loadingSpinner = page.locator(".spinner, [class*='loader']");
@@ -59,7 +59,7 @@ export class DashboardPage
             const productNameText = await this.products.nth(i).locator("b").textContent();
             if(productNameText === productName)
             {
-                await this.products.nth(i).locator("text= Add To Cart").click();
+                await this.products.nth(i).locator("button:has-text('Add To Cart')").click();
                 await this.page.waitForLoadState('networkidle');
                 break;
             }
