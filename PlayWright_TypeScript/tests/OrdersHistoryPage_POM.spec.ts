@@ -28,10 +28,12 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
         
         // Assert
-        const isPageLoaded = await poManager.getOrdersHistoryPage().isOrdersPageLoaded();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        const isPageLoaded = await ordersPage.isOrdersPageLoaded();
         expect(isPageLoaded).toBeTruthy();
     });
 
@@ -39,20 +41,24 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
         
         // Assert
-        expect(await poManager.getOrdersHistoryPage().isOrdersTableVisible()).toBeTruthy();
+        expect(await ordersPage.isOrdersTableVisible()).toBeTruthy();
     });
 
     test('@OrderHistory TC003 - Get Order Row Count', async () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const rowCount = await poManager.getOrdersHistoryPage().getOrderRowCount();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const rowCount = await ordersPage.getOrderRowCount();
         
         // Assert
         expect(rowCount).toBeGreaterThanOrEqual(0);
@@ -63,9 +69,11 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const orderIds = await poManager.getOrdersHistoryPage().getOrderIds();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const orderIds = await ordersPage.getOrderIds();
         
         // Assert
         console.log('Order IDs:', orderIds);
@@ -76,8 +84,10 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        const url = await poManager.getOrdersHistoryPage().getOrdersPageURL();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        const url = await ordersPage.getOrdersPageURL();
         
         // Assert
         expect(url).toContain('myorders');
@@ -88,13 +98,15 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const rowCount = await poManager.getOrdersHistoryPage().getOrderRowCount();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const rowCount = await ordersPage.getOrderRowCount();
         
         // Assert
         if (rowCount > 0) {
-            await poManager.getOrdersHistoryPage().clickViewButtonForOrder(0);
+            await ordersPage.clickViewButtonForOrder(0);
             await page.waitForLoadState('networkidle');
             expect(true).toBeTruthy(); // Order details page verification
         } else {
@@ -106,9 +118,11 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const firstOrderId = await poManager.getOrdersHistoryPage().getFirstOrderId();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const firstOrderId = await ordersPage.getFirstOrderId();
         
         // Assert
         if (firstOrderId) {
@@ -146,13 +160,15 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange - Page already navigated via fixture
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const rowCount = await poManager.getOrdersHistoryPage().getOrderRowCount();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const rowCount = await ordersPage.getOrderRowCount();
         
         if (rowCount > 0) {
-            await poManager.getOrdersHistoryPage().clickViewButtonForOrder(0);
-            const isDetailsPageLoaded = await poManager.getOrdersHistoryPage().verifyOrderDetailsPageLoads();
+            await ordersPage.clickViewButtonForOrder(0);
+            const isDetailsPageLoaded = await ordersPage.verifyOrderDetailsPageLoads();
             
             // Assert
             expect(isDetailsPageLoaded).toBeTruthy();
@@ -163,9 +179,11 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         // Arrange
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
-        await poManager.getOrdersHistoryPage().waitForOrdersTableToLoad();
-        const firstOrderId = await poManager.getOrdersHistoryPage().getOrderByIndex(0);
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.navigateToOrders();
+        const ordersPage = poManager.getOrdersHistoryPage();
+        await ordersPage.waitForOrdersTableToLoad();
+        const firstOrderId = await ordersPage.getOrderByIndex(0);
         
         // Assert
         console.log('First Order ID (by index):', firstOrderId);

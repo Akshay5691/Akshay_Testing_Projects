@@ -40,7 +40,7 @@ export class CheckoutPage
         this.shippingCost = page.locator('text=Shipping, text=Delivery, [class*="shipping"]');
         this.discountCode = page.locator('[class*="discount"], [class*="coupon"]');
         this.discountCodeInput = page.locator('input[placeholder*="discount"], input[placeholder*="coupon"], input[class*="discount"]');
-        this.applyDiscountButton = page.locator('button:has-text("Apply"), button:has-text("Redeem")');
+        this.applyDiscountButton = page.locator('button:has-text("Apply")');
         this.totalPrice = page.locator('[class*="total"] b, text=" Total Amount", [class*="order-total"]');
         this.proceedButton = page.locator('button:has-text("Place Order")');
         this.continueShoppingButton = page.locator('button:has-text("Continue Shopping")');
@@ -90,7 +90,7 @@ export class CheckoutPage
         const count = await this.productsList.count();
         const names = [];
         
-        for (let i = 0; i < count; i++) {
+        for (let i:number = 0; i < count; i++) {
             const name = await this.productsList.nth(i).locator('h3').textContent();
             if (name) {
                 names.push(name.trim());

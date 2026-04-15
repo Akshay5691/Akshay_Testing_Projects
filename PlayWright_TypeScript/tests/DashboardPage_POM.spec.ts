@@ -26,10 +26,11 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC001 - Verify Dashboard Loads with Products', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const productCount = await poManager.getDashboardPage().getProductCount();
+        const productCount = await dashboardPage.getProductCount();
         
         // Assert
         expect(productCount).toBeGreaterThan(0);
@@ -37,10 +38,11 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC002 - Verify All Products Display Names', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const productNames = await poManager.getDashboardPage().getAllProductNames();
+        const productNames = await dashboardPage.getAllProductNames();
         
         // Assert
         expect(productNames.length).toBeGreaterThan(0);
@@ -52,26 +54,28 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC003 - Verify Add to Cart Button Count', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const buttonCount = await poManager.getDashboardPage().getAddToCartButtonCount();
+        const buttonCount = await dashboardPage.getAddToCartButtonCount();
         
         // Assert
         expect(buttonCount).toBeGreaterThan(0);
-        expect(await poManager.getDashboardPage().isAddToCartButtonVisible()).toBeTruthy();
+        expect(await dashboardPage.isAddToCartButtonVisible()).toBeTruthy();
     });
 
     test('@Dashboard TC004 - Search and Add Specific Product to Cart', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
+        await dashboardPage.searchProductAddCart(productName);
         
         // Assert
-        const toastMessage = await poManager.getDashboardPage().getToastMessage();
+        const toastMessage = await dashboardPage.getToastMessage();
         console.log('Toast Message:', toastMessage);
         expect(true).toBeTruthy(); // Product search and add executed
     });
@@ -79,11 +83,12 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     test.only
     ('@Dashboard TC005 - Get Product Names and Verify Format', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const productNames = await poManager.getDashboardPage().getAllProductNames();
-        const count = await poManager.getDashboardPage().getProductCount();
+        const productNames = await dashboardPage.getAllProductNames();
+        const count = await dashboardPage.getProductCount();
         
         // Assert
         expect(productNames.length).toBe(count);
@@ -95,45 +100,50 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC006 - Verify Navigation to Cart', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().navigateToCart();
+        await dashboardPage.navigateToCart();
         
         // Assert
-        const url = await poManager.getCartPage().getCartPageURL();
+        const cartPage = poManager.getCartPage();
+        const url = await cartPage.getCartPageURL();
         expect(url).toContain('cart');
     });
 
     test('@Dashboard TC007 - Verify Navigation to Orders', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().navigateToOrders();
+        await dashboardPage.navigateToOrders();
         
         // Assert
-        const url = await poManager.getOrdersHistoryPage().getOrdersPageURL();
+        const ordersHistoryPage = poManager.getOrdersHistoryPage();
+        const url = await ordersHistoryPage.getOrdersPageURL();
         expect(url).toContain('myorders');
     });
 
     test('@Dashboard TC008 - Add Multiple Products Sequentially', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const buttonCount = await poManager.getDashboardPage().getAddToCartButtonCount();
+        const buttonCount = await dashboardPage.getAddToCartButtonCount();
         console.log('Total Add to Cart buttons:', buttonCount);
         
         // Add first product
         if (buttonCount > 0) {
-            await poManager.getDashboardPage().addProductToCartByIndex(0);
+            await dashboardPage.addProductToCartByIndex(0);
             await page.waitForLoadState('networkidle');
         }
         
         // Add second product
         if (buttonCount > 1) {
-            await poManager.getDashboardPage().addProductToCartByIndex(1);
+            await dashboardPage.addProductToCartByIndex(1);
             await page.waitForLoadState('networkidle');
         }
         
@@ -143,23 +153,25 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC009 - Verify Product Count Greater Than 0', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const productCount = await poManager.getDashboardPage().getProductCount();
+        const productCount = await dashboardPage.getProductCount();
         
         // Assert
-        expect(await poManager.getDashboardPage().verifyProductsDisplayed(1)).toBeTruthy();
+        expect(await dashboardPage.verifyProductsDisplayed(1)).toBeTruthy();
         expect(productCount).toBeGreaterThan(0);
         console.log('Total Products on Dashboard:', productCount);
     });
 
     test('@Dashboard TC010 - Verify Dashboard URL', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const url = await poManager.getDashboardPage().getDashboardURL();
+        const url = await dashboardPage.getDashboardURL();
         
         // Assert
         expect(url).toContain('rahulshettyacademy.com/client');
@@ -168,10 +180,11 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     test('@Dashboard TC011 - Get Specific Product by Name', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const productExists = await poManager.getDashboardPage().isProductVisible(productName);
+        const productExists = await dashboardPage.isProductVisible(productName);
         
         // Assert
         expect(productExists).toBe(true);
@@ -180,10 +193,11 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
 
     test('@Dashboard TC012 - Get Product by Index and Verify Name', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        const firstProductName = await poManager.getDashboardPage().getProductNameByIndex(0);
+        const firstProductName = await dashboardPage.getProductNameByIndex(0);
         
         // Assert
         expect(firstProductName).toBeTruthy();

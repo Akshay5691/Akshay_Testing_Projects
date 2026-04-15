@@ -26,58 +26,66 @@ test.describe('Cart Page Tests - Page Object Model', () => {
 
     test('@Cart TC001 - Navigate to Cart and Verify Page Loads', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().navigateToCart();
+        await dashboardPage.navigateToCart();
         
         // Assert
-        expect(await poManager.getCartPage().isCartPageLoaded()).toBeTruthy();
-        const url = await poManager.getCartPage().getCartPageURL();
+        const cartPage = poManager.getCartPage();
+        expect(await cartPage.isCartPageLoaded()).toBeTruthy();
+        const url = await cartPage.getCartPageURL();
         expect(url).toContain('cart');
     });
 
     test('@Cart TC002 - Add Product to Cart and Verify it Appears', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act - Add product
-        await poManager.getDashboardPage().searchProductAddCart(productName);
+        await dashboardPage.searchProductAddCart(productName);
         
         // Navigate to cart
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
         
         // Assert
-        await poManager.getCartPage().verifyProductIsDisplayed(productName);
+        await cartPage.verifyProductIsDisplayed(productName);
     });
 
     test('@Cart TC003 - Verify Checkout Button is Visible and Enabled', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
         
         // Assert
-        expect(await poManager.getCartPage().isCheckoutButtonVisible()).toBeTruthy();
-        expect(await poManager.getCartPage().isCheckoutButtonEnabled()).toBeTruthy();
+        expect(await cartPage.isCheckoutButtonVisible()).toBeTruthy();
+        expect(await cartPage.isCheckoutButtonEnabled()).toBeTruthy();
     });
 
     test('@Cart TC004 - Proceed to Checkout', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCheckoutButtonToAppear();
-        await poManager.getCartPage().checkout();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCheckoutButtonToAppear();
+        await cartPage.checkout();
         
         // Assert
         const url = await page.url();
@@ -87,13 +95,15 @@ test.describe('Cart Page Tests - Page Object Model', () => {
     test('@Cart TC005 - Get Cart Item Count', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
-        const itemCount = await poManager.getCartPage().getCartItemCount();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
+        const itemCount = await cartPage.getCartItemCount();
         
         // Assert
         expect(itemCount).toBeGreaterThan(0);
@@ -102,39 +112,43 @@ test.describe('Cart Page Tests - Page Object Model', () => {
 
     test('@Cart TC006 - Verify Multiple Products in Cart', async () => {
         // Arrange
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act - Add multiple products
-        const buttonCount = await poManager.getDashboardPage().getAddToCartButtonCount();
+        const buttonCount = await dashboardPage.getAddToCartButtonCount();
         
         if (buttonCount > 0) {
-            await poManager.getDashboardPage().addProductToCartByIndex(0);
+            await dashboardPage.addProductToCartByIndex(0);
             await page.waitForLoadState('networkidle');
         }
         
         if (buttonCount > 1) {
-            await poManager.getDashboardPage().addProductToCartByIndex(1);
+            await dashboardPage.addProductToCartByIndex(1);
             await page.waitForLoadState('networkidle');
         }
         
         // Navigate to cart
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
         
         // Assert
-        const itemCount = await poManager.getCartPage().getCartItemCount();
+        const itemCount = await cartPage.getCartItemCount();
         expect(itemCount).toBeGreaterThan(0);
     });
 
     test('@Cart TC007 - Verify Cart Page URL Contains Cart', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        const url = await poManager.getCartPage().getCartPageURL();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        const url = await cartPage.getCartPageURL();
         
         // Assert
         expect(url).toContain('cart');
@@ -144,13 +158,15 @@ test.describe('Cart Page Tests - Page Object Model', () => {
     test('@Cart TC008 - Verify Cart Items Names', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
-        const cartItemNames = await poManager.getCartPage().getCartItemsNames();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
+        const cartItemNames = await cartPage.getCartItemsNames();
         
         // Assert
         expect(cartItemNames.length).toBeGreaterThan(0);
@@ -161,15 +177,17 @@ test.describe('Cart Page Tests - Page Object Model', () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await page.goto('https://rahulshettyacademy.com/client');
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
         
         // Assert
-        const isEmpty = await poManager.getCartPage().isCartEmpty();
+        const isEmpty = await cartPage.isCartEmpty();
         expect(isEmpty).toBeFalsy();
     });
 
@@ -177,13 +195,15 @@ test.describe('Cart Page Tests - Page Object Model', () => {
         // Arrange
         const productName = 'iphone 13 pro';
         await page.goto('https://rahulshettyacademy.com/client');
-        await poManager.getDashboardPage().waitForDashboardToLoad();
+        const dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
         
         // Act
-        await poManager.getDashboardPage().searchProductAddCart(productName);
-        await poManager.getDashboardPage().navigateToCart();
-        await poManager.getCartPage().waitForCartToLoad();
-        await poManager.getCartPage().Checkout();
+        await dashboardPage.searchProductAddCart(productName);
+        await dashboardPage.navigateToCart();
+        const cartPage = poManager.getCartPage();
+        await cartPage.waitForCartToLoad();
+        await cartPage.Checkout();
         
        
        
