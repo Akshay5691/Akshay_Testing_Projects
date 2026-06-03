@@ -1,4 +1,5 @@
 import {test, expect,Locator,Page} from '@playwright/test';
+import { ActionsUtility } from '../utils_ts/BrowserActions';
 
 export class DashboardPage
 {
@@ -15,10 +16,15 @@ export class DashboardPage
     searchInput: Locator;
     toastMessage: Locator;
     loadingSpinner: Locator;
+    AdidasShoe: Locator;
+    searchBox:Locator;
+    zaraCoat:Locator;
+     actions: ActionsUtility;
 
     constructor(page:Page)
     {
         this.page = page;
+        this.actions = new ActionsUtility(page);
         this.products = page.locator(".card-body");
         this.productsText = page.locator(".card-body b");
         this.cart = page.locator("[routerlink*='cart']");
@@ -30,6 +36,9 @@ export class DashboardPage
         this.searchInput = page.locator(".search input, [placeholder*='search']");
         this.toastMessage = page.locator(".toast-container, .toastr");
         this.loadingSpinner = page.locator(".spinner, [class*='loader']");
+        this.AdidasShoe = page.locator("h5 b:has-text('ADIDAS ORIGINAL')");
+        this.zaraCoat = page.locator("//b[text()='ZARA COAT 3']");
+        this.searchBox = page.getByRole('textbox', { name: 'search' });
     }
 
     async waitForDashboardToLoad()
@@ -50,7 +59,7 @@ export class DashboardPage
 
     async searchProductAddCart(productName: string)
     {
-        const titles = await this.productsText.allTextContents();
+        const titles:string[] = await this.productsText.allTextContents();
         console.log("Available products:", titles);
         const count = await this.products.count();
         
@@ -72,15 +81,16 @@ export class DashboardPage
         await this.page.waitForLoadState('networkidle');
     }
 
-    async navigateToOrders()
+    async  navigateToOrders()
     {
         await this.orders.click();
         await this.page.waitForLoadState('networkidle');
     }
 
-    async navigateToCart()
+    public async navigateToCart()
     {
-        await this.cart.click();
+        
+         await this.actions.click(this.cart);
         await this.page.waitForLoadState('networkidle');
     }
 
@@ -149,4 +159,29 @@ export class DashboardPage
         return actualCount >= expectedCount;
     }
 
-}
+    async printAdidasShoeDetails()
+    {
+        const shoeLocator = this.AdidasShoe;
+       
+            const shoeName = await shoeLocator.textContent();
+         
+            console.log(`Shoe Name: ${shoeName}`);
+     
+        
+        
+    }   
+    async searchProduct(productName:string){
+
+      await this.searchBox.fill(productName);
+         this.searchBox.press('Enter');
+         await this.page.waitForLoadState('networkidle');
+    }
+
+    async getZaraCoat(): Promise<string | null>{
+
+        let zaraCoatName = await this.zaraCoat.textContent();
+        return zaraCoatName;
+    }
+        
+
+    }

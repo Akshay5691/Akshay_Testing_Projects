@@ -76,6 +76,8 @@ public class HomePage extends ActionsUtilitiy {
 
 	public void clickOnCartBag() {
 		click(cartBagIcon());
+		
+		
 	}
 
 	public void clickOnAddToCart(String product) {

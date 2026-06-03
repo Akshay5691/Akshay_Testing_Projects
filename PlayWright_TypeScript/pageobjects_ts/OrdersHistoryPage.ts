@@ -45,7 +45,7 @@ export class OrdersHistoryPage
     async searchOrderAndSelect(orderId: any)
     {
         await this.ordersTable.waitFor();
-        for(let i = 0; i < await this.rows.count(); ++i)
+        for(let i:number = 0; i < await this.rows.count(); ++i)
         {
             const rowOrderId = await this.rows.nth(i).locator("th").textContent();
             if (orderId && orderId.includes(rowOrderId))

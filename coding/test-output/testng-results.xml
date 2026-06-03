@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-27T12:11:16 IST" name="Default suite" finished-at="2026-03-27T12:11:17 IST" duration-ms="53">
+  <suite started-at="2026-05-23T21:22:57 IST" name="Default suite" finished-at="2026-05-23T21:22:57 IST" duration-ms="66">
     <groups>
     </groups>
-    <test started-at="2026-03-27T12:11:16 IST" name="Default test" finished-at="2026-03-27T12:11:17 IST" duration-ms="53">
+    <test started-at="2026-05-23T21:22:57 IST" name="Default test" finished-at="2026-05-23T21:22:57 IST" duration-ms="66">
       <class name="coding.coding">
-        <test-method signature="countingAllCharactersInString()[pri:0, instance:coding.coding@41d477ed]" started-at="2026-03-27T12:11:17 IST" name="countingAllCharactersInString" finished-at="2026-03-27T12:11:17 IST" duration-ms="10" status="PASS">
+        <test-method signature="PrintDuplicateStringsFromArray()[pri:0, instance:coding.coding@3590fc5b]" started-at="2026-05-23T21:22:57 IST" name="PrintDuplicateStringsFromArray" finished-at="2026-05-23T21:22:57 IST" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- countingAllCharactersInString -->
+        </test-method> <!-- PrintDuplicateStringsFromArray -->
       </class> <!-- coding.coding -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

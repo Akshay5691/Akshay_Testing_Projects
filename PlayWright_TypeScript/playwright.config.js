@@ -1,6 +1,6 @@
 // @ts-check
 const { devices } = require('@playwright/test');
-
+console.log("Executing playwright.config.js");
 const config = {
   testDir: './tests',
   retries: 0,
@@ -9,11 +9,10 @@ const config = {
   /* Run your local dev server before starting tests */
   webServer: undefined,
 
-  /* Global setup configuration */
-  globalSetup: require.resolve('./global-setup.ts'),
+  
   
   /* Maximum time one test can run for. */
-  timeout: 60 * 1000,
+  timeout: 20 * 1000,
   expect: {
     timeout: 10 * 1000
   },

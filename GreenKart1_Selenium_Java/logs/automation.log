@@ -26,3 +26,6 @@
 2026-02-08 15:47:22 INFO  HomePageTestCases:117 - verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox : passed
 2026-02-08 15:47:59 INFO  HomePageTestCases:79 - verifyItemNumberIsNotIncreasingWhileAddingSameItem : passed
 2026-02-08 15:48:05 INFO  HomePageTestCases:117 - verifyUserIsNotAbleToDecreaseDefaultQuantityInQuantityBox : passed
+2026-05-31 21:08:35 INFO  HomePageTestCases:97 - verifyUserIsAbleToIncreaseCartPrice : passed
+2026-05-31 21:08:35 INFO  HomePageTestCases:97 - verifyUserIsAbleToIncreaseCartPrice : passed
+2026-05-31 21:09:02 INFO  HomePageTestCases:79 - verifyItemNumberIsNotIncreasingWhileAddingSameItem : passed

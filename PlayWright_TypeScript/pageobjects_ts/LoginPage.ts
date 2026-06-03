@@ -110,5 +110,6 @@ export class LoginPage {
     {
         await this.page.waitForLoadState('networkidle');
         await this.userName.waitFor();
+     
     }
 }

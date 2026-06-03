@@ -1,45 +1,38 @@
-import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { test, expect } from '../base/test-base';
 import { POManager } from '../pageobjects_ts/POManager';
-
-const BASE_URL = 'https://rahulshettyacademy.com/client';
-const SESSION_PATH = 'state.json';
-
-let page: Page;
-let poManager: POManager;
-let context: BrowserContext;
+import { PlaceOrderPage } from '../pageobjects_ts/PlaceOrderPage';
+import { CheckoutPage } from '../pageobjects_ts/CheckoutPage';
+import { CartPage } from '../pageobjects_ts/CartPage';
 
 test.describe('Place Order Page Tests - Page Object Model', () => {
-    
-    test.beforeEach(async () => {
-        const browser = await chromium.launch();
-        context = await browser.newContext({ storageState: SESSION_PATH });
-        page = await context.newPage();
-        await page.goto(BASE_URL);
-        await page.waitForLoadState('domcontentloaded');
-        poManager = new POManager(page);
-    });
-    
-    test.afterEach(async () => {
-        if (page) await page.close();
-        if (context) await context.close();
+
+    let poManager: POManager;
+    let dashboardPage: any;
+    let cartPage: CartPage;
+    let checkoutPage: CheckoutPage;
+    let placeOrderPage: PlaceOrderPage;
+
+    test.beforeEach(async ({ page }) => {
+        poManager = (page as any).poManager;
+        if (!poManager) throw new Error('poManager not initialized in test-base beforeEach');
+        dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
+        cartPage = poManager.getCartPage();
+        checkoutPage = poManager.getCheckoutPage();
+        placeOrderPage = poManager.getPlaceOrderPage();
     });
 
     test('@PlaceOrder TC001 - Navigate to Place Order Page and Verify Page Loads', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Assert
@@ -49,19 +42,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
     test('@PlaceOrder TC002 - Verify All Form Sections are Visible', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Assert
@@ -79,19 +67,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
     test('@PlaceOrder TC003 - Verify Order Summary with Products', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Assert
@@ -112,19 +95,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const email = 'john.doe@example.com';
         const phone = '1234567890';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         await placeOrderPage.fillPersonalDetails(name, email, phone);
         
@@ -141,19 +119,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const state = 'NY';
         const postalCode = '10001';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         await placeOrderPage.fillShippingAddress(street, city, state, postalCode);
         
@@ -167,19 +140,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const productName = 'iphone 13 pro';
         const country = 'United States';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         await placeOrderPage.selectCountry(country);
         
@@ -193,19 +161,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const cardName = 'John Doe';
         const cvv = '123';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         await placeOrderPage.fillPaymentDetails(cardName, cvv);
         
@@ -218,19 +181,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         // Arrange
         const productName = 'iphone 13 pro';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         const accepted = await placeOrderPage.agreeToTerms();
         
@@ -241,19 +199,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
     test('@PlaceOrder TC009 - Verify Place Order Button is Visible and Enabled', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Assert
@@ -278,20 +231,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const cardName = 'John Doe';
         const cvv = '123';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
-        // Act - Add product and checkout
+        // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Fill all form details
@@ -332,20 +279,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         const cardName = 'John Doe';
         const cvv = '123';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         await placeOrderPage.fillCompleteOrderForm(
             name, email, phone,
@@ -363,20 +304,14 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         // Arrange
         const productName = 'iphone 13 pro';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Assert
@@ -393,23 +328,18 @@ test.describe('Place Order Page Tests - Page Object Model', () => {
         console.log('Total:', totalAmount);
     });
 
-    test('@PlaceOrder TC013 - Test Form Field Validations with Empty Fields', async () => {
+    test('@PlaceOrder TC013 - Test Form Field Validations with Empty Fields', async ({ page }) => {
         // Arrange
         const productName = 'iphone 13 pro';
         
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         await dashboardPage.searchProductAddCart(productName);
         await dashboardPage.navigateToCart();
-        const cartPage = poManager.getCartPage();
         await cartPage.waitForCartToLoad();
         await cartPage.checkout();
-        const checkoutPage = poManager.getCheckoutPage();
         await checkoutPage.waitForCheckoutPageToLoad();
         await checkoutPage.proceedToPlaceOrder();
         
         // Act
-        const placeOrderPage = poManager.getPlaceOrderPage();
         await placeOrderPage.waitForPlaceOrderPageToLoad();
         
         // Try to place order without filling any details

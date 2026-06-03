@@ -1,49 +1,33 @@
-import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { test, expect } from '../base/test-base';
 import { POManager } from '../pageobjects_ts/POManager';
-
-const BASE_URL = 'https://rahulshettyacademy.com/client';
-const SESSION_PATH = 'state.json';
-
-let page: Page;
-let poManager: POManager;
-let context: BrowserContext;
+import { OrdersHistoryPage } from '../pageobjects_ts/OrdersHistoryPage';
 
 test.describe('Orders History Page Tests - Page Object Model', () => {
-    
-    test.beforeEach(async () => {
-        const browser = await chromium.launch();
-        context = await browser.newContext({ storageState: SESSION_PATH });
-        page = await context.newPage();
-        await page.goto(BASE_URL);
-        await page.waitForLoadState('domcontentloaded');
-        poManager = new POManager(page);
-    });
-    
-    test.afterEach(async () => {
-        if (page) await page.close();
-        if (context) await context.close();
+
+    let poManager: POManager;
+    let dashboardPage: any;
+    let ordersPage: OrdersHistoryPage;
+
+    test.beforeEach(async ({ page }) => {
+        poManager = (page as any).poManager;
+        if (!poManager) throw new Error('poManager not initialized in test-base beforeEach');
+        dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
+        ordersPage = poManager.getOrdersHistoryPage();
     });
 
     test('@OrderHistory TC001 - Navigate to Orders and Verify Page Loads', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
         
         // Assert
-        const ordersPage = poManager.getOrdersHistoryPage();
         const isPageLoaded = await ordersPage.isOrdersPageLoaded();
         expect(isPageLoaded).toBeTruthy();
     });
 
     test('@OrderHistory TC002 - Verify Orders Table is Visible', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         await ordersPage.waitForOrdersTableToLoad();
         
         // Assert
@@ -51,12 +35,8 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
     });
 
     test('@OrderHistory TC003 - Get Order Row Count', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         await ordersPage.waitForOrdersTableToLoad();
         const rowCount = await ordersPage.getOrderRowCount();
         
@@ -66,12 +46,8 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
     });
 
     test('@OrderHistory TC004 - Get All Order IDs', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         await ordersPage.waitForOrdersTableToLoad();
         const orderIds = await ordersPage.getOrderIds();
         
@@ -81,12 +57,8 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
     });
 
     test('@OrderHistory TC005 - Verify Orders Page URL Contains myorders', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         const url = await ordersPage.getOrdersPageURL();
         
         // Assert
@@ -94,13 +66,9 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         console.log('Orders Page URL:', url);
     });
 
-    test('@OrderHistory TC006 - Click on First Order and View Details', async () => {
-        // Arrange - Page already navigated via fixture
-        
+    test('@OrderHistory TC006 - Click on First Order and View Details', async ({ page }) => {
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         await ordersPage.waitForOrdersTableToLoad();
         const rowCount = await ordersPage.getOrderRowCount();
         
@@ -115,12 +83,8 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
     });
 
     test('@OrderHistory TC007 - Get First Order ID', async () => {
-        // Arrange - Page already navigated via fixture
-        
         // Act
-        const dashboardPage = poManager.getDashboardPage();
         await dashboardPage.navigateToOrders();
-        const ordersPage = poManager.getOrdersHistoryPage();
         await ordersPage.waitForOrdersTableToLoad();
         const firstOrderId = await ordersPage.getFirstOrderId();
         
@@ -143,18 +107,7 @@ test.describe('Orders History Page Tests - Page Object Model', () => {
         expect(true).toBeTruthy();
     });
 
-    test.skip('@OrderHistory TC009 - Search and Select Specific Order', async () => {
-        // This test requires proper implementation of PlaceOrderPage methods
-        // Arrange
-        const productName = 'iphone 13 pro';
-        let createdOrderId: string | null = null;
-        
-        // Create an order would go here
-        // For now, this test is skipped until PlaceOrderPage has proper methods
-        
-        // Assert
-        expect(true).toBeTruthy();
-    });
+   
 
     test('@OrderHistory TC010 - Verify Order Details Page Loads', async () => {
         // Arrange - Page already navigated via fixture

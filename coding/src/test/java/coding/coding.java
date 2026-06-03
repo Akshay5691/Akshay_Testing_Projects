@@ -3,9 +3,11 @@ package coding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.ForkJoinPool;
 
@@ -39,9 +41,9 @@ public class coding {
 				}
 			}
 			if (isPrime) {
-				System.out.print(number + " ");
+				System.out.print(number + "it is prime number ");
 			}
-		}
+		}   
 	}
 
 	@Test
@@ -132,7 +134,7 @@ public class coding {
 
 	@Test
 	public void removeVowelsFromString() {
-		String city = "Hyderabad";
+		String city = "hyderabad";
 
 		String [] vowels= {"a","e","i","o","u"};
 
@@ -165,7 +167,7 @@ public class coding {
 				reversedWord += word.charAt(j);
 
 			}
-			System.out.println(reversedWord);
+			
 
 			reverseWords = reverseWords + reversedWord + " ";
 		}
@@ -179,43 +181,26 @@ public class coding {
 		String sentence = "I am learning Selenium Automation";
 		String sentence1 = sentence.toLowerCase();
 		int VowelsCount = 0;
+		
 		for (int i = 0; i < sentence1.length(); i++) {
 
 			char ch = sentence1.charAt(i);
-			char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
-			for (int j = 0; j < vowels.length; j++) {
-
-				if (ch == vowels[j]) {
+				if (ch =='a'||ch =='e'||ch =='o'||ch =='u'||ch =='i') {
 					VowelsCount++;
-					break;
+					
 				}
-			}
-
 		}
-		System.out.print(VowelsCount);
+		System.out.print(VowelsCount +" vowel count");
 
 	}
 
-	@Test
-	public void countingStringsInSentence() {
-		String sentence = "I am learning Selenium Automation";
-		String[] words = sentence.split(" ");
-		int count = 0;
-		for (int i = 0; i < words.length; i++) {
 
-			count++;
-		}
-		System.out.println(count);
-
-	}
 
 	@Test
 	public void evenOrOddNumber() {
 		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("enter number");
-		int number = sc.nextInt();
+       int  number = 10;
 
 		if (number % 2 == 0) {
 			System.out.println("even number");
@@ -254,8 +239,8 @@ public class coding {
 	@Test
 	public void countingAllCharactersInString() {
 
-		String name1 = "AkshayChary";
-		String name = name1.toLowerCase();
+		
+		String name ="akshaychary";
 
 		for (int i = 0; i < name.length(); i++) {
 			int count = 0;
@@ -314,7 +299,7 @@ public class coding {
 		for (int i = 0; i < numbers.length; i++) {
 
 			if (max < numbers[i]) {
-
+                
 				max = numbers[i];
 			}
 		}
@@ -360,7 +345,6 @@ public class coding {
 
 		int[] array = { 10, 40, 20, 80, 50, 30, 60 };
 		int min;
-		int temp;
 
 		for (int i = 0; i < array.length; i++) {
 
@@ -432,86 +416,58 @@ public class coding {
 		System.out.println(new String(chars));
 	}
 
+
+
+	
+
 	@Test
-	public void stringsAscendingOrder() {
+	public void removeDuplicateNumberssWithoutSet() {
 
-		List<String> fruits = new ArrayList<String>();
-		fruits.add("banana");
-		fruits.add("anana");
-		fruits.add("znana");
-		fruits.add("danana");
+		int[] arr = {10, 20, 30, 20, 10, 40,40,50,30};
 
-		Collections.sort(fruits);
-		for (String string : fruits) {
-			System.out.println(string);
+
+		for (int i = 0; i < arr.length; i++) {
+
+		    boolean duplicate = false;
+
+		    for (int j = i+1; j < arr.length; j++) {
+
+		        if (arr[i] == arr[j]) {
+		            duplicate = true;
+		            break;
+		        }
+		    }
+
+		    if (duplicate==false) {
+		    	System.out.println(arr[i]);
+		    }
 		}
 
+		
 	}
-
+	
 	@Test
-	public void stringsAscendingOrderWithoutSort() {
+	public void removeDuplicatesStringsWithoutSet() {
 
-		List<String> fruits = new ArrayList<>();
-		fruits.add("banana");
-		fruits.add("anana");
-		fruits.add("znana");
-		fruits.add("danana");
+		 String [] names={"java", "java", "api","selenium","api"};
 
-		for (int i = 0; i < fruits.size(); i++) {
-			for (int j = i + 1; j < fruits.size(); j++) {
-
-				if (fruits.get(i).compareTo(fruits.get(j)) > 0) {
-					String temp = fruits.get(i);
-					fruits.set(i, fruits.get(j));
-					fruits.set(j, temp);
-				}
-			}
-		}
-
-		for (String fruit : fruits) {
-			System.out.println(fruit);
-		}
-	}
-
-	@Test
-	public void removeDuplicatesFromArray() {
-
-		int[] numbers = { 10, 20, 10, 30, 20, 10, 30, 40, 50, 40 };
-
-		LinkedHashSet<Integer> number = new LinkedHashSet<Integer>();
-		for (int i = 0; i < numbers.length; i++) {
-			number.add(numbers[i]);
-		}
-		System.out.println(number);
-
-	}
-
-	@Test
-	public void removeDuplicatesWithoutSet() {
-
-		int[] numbers = { 10, 20, 10, 30, 20, 10, 30, 40, 50, 40 };
-
-		int[] temp = new int[numbers.length];
-		int index = 0;
-
-		for (int i = 0; i < numbers.length; i++) {
+		for (int i = 0; i < names.length; i++) {
 			boolean isDuplicate = false;
 
-			for (int j = 0; j < i; j++) {
-				if (numbers[i] == numbers[j]) {
+			for (int j = i+1; j < names.length; j++) {
+				
+				if (names[i].equals(names[j])) {
 					isDuplicate = true;
 					break;
 				}
 			}
 
 			if (isDuplicate==false) {
-				temp[index++] = numbers[i];
+				System.out.println(names[i]);
 			}
 		}
 
-		for (int i = 0; i < index; i++) {
-			System.out.print(temp[i] + " ");
-		}
+		
 	}
 
 	@Test
@@ -564,7 +520,7 @@ public class coding {
 	@Test
 	public void PrintDuplicateStringsFromArray() {	
 		
-		String[] arr = {"java", "selenium", "api", "java", "testing", "api"};
+		String[] arr = {"java", "selenium", "api", "java","testing", "api"};
 
 
 		for (int i = 0; i < arr.length; i++) {
@@ -600,6 +556,7 @@ public class coding {
 	
 	
 		}
+	@Test
 	public void printVowels() {
 
         String str1 = "hello";
@@ -607,6 +564,7 @@ public class coding {
         
 
         for (int i = 0; i < str.length(); i++) {
+        	
             char ch = str.charAt(i);
 
             if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'
@@ -616,13 +574,13 @@ public class coding {
 
             } else if ((ch >= 'a' && ch <= 'z')) {
 
-                System.out.println(ch + " is a Consonant");
+                System.out.println(ch + " is a Consonent");
             }
         }
     }
 	
 	
-	
+	   @Test
 	  public void sumOfNumbersInString() {
 
 	        String str = "a1b2c3";
@@ -638,5 +596,107 @@ public class coding {
 
 	        System.out.println("Sum: " + sum);
 	  }
+	  @Test
+	  public void occuranceUsingHashMap() {
+
+
+          String str="automation";
+		
+	        HashMap<Character,Integer> list=new HashMap<>();
+	        
+	        for (int i = 0; i < str.length(); i++) {
+	        	
+	        	char string =str.charAt(i);
+	        	
+	        	
+	        	if (list.containsKey(string)) {
+	        		list.put(string, list.get(string)+1);        		
+	        		
+	        	}
+	        	else {
+	        		list.put(string,1);
+	        	}
+			}
+	
+		System.out.println(list);
+	  }
+	  
+	  @Test
+	  public void identifyUniqueElements() {
+		  
+			String name1 = "java java api api java api selenium";
+
+			String[] names = name1.split(" ");
+
+			for (int i = 0; i < names.length; i++) {
+			    int count = 0;
+			    for (int j = 0; j < names.length; j++) {
+
+			        if (names[i].equals(names[j])) {
+			            count++;
+			        }
+			    }
+
+			    if (count == 1) {
+			        System.out.println(names[i]);
+			    }
+			}
+		  
+		  
+		  
+	  }
+	  
+	  
+	  
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
 }

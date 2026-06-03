@@ -1,34 +1,20 @@
-import { expect, test, Page, BrowserContext, chromium } from '@playwright/test';
+import { test, expect } from '../base/test-base';
 import { POManager } from '../pageobjects_ts/POManager';
-
-const BASE_URL = 'https://rahulshettyacademy.com/client';
-const SESSION_PATH = 'state.json';
-
-let page: Page;
-let poManager: POManager;
-let context: BrowserContext;
+import { DashboardPage } from '../pageobjects_ts/DashboardPage';
 
 test.describe('Dashboard Page Tests - Page Object Model', () => {
-    
-    test.beforeEach(async () => {
-        const browser = await chromium.launch();
-        context = await browser.newContext({ storageState: SESSION_PATH });
-        page = await context.newPage();
-        await page.goto(BASE_URL);
-        await page.waitForLoadState('domcontentloaded');
-        poManager = new POManager(page);
-    });
-    
-    test.afterEach(async () => {
-        if (page) await page.close();
-        if (context) await context.close();
+
+    let poManager: POManager;
+    let dashboardPage: DashboardPage;
+
+    test.beforeEach(async ({ page }) => {
+        poManager = (page as any).poManager;
+        if (!poManager) throw new Error('poManager not initialized in test-base beforeEach');
+        dashboardPage = poManager.getDashboardPage();
+        await dashboardPage.waitForDashboardToLoad();
     });
 
     test('@Dashboard TC001 - Verify Dashboard Loads with Products', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const productCount = await dashboardPage.getProductCount();
         
@@ -37,10 +23,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     });
 
     test('@Dashboard TC002 - Verify All Products Display Names', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const productNames = await dashboardPage.getAllProductNames();
         
@@ -50,13 +32,10 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
             expect(name.trim().length).toBeGreaterThan(0);
         });
         console.log('Available Products:', productNames);
+        await dashboardPage.printAdidasShoeDetails();
     });
 
     test('@Dashboard TC003 - Verify Add to Cart Button Count', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const buttonCount = await dashboardPage.getAddToCartButtonCount();
         
@@ -68,8 +47,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     test('@Dashboard TC004 - Search and Add Specific Product to Cart', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         await dashboardPage.searchProductAddCart(productName);
@@ -77,32 +54,23 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         // Assert
         const toastMessage = await dashboardPage.getToastMessage();
         console.log('Toast Message:', toastMessage);
-        expect(true).toBeTruthy(); // Product search and add executed
+        await dashboardPage.waitForToastToDisappear();
     });
 
-    test.only
-    ('@Dashboard TC005 - Get Product Names and Verify Format', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
+    test('@Dashboard TC005 - Get Product Names and Verify Format', async () => {
         // Act
         const productNames = await dashboardPage.getAllProductNames();
         const count = await dashboardPage.getProductCount();
         
         // Assert
         expect(productNames.length).toBe(count);
-        productNames.forEach((name, index) => {
-            expect(name).toBeTruthy();
-            console.log(`Product ${index + 1}: ${name}`);
-        });
+       for (let i = 0; i < productNames.length; i++) {
+        expect(productNames[i]).toBeTruthy();
+        console.log(`Product ${i + 1}: ${productNames[i]}`);
+    }
     });
 
-    test('@Dashboard TC006 - Verify Navigation to Cart', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
+    test.only('@Dashboard TC006 - Verify Navigation to Cart', async () => {
         // Act
         await dashboardPage.navigateToCart();
         
@@ -112,11 +80,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(url).toContain('cart');
     });
 
-    test('@Dashboard TC007 - Verify Navigation to Orders', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
+    test.only('@Dashboard TC007 - Verify Navigation to Orders', async () => {
         // Act
         await dashboardPage.navigateToOrders();
         
@@ -126,11 +90,7 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(url).toContain('myorders');
     });
 
-    test('@Dashboard TC008 - Add Multiple Products Sequentially', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
+    test('@Dashboard TC008 - Add Multiple Products Sequentially', async ({ page }) => {
         // Act
         const buttonCount = await dashboardPage.getAddToCartButtonCount();
         console.log('Total Add to Cart buttons:', buttonCount);
@@ -152,10 +112,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     });
 
     test('@Dashboard TC009 - Verify Product Count Greater Than 0', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const productCount = await dashboardPage.getProductCount();
         
@@ -166,10 +122,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     });
 
     test('@Dashboard TC010 - Verify Dashboard URL', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const url = await dashboardPage.getDashboardURL();
         
@@ -180,8 +132,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     test('@Dashboard TC011 - Get Specific Product by Name', async () => {
         // Arrange
         const productName = 'iphone 13 pro';
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
         
         // Act
         const productExists = await dashboardPage.isProductVisible(productName);
@@ -192,10 +142,6 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
     });
 
     test('@Dashboard TC012 - Get Product by Index and Verify Name', async () => {
-        // Arrange
-        const dashboardPage = poManager.getDashboardPage();
-        await dashboardPage.waitForDashboardToLoad();
-        
         // Act
         const firstProductName = await dashboardPage.getProductNameByIndex(0);
         
@@ -203,4 +149,15 @@ test.describe('Dashboard Page Tests - Page Object Model', () => {
         expect(firstProductName).toBeTruthy();
         console.log('First Product Name:', firstProductName);
     });
+
+    test.only('@Dashboard TC013 - Verify Search Product', async () => {
+        // Act
+        await dashboardPage.searchProduct('ZARA');
+        const zaraCoatName = await dashboardPage.getZaraCoat();
+        
+        // Assert
+        console.log('Searched Product Name:', zaraCoatName);
+        expect(zaraCoatName).toContain('ZARA COAT 3');
+    });
+
 });

@@ -23,7 +23,7 @@ public class ImpotantNotes {
     //  select child and grand child                 | ancestor , descendant 
     //            select parent and child            |parent , child   ----parent frame to child element in frame
                                                 | parent , child  //tag name[@Atribute='value'] /tag name[@Atribute='value']
-    
+    // not support text
     
     
     
